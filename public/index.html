@@ -1,0 +1,1337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nirbhay — AI Digital Safety Shield</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- jsQR for Client-Side QR Code Quishing Detection (QsecR Framework) -->
+  <script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js"></script>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Noto+Sans+Gujarati:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    body {
+      font-family: 'Inter', 'Noto Sans Devanagari', 'Noto Sans Gujarati', sans-serif;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col antialiased">
+
+  <!-- ======================================================== -->
+  <!-- TOP CONSUMER APP HEADER (LIGHT THEME)                    -->
+  <!-- ======================================================== -->
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-40 shadow-xs">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+      
+      <!-- BRAND LOGO & TITLE -->
+      <div class="flex items-center space-x-3 cursor-pointer" onclick="resetToHome()">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center shadow-md shadow-blue-500/20 text-white">
+          <i data-lucide="shield-check" class="w-6 h-6"></i>
+        </div>
+        <div>
+          <div class="flex items-center space-x-2">
+            <span class="text-xl font-extrabold tracking-tight text-slate-900">Nirbhay</span>
+            <span class="text-xs px-2 py-0.5 rounded-full bg-blue-50 text-blue-700 font-semibold border border-blue-200">
+              Shield
+            </span>
+          </div>
+          <p class="text-[11px] text-slate-500 font-medium">Digital Safety & Scam Protection</p>
+        </div>
+      </div>
+
+      <!-- RIGHT CONTROLS: LANGUAGE SWITCHER & FACULTY DRAWER TOGGLE -->
+      <div class="flex items-center space-x-2.5">
+        
+        <!-- Regional Language Switcher -->
+        <div class="relative inline-block">
+          <select id="app-lang-switcher" onchange="changeAppLanguage(this.value)" 
+            class="bg-slate-100 hover:bg-slate-200/80 border border-slate-300 text-xs font-semibold rounded-lg px-2.5 py-1.5 text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition cursor-pointer">
+            <option value="en">English</option>
+            <option value="hi">हिन्दी (Hindi)</option>
+            <option value="gu">ગુજરાતી (Gujarati)</option>
+          </select>
+        </div>
+
+        <!-- Faculty Live Evaluation Drawer Toggle (Discreet Button for Demo Pointer 2) -->
+        <button onclick="toggleEvaluatorDrawer()" title="DS-ML Lecture Demonstration & Live Evaluation"
+          class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-indigo-50 hover:bg-indigo-100 text-indigo-700 border border-indigo-200 transition flex items-center gap-1.5 cursor-pointer">
+          <i data-lucide="cpu" class="w-3.5 h-3.5 text-indigo-600"></i>
+          <span class="hidden sm:inline">Faculty Demo (Pointer 2)</span>
+          <span class="sm:hidden">Demo</span>
+        </button>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- ======================================================== -->
+  <!-- MAIN APP CONTAINER                                       -->
+  <!-- ======================================================== -->
+  <main class="flex-1 max-w-6xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
+
+    <!-- HERO PROMPT BANNER -->
+    <div class="bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 rounded-2xl p-6 sm:p-7 text-white shadow-lg shadow-blue-500/10 flex flex-col md:flex-row md:items-center justify-between gap-5">
+      <div class="space-y-1.5 max-w-2xl">
+        <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/15 text-white text-xs font-semibold backdrop-blur-xs border border-white/20">
+          <i data-lucide="shield" class="w-3.5 h-3.5"></i>
+          <span id="hero-pill-text">Real-Time Threat Protection</span>
+        </div>
+        <h2 id="hero-title" class="text-xl sm:text-2xl font-bold tracking-tight">
+          Check any suspicious SMS, payment link, or QR code
+        </h2>
+        <p id="hero-subtitle" class="text-xs sm:text-sm text-blue-100/90 leading-relaxed">
+          Verify whether a message is authentic or a cyber scam impersonating SBI, HDFC, electricity boards, India Post, or UPI rewards.
+        </p>
+      </div>
+
+      <div class="flex flex-row md:flex-col items-center md:items-end justify-between gap-2 border-t md:border-t-0 pt-3 md:pt-0 border-white/20 text-xs">
+        <div class="flex items-center gap-2 bg-white/10 px-3 py-1.5 rounded-xl backdrop-blur-xs border border-white/15">
+          <i data-lucide="phone-call" class="w-4 h-4 text-emerald-300"></i>
+          <div>
+            <div class="text-[10px] text-blue-200">Cyber Helpline</div>
+            <strong class="text-sm font-bold text-white tracking-wide">1930</strong>
+          </div>
+        </div>
+        <div class="text-[11px] text-blue-200 font-medium hidden md:block">
+          Official I4C Govt of India
+        </div>
+      </div>
+    </div>
+
+    <!-- ONE-TOUCH TEST SCENARIOS (REAL INDIAN SCAMS) -->
+    <div class="bg-white border border-slate-200 rounded-2xl p-4 sm:p-5 shadow-xs">
+      <div class="flex items-center justify-between mb-3">
+        <span class="text-xs font-bold text-slate-700 uppercase tracking-wider flex items-center gap-1.5">
+          <i data-lucide="zap" class="w-4 h-4 text-amber-500"></i>
+          <span id="label-quick-test">Try Real-Life Examples (1-Tap Check)</span>
+        </span>
+        <span class="text-[11px] text-slate-400 hidden sm:inline" id="label-quick-test-hint">Click any case to test instant detection</span>
+      </div>
+      <div id="quick-cases-pills" class="flex flex-wrap gap-2">
+        <!-- Dynamically populated sample buttons -->
+        <span class="text-xs text-slate-400 animate-pulse">Loading verified examples...</span>
+      </div>
+    </div>
+
+    <!-- SCANNER & RESULTS MAIN WORKSPACE -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+
+      <!-- LEFT COLUMN: INPUT CARD (DUAL MODE: TEXT & LINK OR QR QUISHING) -->
+      <div class="lg:col-span-6 space-y-4">
+        <div class="bg-white border border-slate-200 rounded-2xl p-5 shadow-xs space-y-4">
+          
+          <!-- SCANNER MODE TABS -->
+          <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+            <div class="flex space-x-2">
+              <button onclick="setScannerMode('text')" id="mode-btn-text" type="button"
+                class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-200 flex items-center gap-1.5 transition cursor-pointer">
+                <i data-lucide="message-square" class="w-3.5 h-3.5"></i>
+                <span id="tab-mode-text">SMS & Links</span>
+              </button>
+              <button onclick="setScannerMode('qr')" id="mode-btn-qr" type="button"
+                class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 hover:bg-slate-200 text-slate-600 border border-slate-200 flex items-center gap-1.5 transition cursor-pointer">
+                <i data-lucide="qr-code" class="w-3.5 h-3.5"></i>
+                <span id="tab-mode-qr">QR Code Scanner (QsecR)</span>
+              </button>
+            </div>
+            <span id="detected-script-badge" class="text-[11px] px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-600 border border-slate-200 font-medium">
+              Auto Detect Script
+            </span>
+          </div>
+
+          <!-- MODE 1: TEXT & URL INPUT SECTION -->
+          <div id="mode-text-section" class="space-y-4">
+            <!-- Message Text Box -->
+            <div class="space-y-1.5">
+              <div class="flex justify-between items-center text-xs">
+                <label for="input-text" class="font-medium text-slate-700" id="label-message-text">Message / SMS Content</label>
+                <button onclick="pasteClipboardText()" type="button" class="text-blue-600 hover:text-blue-700 font-medium text-[11px] flex items-center gap-1 cursor-pointer">
+                  <i data-lucide="clipboard" class="w-3 h-3"></i> <span id="label-paste-btn">Paste from Clipboard</span>
+                </button>
+              </div>
+              <textarea id="input-text" rows="5"
+                class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 text-sm text-slate-900 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/40 focus:border-blue-500 transition custom-scrollbar"
+                placeholder="Paste suspicious SMS or WhatsApp message here (e.g. SBI KYC blocked, electricity bill disconnection, parcel delivery fee, or bank alert)..."></textarea>
+            </div>
+
+            <!-- URL Input Box -->
+            <div class="space-y-1.5">
+              <div class="flex justify-between items-center text-xs">
+                <label for="input-url" class="font-medium text-slate-700" id="label-url-text">Website or Payment Link (Optional)</label>
+                <span class="text-slate-400 text-[11px]" id="label-url-hint">Auto-extracted from message if present</span>
+              </div>
+              <div class="relative">
+                <i data-lucide="link" class="w-4 h-4 text-slate-400 absolute left-3.5 top-3"></i>
+                <input type="text" id="input-url"
+                  class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-10 pr-3.5 py-2.5 text-sm text-slate-900 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/40 focus:border-blue-500 transition"
+                  placeholder="http://sbi-kyc-verify-portal.top or official link">
+              </div>
+            </div>
+          </div>
+
+          <!-- MODE 2: QR CODE SCANNER (QUISHING DETECTION FROM PAPER 2) -->
+          <div id="mode-qr-section" class="hidden space-y-3">
+            <div class="p-4 rounded-xl bg-slate-50 border-2 border-dashed border-slate-300 text-center space-y-2 flex flex-col items-center justify-center">
+              <div class="w-12 h-12 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center">
+                <i data-lucide="scan-line" class="w-6 h-6"></i>
+              </div>
+              <div>
+                <strong class="text-xs text-slate-800 block">Upload QR Code Image</strong>
+                <span class="text-[11px] text-slate-500">Scan payment QR codes received via WhatsApp/email to prevent Quishing</span>
+              </div>
+              <label class="px-3.5 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold cursor-pointer transition flex items-center gap-1.5 shadow-xs">
+                <i data-lucide="upload" class="w-3.5 h-3.5"></i> Select QR Image
+                <input type="file" id="qr-file-input" accept="image/*" class="hidden" onchange="handleQRImageUpload(event)">
+              </label>
+              <canvas id="qr-canvas" class="hidden"></canvas>
+            </div>
+            
+            <div id="qr-scan-status-box" class="hidden p-3 rounded-xl bg-blue-50 border border-blue-200 text-xs space-y-1">
+              <span class="font-bold text-blue-900 block flex items-center gap-1">
+                <i data-lucide="check-circle" class="w-3.5 h-3.5 text-blue-600"></i> Decoded URL Payload:
+              </span>
+              <code id="qr-decoded-url" class="font-mono text-blue-800 break-all bg-white px-2 py-1 rounded border border-blue-200 block"></code>
+            </div>
+
+            <!-- Quick Preset for QR Demo -->
+            <button onclick="simulateSampleQRScam()" type="button" 
+              class="w-full text-center text-xs py-2 rounded-lg bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-200 font-medium transition cursor-pointer flex items-center justify-center gap-1.5">
+              <i data-lucide="sparkles" class="w-3.5 h-3.5 text-amber-600"></i> Test UPI QR Code Payment Scam Demo
+            </button>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="flex items-center gap-2 pt-2 border-t border-slate-100">
+            <button onclick="clearAllInputs()" type="button" 
+              class="px-4 py-2.5 rounded-xl text-xs font-semibold text-slate-600 hover:text-slate-800 hover:bg-slate-100 transition border border-slate-200 cursor-pointer">
+              <span id="btn-clear-text">Clear</span>
+            </button>
+            <button onclick="checkMessageSafety()" id="btn-check" type="button" 
+              class="flex-1 px-5 py-2.5 rounded-xl text-sm font-semibold bg-blue-600 hover:bg-blue-700 text-white shadow-md shadow-blue-500/20 transition flex items-center justify-center gap-2 cursor-pointer">
+              <i data-lucide="shield-check" class="w-4 h-4"></i>
+              <span id="btn-check-text">Check Message Safety</span>
+            </button>
+          </div>
+
+        </div>
+
+        <!-- RECENT ACTIVITY (LOCAL STORAGE HISTORY) -->
+        <div class="bg-white border border-slate-200 rounded-2xl p-5 shadow-xs space-y-3">
+          <div class="flex items-center justify-between">
+            <h4 class="text-xs font-bold text-slate-700 uppercase tracking-wider flex items-center gap-1.5">
+              <i data-lucide="history" class="w-3.5 h-3.5 text-slate-400"></i>
+              <span id="label-history-title">Recent Safety Checks</span>
+            </h4>
+            <button onclick="clearHistory()" class="text-[11px] text-slate-400 hover:text-slate-600 underline cursor-pointer">Clear</button>
+          </div>
+          <div id="recent-history-list" class="space-y-2 text-xs">
+            <div class="text-slate-400 text-[11px] italic" id="label-history-empty">No recent checks yet. Scanned messages will appear here.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT COLUMN: RESULTS & PLAIN LANGUAGE EXPLAINABILITY -->
+      <div class="lg:col-span-6 space-y-4">
+
+        <!-- EMPTY STATE (BEFORE CHECK) -->
+        <div id="result-empty-state" class="bg-white border-2 border-dashed border-slate-200 rounded-2xl p-10 text-center flex flex-col items-center justify-center min-h-[380px] space-y-3">
+          <div class="w-16 h-16 rounded-2xl bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-600">
+            <i data-lucide="shield-question" class="w-8 h-8"></i>
+          </div>
+          <h4 class="text-base font-bold text-slate-800" id="label-empty-title">Ready to Protect You</h4>
+          <p class="text-xs text-slate-500 max-w-sm leading-relaxed" id="label-empty-subtitle">
+            Paste a message or QR code on the left or tap one of the real examples above. Nirbhay will inspect both the text wording and website links in real time.
+          </p>
+        </div>
+
+        <!-- RESULT CARD CONTAINER (SHOWN AFTER CHECK) -->
+        <div id="result-card" class="hidden bg-white border border-slate-200 rounded-2xl p-5 space-y-5 shadow-md">
+
+          <!-- MAIN STATUS HEADER -->
+          <div class="flex items-start justify-between gap-4 border-b border-slate-100 pb-4">
+            <div class="space-y-1">
+              <div class="flex items-center gap-2">
+                <span id="res-status-badge" class="px-3 py-1 rounded-full text-xs font-bold tracking-wide uppercase">
+                  HIGH-RISK SCAM
+                </span>
+                <span id="res-lang-badge" class="px-2.5 py-0.5 rounded-full text-[11px] bg-slate-100 text-slate-600 border border-slate-200 font-medium">
+                  Language: Hindi
+                </span>
+              </div>
+              <h3 class="text-lg sm:text-xl font-bold text-slate-900" id="res-verdict-title">
+                Phishing Scam Detected
+              </h3>
+            </div>
+
+            <!-- RISK METER GAUGE -->
+            <div class="text-right">
+              <div class="text-3xl font-extrabold" id="res-risk-percentage">88%</div>
+              <div class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Threat Risk</div>
+            </div>
+          </div>
+
+          <!-- PLAIN LANGUAGE EXPLANATION WITH REGIONAL VOICE AUDIO -->
+          <div class="space-y-2">
+            <div class="flex items-center justify-between">
+              <div class="text-xs font-bold text-slate-800 flex items-center gap-1.5">
+                <i data-lucide="info" class="w-4 h-4 text-blue-600"></i>
+                <span id="label-why-dangerous">Why was this message flagged?</span>
+              </div>
+              <!-- Voice Speech Button -->
+              <button onclick="playVoiceWarning()" type="button" id="btn-audio-speak"
+                class="px-2.5 py-1 rounded-lg text-[11px] font-semibold bg-indigo-50 hover:bg-indigo-100 text-indigo-700 border border-indigo-200 flex items-center gap-1 transition cursor-pointer">
+                <i data-lucide="volume-2" class="w-3.5 h-3.5"></i>
+                <span id="btn-audio-text">Listen Audio Alert</span>
+              </button>
+            </div>
+            <div id="res-plain-summary" class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-700 leading-relaxed font-sans">
+              <!-- Explanation summary injected here -->
+            </div>
+          </div>
+
+          <!-- RED FLAGS DETECTED LIST -->
+          <div id="res-red-flags-container" class="space-y-2">
+            <!-- Badges injected dynamically -->
+          </div>
+
+          <!-- ACTIONABLE SAFETY ADVICE -->
+          <div class="p-4 rounded-xl bg-amber-50/60 border border-amber-200/80 space-y-2">
+            <div class="text-xs font-bold text-amber-900 flex items-center gap-1.5">
+              <i data-lucide="alert-circle" class="w-4 h-4 text-amber-600"></i>
+              <span id="label-recommended-actions">Recommended Safety Actions:</span>
+            </div>
+            <ul id="res-action-list" class="text-xs text-amber-950 space-y-1.5 list-disc list-inside font-sans">
+              <!-- Guidance bullets -->
+            </ul>
+          </div>
+
+          <!-- ONE-TAP FAMILY PROTECTION & OFFICIAL INCIDENT REPORT -->
+          <div class="p-3.5 rounded-xl bg-blue-50 border border-blue-200/70 space-y-3">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+              <div class="space-y-0.5">
+                <div class="text-xs font-bold text-blue-900 flex items-center gap-1.5">
+                  <i data-lucide="users" class="w-3.5 h-3.5 text-blue-600"></i>
+                  <span id="label-protect-family">Protect Family & Report Fraud</span>
+                </div>
+                <div class="text-[11px] text-blue-700" id="label-protect-family-hint">Share WhatsApp warning or download cyber crime report</div>
+              </div>
+            </div>
+            <div class="flex flex-wrap items-center gap-2">
+              <button onclick="copyWhatsAppWarning()" type="button" 
+                class="flex-1 sm:flex-initial px-3 py-1.5 rounded-lg text-xs font-semibold bg-emerald-600 hover:bg-emerald-700 text-white transition flex items-center justify-center gap-1.5 shadow-xs cursor-pointer">
+                <i data-lucide="share-2" class="w-3.5 h-3.5"></i>
+                <span id="btn-copy-warning">Copy WhatsApp Alert</span>
+              </button>
+              <button onclick="downloadIncidentReport()" type="button" 
+                class="flex-1 sm:flex-initial px-3 py-1.5 rounded-lg text-xs font-semibold bg-white hover:bg-slate-100 text-slate-700 border border-slate-300 transition flex items-center justify-center gap-1.5 shadow-xs cursor-pointer">
+                <i data-lucide="file-down" class="w-3.5 h-3.5 text-blue-600"></i>
+                <span>Download Incident Report (.txt)</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- COLLAPSIBLE TECHNICAL MODEL EVIDENCE (FOR FACULTY INSPECTION) -->
+          <div class="border border-slate-200 rounded-xl overflow-hidden">
+            <button onclick="toggleTechnicalDetails()" type="button" 
+              class="w-full px-3.5 py-2.5 bg-slate-50 hover:bg-slate-100 text-xs font-semibold text-slate-700 flex items-center justify-between transition cursor-pointer">
+              <span class="flex items-center gap-1.5">
+                <i data-lucide="binary" class="w-3.5 h-3.5 text-indigo-600"></i>
+                Technical DS-ML Feature Evidence (Ablation Modalities)
+              </span>
+              <i data-lucide="chevron-down" id="tech-details-arrow" class="w-4 h-4 text-slate-400 transition-transform"></i>
+            </button>
+            <div id="tech-details-panel" class="hidden p-3.5 bg-white space-y-2.5 text-xs border-t border-slate-200">
+              <div class="grid grid-cols-3 gap-2 text-center">
+                <div class="p-2 rounded bg-slate-50 border border-slate-100">
+                  <div class="text-[10px] text-slate-500">Text NLP Risk</div>
+                  <strong id="tech-text-risk" class="text-indigo-700 font-bold">0%</strong>
+                </div>
+                <div class="p-2 rounded bg-slate-50 border border-slate-100">
+                  <div class="text-[10px] text-slate-500">URL Lexical Risk</div>
+                  <strong id="tech-url-risk" class="text-blue-700 font-bold">0%</strong>
+                </div>
+                <div class="p-2 rounded bg-indigo-50 border border-indigo-100">
+                  <div class="text-[10px] text-indigo-700 font-semibold">Fused Risk</div>
+                  <strong id="tech-fused-risk" class="text-indigo-900 font-bold">0%</strong>
+                </div>
+              </div>
+              <div class="space-y-1 text-[11px] font-mono text-slate-600 pt-1" id="tech-features-list">
+                <!-- Injected structural URL metrics -->
+              </div>
+            </div>
+          </div>
+
+          <!-- EMERGENCY HELPLINE CALLOUT -->
+          <div class="p-3.5 rounded-xl bg-rose-50 border border-rose-200 flex items-center justify-between text-xs">
+            <div class="flex items-center gap-2.5">
+              <div class="w-8 h-8 rounded-lg bg-rose-100 text-rose-600 flex items-center justify-center font-bold">
+                <i data-lucide="phone" class="w-4 h-4"></i>
+              </div>
+              <div>
+                <div class="font-bold text-rose-900">National Cyber Crime Helpline: 1930</div>
+                <div class="text-[11px] text-rose-700">Toll-free immediate assistance for financial cyber fraud</div>
+              </div>
+            </div>
+            <a href="https://cybercrime.gov.in" target="_blank" rel="noopener" 
+              class="text-xs font-semibold text-rose-700 hover:text-rose-900 underline flex items-center gap-1">
+              cybercrime.gov.in <i data-lucide="external-link" class="w-3 h-3"></i>
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- PREVENTION GUIDELINES FOR CITIZENS -->
+    <div class="bg-white border border-slate-200 rounded-2xl p-5 shadow-xs space-y-3">
+      <h3 class="text-xs font-bold text-slate-700 uppercase tracking-wider flex items-center gap-1.5">
+        <i data-lucide="book-marked" class="w-4 h-4 text-blue-600"></i>
+        <span id="label-guidelines-heading">3 Golden Rules for Digital Safety</span>
+      </h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-3.5 text-xs text-slate-600 pt-1">
+        <div class="p-3 rounded-xl bg-slate-50 border border-slate-100 space-y-1">
+          <div class="font-bold text-slate-800 flex items-center gap-1.5">
+            <span class="w-5 h-5 rounded-full bg-blue-100 text-blue-700 inline-flex items-center justify-center text-[11px]">1</span>
+            Never Share OTP or PIN
+          </div>
+          <p class="text-[11px] text-slate-500 leading-relaxed">
+            Bank executives, electricity officials, and police will never ask for your confidential OTP, CVV, or UPI PIN.
+          </p>
+        </div>
+        <div class="p-3 rounded-xl bg-slate-50 border border-slate-100 space-y-1">
+          <div class="font-bold text-slate-800 flex items-center gap-1.5">
+            <span class="w-5 h-5 rounded-full bg-blue-100 text-blue-700 inline-flex items-center justify-center text-[11px]">2</span>
+            Verify Domain Extension
+          </div>
+          <p class="text-[11px] text-slate-500 leading-relaxed">
+            Authentic Indian banks use verified domains like <code class="text-blue-700">.sbi</code> or <code class="text-blue-700">.bankofbaroda.in</code>, not <code class="text-rose-600">.top</code> or <code class="text-rose-600">.xyz</code>.
+          </p>
+        </div>
+        <div class="p-3 rounded-xl bg-slate-50 border border-slate-100 space-y-1">
+          <div class="font-bold text-slate-800 flex items-center gap-1.5">
+            <span class="w-5 h-5 rounded-full bg-blue-100 text-blue-700 inline-flex items-center justify-center text-[11px]">3</span>
+            Call 1930 within the Golden Hour
+          </div>
+          <p class="text-[11px] text-slate-500 leading-relaxed">
+            If money was mistakenly transferred, immediately call 1930 to freeze the fraud account before the scammer withdraws funds.
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ======================================================== -->
+  <!-- FACULTY LIVE EVALUATION DRAWER (POINTER 2 MODAL)         -->
+  <!-- ======================================================== -->
+  <div id="evaluator-drawer-backdrop" class="hidden fixed inset-0 bg-slate-900/50 backdrop-blur-xs z-50 transition-opacity">
+    <div class="fixed inset-y-0 right-0 max-w-2xl w-full bg-white shadow-2xl flex flex-col z-50 border-l border-slate-200">
+      
+      <!-- DRAWER HEADER -->
+      <div class="px-6 py-4 border-b border-slate-200 flex items-center justify-between bg-slate-50">
+        <div>
+          <div class="flex items-center gap-2">
+            <h3 class="text-base font-bold text-slate-900">DS-ML Faculty Evaluation Console</h3>
+            <span class="text-xs px-2 py-0.5 rounded-full bg-indigo-100 text-indigo-700 font-semibold">Pointer 2</span>
+          </div>
+          <p class="text-xs text-slate-500">Live Model Evaluation & Ablation Study for Project Review</p>
+        </div>
+        <button onclick="toggleEvaluatorDrawer()" class="w-8 h-8 rounded-lg text-slate-400 hover:text-slate-600 hover:bg-slate-200 flex items-center justify-center transition cursor-pointer">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <!-- DRAWER BODY -->
+      <div class="flex-1 overflow-y-auto p-6 space-y-6 custom-scrollbar text-xs">
+        
+        <!-- ACADEMIC & GUIDE METADATA -->
+        <div class="p-3.5 rounded-xl bg-indigo-50/70 border border-indigo-100 space-y-1">
+          <div class="font-bold text-indigo-950">Navrachana University • Department of Data Science & Machine Learning</div>
+          <div class="text-indigo-800"><strong>Guide:</strong> Prof. Ujwala Patigara | <strong>Team:</strong> Isha Rajput, Parisha Parmar, Priya Bhatt</div>
+          <div class="text-[11px] text-indigo-600 font-medium">Major Project Review 2026-27</div>
+        </div>
+
+        <!-- ABLATION COMPARISON MATRIX (HYPOTHESIS VERIFICATION) -->
+        <div class="space-y-2">
+          <div class="flex items-center justify-between">
+            <h4 class="font-bold text-slate-900 text-xs uppercase tracking-wider flex items-center gap-1.5">
+              <i data-lucide="bar-chart-2" class="w-4 h-4 text-indigo-600"></i>
+              Ablation Study: Text vs. URL vs. Multi-Evidence Fusion
+            </h4>
+            <button onclick="fetchEvaluationReport()" class="text-indigo-600 hover:text-indigo-700 font-semibold underline cursor-pointer">Refresh</button>
+          </div>
+          <p class="text-[11px] text-slate-500">
+            Answers: "Does combining message text and URL evidence improve scam detection compared to analyzing either source alone across English, Hindi, and Gujarati?"
+          </p>
+
+          <div class="border border-slate-200 rounded-xl overflow-hidden">
+            <table class="w-full text-left">
+              <thead class="bg-slate-100 text-slate-600 uppercase text-[10px] font-bold">
+                <tr>
+                  <th class="py-2 px-3">Modality</th>
+                  <th class="py-2 px-3">Accuracy</th>
+                  <th class="py-2 px-3">Precision</th>
+                  <th class="py-2 px-3">Recall</th>
+                  <th class="py-2 px-3">F1-Score</th>
+                  <th class="py-2 px-3">FPR</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100 font-mono text-[11px]" id="eval-ablation-tbody">
+                <tr><td colspan="6" class="p-3 text-center text-slate-400">Loading benchmark evaluation...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- PER-LANGUAGE BENCHMARK (STAPLES ET AL. GAP) -->
+        <div class="space-y-2">
+          <h4 class="font-bold text-slate-900 text-xs uppercase tracking-wider flex items-center gap-1.5">
+            <i data-lucide="languages" class="w-4 h-4 text-blue-600"></i>
+            Per-Language False Positive Rate (FPR) Analysis
+          </h4>
+          <div class="grid grid-cols-3 gap-2.5 text-center" id="eval-lang-cards">
+            <!-- Injected dynamically -->
+          </div>
+        </div>
+
+        <!-- LIVE UNSEEN DATA TESTING SANDBOX -->
+        <div class="space-y-3 pt-2 border-t border-slate-200">
+          <div class="flex items-center justify-between">
+            <h4 class="font-bold text-slate-900 text-xs uppercase tracking-wider flex items-center gap-1.5">
+              <i data-lucide="play" class="w-4 h-4 text-emerald-600"></i>
+              Live Test Data Evaluation (Live Demonstration Pointer 2)
+            </h4>
+            <div class="flex items-center gap-1.5">
+              <button onclick="loadSampleLiveBatch()" class="px-2.5 py-1 rounded bg-slate-100 hover:bg-slate-200 text-slate-700 font-medium text-[11px] cursor-pointer">
+                Load 10 Samples
+              </button>
+              <button onclick="runLiveBatchEvaluation()" class="px-3 py-1 rounded bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-[11px] shadow-xs cursor-pointer">
+                Run Live Test
+              </button>
+            </div>
+          </div>
+
+          <textarea id="eval-live-json" rows="4" 
+            class="w-full bg-slate-50 border border-slate-200 rounded-xl p-2.5 font-mono text-[11px] text-slate-800 focus:bg-white focus:outline-none focus:ring-1 focus:ring-emerald-500 custom-scrollbar"
+            placeholder="Paste JSON array of live samples or click 'Load 10 Samples' above..."></textarea>
+
+          <!-- LIVE TEST METRICS SUMMARY -->
+          <div id="eval-live-results" class="hidden space-y-3">
+            <div class="grid grid-cols-5 gap-2 text-center p-2.5 rounded-xl bg-slate-100 border border-slate-200">
+              <div><span class="text-[10px] text-slate-500 block">Tested</span><strong id="live-stat-total" class="font-bold text-slate-900 text-sm">0</strong></div>
+              <div><span class="text-[10px] text-slate-500 block">Accuracy</span><strong id="live-stat-acc" class="font-bold text-emerald-600 text-sm">0%</strong></div>
+              <div><span class="text-[10px] text-slate-500 block">Precision</span><strong id="live-stat-prec" class="font-bold text-blue-600 text-sm">0%</strong></div>
+              <div><span class="text-[10px] text-slate-500 block">Recall</span><strong id="live-stat-rec" class="font-bold text-indigo-600 text-sm">0%</strong></div>
+              <div><span class="text-[10px] text-slate-500 block">F1-Score</span><strong id="live-stat-f1" class="font-bold text-purple-600 text-sm">0%</strong></div>
+            </div>
+
+            <div class="border border-slate-200 rounded-xl overflow-hidden max-h-48 overflow-y-auto custom-scrollbar">
+              <table class="w-full text-left text-[11px]">
+                <thead class="bg-slate-100 text-slate-500 sticky top-0 uppercase text-[9px]">
+                  <tr>
+                    <th class="py-1.5 px-2">#</th>
+                    <th class="py-1.5 px-2">Snippet</th>
+                    <th class="py-1.5 px-2">Lang</th>
+                    <th class="py-1.5 px-2">True</th>
+                    <th class="py-1.5 px-2">Pred</th>
+                    <th class="py-1.5 px-2">Result</th>
+                  </tr>
+                </thead>
+                <tbody id="eval-live-tbody" class="divide-y divide-slate-100 font-sans">
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- DRAWER FOOTER -->
+      <div class="px-6 py-3 border-t border-slate-200 bg-slate-50 flex items-center justify-between text-xs text-slate-500">
+        <div>Total Model Corpus: 1,588 Balanced Multilingual Records</div>
+        <button onclick="toggleEvaluatorDrawer()" class="px-4 py-1.5 bg-slate-200 hover:bg-slate-300 text-slate-700 font-semibold rounded-lg cursor-pointer">
+          Close Console
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ======================================================== -->
+  <!-- JAVASCRIPT APPLICATION CODE                              -->
+  <!-- ======================================================== -->
+  <script>
+    let currentAppLang = 'en';
+    let currentWarningShareText = '';
+    let currentLastResult = null;
+    let isSpeaking = false;
+
+    // UI Translation Strings
+    const UI_TRANSLATIONS = {
+      en: {
+        hero_pill: "Real-Time Threat Protection",
+        hero_title: "Check any suspicious SMS, payment link, or QR code",
+        hero_subtitle: "Verify whether a message is an authentic communication or a cyber scam impersonating SBI, HDFC, electricity boards, India Post, or UPI rewards.",
+        quick_test: "Try Real-Life Examples (1-Tap Check)",
+        quick_test_hint: "Click any case to test instant detection",
+        tab_mode_text: "SMS & Links",
+        tab_mode_qr: "QR Code Scanner (QsecR)",
+        message_text: "Message / SMS Content",
+        paste_btn: "Paste from Clipboard",
+        url_text: "Website or Payment Link (Optional)",
+        url_hint: "Auto-extracted from message if present",
+        btn_clear: "Clear",
+        btn_check: "Check Message Safety",
+        history_title: "Recent Safety Checks",
+        history_empty: "No recent checks yet. Scanned messages will appear here.",
+        empty_title: "Ready to Protect You",
+        empty_subtitle: "Paste a message or QR code on the left or tap one of the real examples above. Nirbhay will inspect both the text wording and website links in real time.",
+        why_dangerous: "Why was this message flagged?",
+        recommended_actions: "Recommended Safety Actions:",
+        protect_family: "Protect Family & Report Fraud",
+        protect_family_hint: "Share WhatsApp warning or download cyber crime report",
+        btn_copy_warning: "Copy WhatsApp Alert",
+        guidelines_heading: "3 Golden Rules for Digital Safety",
+        audio_alert: "Listen Audio Alert"
+      },
+      hi: {
+        hero_pill: "वास्तविक समय साइबर सुरक्षा",
+        hero_title: "संदिग्ध एसएमएस, पेमेंट लिंक या क्यूआर कोड की तुरंत जांच करें",
+        hero_subtitle: "पता लगाएं कि क्या यह संदेश सुरक्षित है या एसबीआई, बिजली विभाग, इंडिया पोस्ट या यूपीआई के नाम पर कोई साइबर धोखाधड़ी है।",
+        quick_test: "वास्तविक उदाहरण आजमाएं (1-टैप में जांचें)",
+        quick_test_hint: "तुरंत परिणाम देखने के लिए किसी भी उदाहरण पर क्लिक करें",
+        tab_mode_text: "एसएमएस और लिंक",
+        tab_mode_qr: "क्यूआर कोड स्कैनर (QsecR)",
+        message_text: "संदेश / एसएमएस विवरण",
+        paste_btn: "क्लिपबोर्ड से पेस्ट करें",
+        url_text: "वेबसाइट या पेमेंट लिंक (वैकल्पिक)",
+        url_hint: "मैसेज में लिंक होने पर अपने आप जुड़ जाएगी",
+        btn_clear: "साफ करें",
+        btn_check: "सुरक्षा जांचें",
+        history_title: "हाल की सुरक्षा जांच",
+        history_empty: "अभी कोई जांच नहीं हुई। जांची गई सूची यहां दिखेगी।",
+        empty_title: "आपकी सुरक्षा के लिए तैयार",
+        empty_subtitle: "बाईं ओर कोई भी संदेश या क्यूआर कोड पेस्ट करें या ऊपर दिए गए उदाहरणों पर क्लिक करें। निर्भय तुरंत शब्दों और लिंक की जांच करेगा।",
+        why_dangerous: "इस संदेश को क्यों संदिग्ध माना गया?",
+        recommended_actions: "सुझाए गए सुरक्षा उपाय:",
+        protect_family: "परिवार की सुरक्षा और रिपोर्ट",
+        protect_family_hint: "वॉट्सऐप पर चेतावनी भेजें या साइबर क्राइम शिकायत रिपोर्ट डाउनलोड करें",
+        btn_copy_warning: "वॉट्सऐप अलर्ट कॉपी करें",
+        guidelines_heading: "डिजिटल सुरक्षा के 3 सुनहरे नियम",
+        audio_alert: "आवाज में सुनें"
+      },
+      gu: {
+        hero_pill: "રીયલ-ટાઇમ સાયબર સુરક્ષા",
+        hero_title: "શંકાસ્પદ SMS, પેમેન્ટ લિંક અથવા QR કોડની સુરક્ષા ચકાસો",
+        hero_subtitle: "ખાતરી કરો કે મેસેજ સાચો છે કે SBI, MGVCL વીજળી બિલ, ઈન્ડિયા પોસ્ટ કે UPI ના નામે કોઈ સાયબર છેતરપિંડી છે.",
+        quick_test: "વાસ્તવિક ઉદાહરણો અજમાવો (1-ક્લિકમાં ચકાસો)",
+        quick_test_hint: "તરત જ પરિણામ જોવા માટે કોઈપણ ઉદાહરણ પર ક્લિક કરો",
+        tab_mode_text: "SMS અને લિંક",
+        tab_mode_qr: "QR કોડ સ્કેનર (QsecR)",
+        message_text: "મેસેજ / SMS લખાણ",
+        paste_btn: "ક્લિપબોર્ડમાંથી પેસ્ટ કરો",
+        url_text: "વેબસાઇટ અથવા પેમેન્ટ લિંક (વૈકલ્પિક)",
+        url_hint: "મેસેજમાં લિંક હશે તો આપોઆપ આવી જશે",
+        btn_clear: "સાફ કરો",
+        btn_check: "સુરક્ષા તપાસો",
+        history_title: "તાજેતરની સુરક્ષા તપાસ",
+        history_empty: "હજુ કોઈ તપાસ થઈ નથી. સ્કેન કરેલ યાદી અહીં દેખાશે.",
+        empty_title: "તમારી સુરક્ષા માટે તૈયાર",
+        empty_subtitle: "ડાબી બાજુ કોઈપણ મેસેજ અથવા QR કોડ આપો. નિર્ભય તાત્કાલિક સાચો જવાબ આપશે.",
+        why_dangerous: "આ મેસેજ શા માટે શંકાસ્પદ જણાયો?",
+        recommended_actions: "જરૂરી સુરક્ષા પગલાં:",
+        protect_family: "પરિવાર સુરક્ષા અને રિપોર્ટ",
+        protect_family_hint: "વોટ્સએપ પર સાવચેતી શેર કરો અથવા સાયબર ફરિયાદ રિપોર્ટ ડાઉનલોડ કરો",
+        btn_copy_warning: "વોટ્સએપ એલર્ટ કોપી કરો",
+        guidelines_heading: "ડિજિટલ સુરક્ષાના 3 સુવર્ણ નિયમો",
+        audio_alert: "અવાજમાં સાંભળો"
+      }
+    };
+
+    function changeAppLanguage(lang) {
+      currentAppLang = lang;
+      const t = UI_TRANSLATIONS[lang] || UI_TRANSLATIONS.en;
+      
+      document.getElementById('hero-pill-text').innerText = t.hero_pill;
+      document.getElementById('hero-title').innerText = t.hero_title;
+      document.getElementById('hero-subtitle').innerText = t.hero_subtitle;
+      document.getElementById('label-quick-test').innerText = t.quick_test;
+      document.getElementById('label-quick-test-hint').innerText = t.quick_test_hint;
+      document.getElementById('tab-mode-text').innerText = t.tab_mode_text;
+      document.getElementById('tab-mode-qr').innerText = t.tab_mode_qr;
+      document.getElementById('label-message-text').innerText = t.message_text;
+      document.getElementById('label-paste-btn').innerText = t.paste_btn;
+      document.getElementById('label-url-text').innerText = t.url_text;
+      document.getElementById('label-url-hint').innerText = t.url_hint;
+      document.getElementById('btn-clear-text').innerText = t.btn_clear;
+      document.getElementById('btn-check-text').innerText = t.btn_check;
+      document.getElementById('label-history-title').innerText = t.history_title;
+      document.getElementById('label-empty-title').innerText = t.empty_title;
+      document.getElementById('label-empty-subtitle').innerText = t.empty_subtitle;
+      document.getElementById('label-why-dangerous').innerText = t.why_dangerous;
+      document.getElementById('label-recommended-actions').innerText = t.recommended_actions;
+      document.getElementById('label-protect-family').innerText = t.protect_family;
+      document.getElementById('label-protect-family-hint').innerText = t.protect_family_hint;
+      document.getElementById('btn-copy-warning').innerText = t.btn_copy_warning;
+      document.getElementById('label-guidelines-heading').innerText = t.guidelines_heading;
+      document.getElementById('btn-audio-text').innerText = t.audio_alert;
+
+      const textInput = document.getElementById('input-text');
+      if (lang === 'hi') {
+        textInput.placeholder = "संदिग्ध एसएमएस या वॉट्सऐप मैसेज यहाँ पेस्ट करें (जैसे एसबीआई केवाईसी, बिजली बिल, लॉटरी या बैंक सूचना)...";
+      } else if (lang === 'gu') {
+        textInput.placeholder = "શંકાસ્પદ SMS અથવા WhatsApp મેસેજ અહીં પેસ્ટ કરો (જેમ કે SBI KYC, MGVCL વીજળી બિલ, કુરિયર અથવા બેંક એલર્ટ)...";
+      } else {
+        textInput.placeholder = "Paste suspicious SMS or WhatsApp message here (e.g. SBI KYC blocked, electricity bill disconnection, parcel delivery fee, or bank alert)...";
+      }
+    }
+
+    // Switch between Text/Link mode and QR code Quishing scanner
+    function setScannerMode(mode) {
+      const modeTextBtn = document.getElementById('mode-btn-text');
+      const modeQrBtn = document.getElementById('mode-btn-qr');
+      const textSection = document.getElementById('mode-text-section');
+      const qrSection = document.getElementById('mode-qr-section');
+
+      if (mode === 'qr') {
+        modeQrBtn.className = "px-3 py-1.5 rounded-lg text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-200 flex items-center gap-1.5 transition cursor-pointer";
+        modeTextBtn.className = "px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 hover:bg-slate-200 text-slate-600 border border-slate-200 flex items-center gap-1.5 transition cursor-pointer";
+        textSection.classList.add('hidden');
+        qrSection.classList.remove('hidden');
+      } else {
+        modeTextBtn.className = "px-3 py-1.5 rounded-lg text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-200 flex items-center gap-1.5 transition cursor-pointer";
+        modeQrBtn.className = "px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 hover:bg-slate-200 text-slate-600 border border-slate-200 flex items-center gap-1.5 transition cursor-pointer";
+        qrSection.classList.add('hidden');
+        textSection.classList.remove('hidden');
+      }
+      lucide.createIcons();
+    }
+
+    // QR Code Image Upload & Decoding using jsQR
+    function handleQRImageUpload(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const img = new Image();
+        img.onload = function() {
+          const canvas = document.getElementById('qr-canvas');
+          const ctx = canvas.getContext('2d');
+          canvas.width = img.width;
+          canvas.height = img.height;
+          ctx.drawImage(img, 0, 0, img.width, img.height);
+          
+          const imageData = ctx.getImageData(0, 0, img.width, img.height);
+          const code = jsQR(imageData.data, imageData.width, imageData.height, {
+            inversionAttempts: "dontInvert",
+          });
+
+          if (code && code.data) {
+            document.getElementById('qr-scan-status-box').classList.remove('hidden');
+            document.getElementById('qr-decoded-url').innerText = code.data;
+            document.getElementById('input-url').value = code.data;
+            document.getElementById('input-text').value = `[QR Code Scanned Payload]: ${code.data}`;
+            checkMessageSafety();
+          } else {
+            alert("No QR code detected in this image. Please ensure the QR is clear and well-lit.");
+          }
+        };
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function simulateSampleQRScam() {
+      const fakeScamQRUrl = "http://phonepe-cashback-reward-claim.xyz/redeem-upi-collect.php?token=94821";
+      document.getElementById('qr-scan-status-box').classList.remove('hidden');
+      document.getElementById('qr-decoded-url').innerText = fakeScamQRUrl;
+      document.getElementById('input-url').value = fakeScamQRUrl;
+      document.getElementById('input-text').value = "Scanned WhatsApp QR payment voucher promising Rs. 2,000 lottery reward: " + fakeScamQRUrl;
+      checkMessageSafety();
+    }
+
+    // Auto-detect script on typing
+    document.getElementById('input-text').addEventListener('input', function() {
+      const val = this.value;
+      let devanagari = 0, gujarati = 0;
+      for (let ch of val) {
+        let cp = ch.charCodeAt(0);
+        if (cp >= 0x0900 && cp <= 0x097F) devanagari++;
+        if (cp >= 0x0A80 && cp <= 0x0AFF) gujarati++;
+      }
+      const badge = document.getElementById('detected-script-badge');
+      if (gujarati >= 4) {
+        badge.innerText = "Script: ગુજરાતી (Gujarati)";
+        badge.className = "text-[11px] px-2.5 py-0.5 rounded-full bg-cyan-50 text-cyan-700 border border-cyan-200 font-semibold";
+      } else if (devanagari >= 4) {
+        badge.innerText = "Script: हिन्दी (Hindi)";
+        badge.className = "text-[11px] px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-700 border border-amber-200 font-semibold";
+      } else if (val.trim().length > 0) {
+        badge.innerText = "Script: English";
+        badge.className = "text-[11px] px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 border border-blue-200 font-semibold";
+      } else {
+        badge.innerText = "Auto Detect Script";
+        badge.className = "text-[11px] px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-600 border border-slate-200 font-medium";
+      }
+    });
+
+    // Paste from clipboard helper
+    async function pasteClipboardText() {
+      try {
+        const text = await navigator.clipboard.readText();
+        if (text) {
+          document.getElementById('input-text').value = text;
+          document.getElementById('input-text').dispatchEvent(new Event('input'));
+        }
+      } catch (err) {
+        alert("Clipboard permission needed or not supported in this browser. Please paste using Ctrl+V.");
+      }
+    }
+
+    function clearAllInputs() {
+      document.getElementById('input-text').value = '';
+      document.getElementById('input-url').value = '';
+      document.getElementById('qr-scan-status-box').classList.add('hidden');
+      document.getElementById('result-card').classList.add('hidden');
+      document.getElementById('result-empty-state').classList.remove('hidden');
+      document.getElementById('input-text').dispatchEvent(new Event('input'));
+      stopVoiceWarning();
+    }
+
+    function resetToHome() {
+      clearAllInputs();
+      setScannerMode('text');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Load Sample Demonstration Scenarios
+    async function loadQuickSamples() {
+      try {
+        const res = await fetch('/api/sample-cases');
+        const cases = await res.json();
+        const container = document.getElementById('quick-cases-pills');
+        container.innerHTML = '';
+
+        cases.forEach(item => {
+          const pill = document.createElement('button');
+          pill.type = 'button';
+          pill.className = `text-xs px-3 py-1.5 rounded-xl border transition flex items-center gap-1.5 cursor-pointer font-medium ${
+            item.type === 'phishing'
+              ? 'bg-rose-50/80 hover:bg-rose-100 text-rose-800 border-rose-200'
+              : 'bg-emerald-50/80 hover:bg-emerald-100 text-emerald-800 border-emerald-200'
+          }`;
+          pill.innerHTML = `<span>${item.title}</span>`;
+          pill.onclick = () => {
+            setScannerMode('text');
+            document.getElementById('input-text').value = item.text;
+            document.getElementById('input-url').value = item.url || '';
+            document.getElementById('input-text').dispatchEvent(new Event('input'));
+            checkMessageSafety();
+          };
+          container.appendChild(pill);
+        });
+      } catch (err) {
+        console.error("Failed to load quick cases:", err);
+      }
+    }
+
+    // MAIN INFERENCE ACTION
+    async function checkMessageSafety() {
+      const text = document.getElementById('input-text').value.trim();
+      const url = document.getElementById('input-url').value.trim();
+
+      if (!text && !url) {
+        alert("Please paste a message or enter a website link to check.");
+        return;
+      }
+
+      stopVoiceWarning();
+      const btn = document.getElementById('btn-check');
+      const originalText = document.getElementById('btn-check-text').innerText;
+      btn.disabled = true;
+      btn.innerHTML = `<i data-lucide="loader" class="w-4 h-4 animate-spin"></i> Checking safety...`;
+
+      try {
+        const res = await fetch('/api/predict', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            text: text,
+            url: url,
+            lang_override: currentAppLang
+          })
+        });
+
+        const data = await res.json();
+        currentLastResult = { ...data, raw_text: text, raw_url: url };
+        renderSafetyResults(data, text, url);
+        saveToRecentHistory(data, text, url);
+      } catch (err) {
+        alert("Check failed: " + err.message);
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = `<i data-lucide="shield-check" class="w-4 h-4"></i> <span id="btn-check-text">${originalText}</span>`;
+        lucide.createIcons();
+      }
+    }
+
+    function renderSafetyResults(data, text, url) {
+      document.getElementById('result-empty-state').classList.add('hidden');
+      const card = document.getElementById('result-card');
+      card.classList.remove('hidden');
+
+      const badge = document.getElementById('res-status-badge');
+      const title = document.getElementById('res-verdict-title');
+      const percentage = document.getElementById('res-risk-percentage');
+
+      percentage.innerText = `${data.risk_score}%`;
+
+      if (data.threat_level === 'HIGH_RISK_PHISHING') {
+        badge.className = "px-3 py-1 rounded-full text-xs font-bold tracking-wide uppercase bg-rose-100 text-rose-800 border border-rose-200";
+        badge.innerText = currentAppLang === 'hi' ? "खतरा: फर्जी फिशिंग घोटाला" : (currentAppLang === 'gu' ? "જોખમ: ફિશિંગ ફ્રોડ એલર્ટ" : "DANGER: HIGH-RISK SCAM");
+        title.innerText = currentAppLang === 'hi' ? "धोखाधड़ी का संदेश मिला (डू नॉट क्लिक)" : (currentAppLang === 'gu' ? "છેતરપિંડીનો મેસેજ પકડાયો" : "Phishing Scam Detected");
+        percentage.className = "text-3xl font-extrabold text-rose-600";
+      } else if (data.threat_level === 'SUSPICIOUS') {
+        badge.className = "px-3 py-1 rounded-full text-xs font-bold tracking-wide uppercase bg-amber-100 text-amber-800 border border-amber-200";
+        badge.innerText = currentAppLang === 'hi' ? "सतर्कता: संदिग्ध संदेश" : (currentAppLang === 'gu' ? "સાવધાન: શંકાસ્પદ મેસેજ" : "CAUTION: SUSPICIOUS");
+        title.innerText = currentAppLang === 'hi' ? "संदिग्ध गतिविधि की संभावना" : (currentAppLang === 'gu' ? "શંકાસ્પદ સંદેશો જણાયો" : "Suspicious Message Patterns");
+        percentage.className = "text-3xl font-extrabold text-amber-600";
+      } else {
+        badge.className = "px-3 py-1 rounded-full text-xs font-bold tracking-wide uppercase bg-emerald-100 text-emerald-800 border border-emerald-200";
+        badge.innerText = currentAppLang === 'hi' ? "सुरक्षित: प्रामाणिक संदेश" : (currentAppLang === 'gu' ? "સુરક્ષિત: સાચો મેસેજ" : "VERIFIED SAFE");
+        title.innerText = currentAppLang === 'hi' ? "संदेश सुरक्षित प्रतीत होता है" : (currentAppLang === 'gu' ? "મેસેજ સામાન્ય અને સુરક્ષિત છે" : "Legitimate Communication");
+        percentage.className = "text-3xl font-extrabold text-emerald-600";
+      }
+
+      document.getElementById('res-lang-badge').innerText = `Language: ${data.language.name}`;
+
+      // Plain language explanation
+      document.getElementById('res-plain-summary').innerText = data.explainability.summary;
+
+      // Recommended Actions
+      const actionList = document.getElementById('res-action-list');
+      actionList.innerHTML = '';
+      (data.explainability.actionable_guidance || []).forEach(act => {
+        const li = document.createElement('li');
+        li.innerText = act;
+        actionList.appendChild(li);
+      });
+
+      // Red flags list
+      const flagsContainer = document.getElementById('res-red-flags-container');
+      flagsContainer.innerHTML = '';
+
+      // Text indicators
+      (data.explainability.text_indicators || []).forEach(f => {
+        const row = document.createElement('div');
+        row.className = "p-2.5 rounded-xl bg-amber-50/70 border border-amber-200/70 text-xs flex items-center justify-between";
+        row.innerHTML = `
+          <div>
+            <strong class="text-amber-900 font-semibold">${f.label}</strong>
+            <span class="text-amber-700 text-[11px] block">Found words: ${f.matches.join(', ')}</span>
+          </div>
+          <span class="text-[10px] font-bold text-amber-800 px-2 py-0.5 rounded bg-amber-200/60">Text Alert</span>
+        `;
+        flagsContainer.appendChild(row);
+      });
+
+      // URL indicators
+      (data.explainability.url_indicators || []).forEach(u => {
+        const row = document.createElement('div');
+        row.className = "p-2.5 rounded-xl bg-rose-50/70 border border-rose-200/70 text-xs flex items-center justify-between";
+        row.innerHTML = `
+          <div>
+            <strong class="text-rose-950 font-semibold">${u.description}</strong>
+            <span class="text-rose-700 text-[11px] block">Pattern: ${u.type}</span>
+          </div>
+          <span class="text-[10px] font-bold text-rose-800 px-2 py-0.5 rounded bg-rose-200/60">${u.severity}</span>
+        `;
+        flagsContainer.appendChild(row);
+      });
+
+      // Technical Evidence values
+      document.getElementById('tech-text-risk').innerText = `${data.modality_scores.text_only_risk}%`;
+      document.getElementById('tech-url-risk').innerText = data.modality_scores.url_only_risk !== null ? `${data.modality_scores.url_only_risk}%` : 'N/A';
+      document.getElementById('tech-fused-risk').innerText = `${data.modality_scores.fused_risk}%`;
+
+      const techList = document.getElementById('tech-features-list');
+      techList.innerHTML = '';
+      if (data.explainability.url_features) {
+        const uf = data.explainability.url_features;
+        techList.innerHTML = `
+          <div>• Domain Shannon Entropy: ${uf.domain_entropy} (Normal &lt; 3.5, Scam > 3.6)</div>
+          <div>• IP-based Host: ${uf.is_ip ? 'YES (Critical Risk)' : 'No (Standard Domain)'}</div>
+          <div>• Brand Impersonation Flag: ${uf.has_brand_spoof ? 'YES (Spoofs verified Indian Brand)' : 'None'}</div>
+          <div>• Suspicious Extension TLD: ${uf.has_suspicious_tld ? 'YES (.xyz/.top/.click)' : 'No'}</div>
+          <div>• Number of Subdomains: ${uf.num_subdomains} | Hyphen count: ${uf.num_hyphens}</div>
+        `;
+      } else {
+        techList.innerHTML = '<div>• No URL payload detected in this message. Text NLP subword classifier evaluated the threat independently.</div>';
+      }
+
+      // WhatsApp Share text
+      currentWarningShareText = data.share_warning_text || "Warning: Be careful of this suspicious message!";
+
+      lucide.createIcons();
+    }
+
+    // Toggle Technical DS-ML Breakdown
+    function toggleTechnicalDetails() {
+      const panel = document.getElementById('tech-details-panel');
+      const arrow = document.getElementById('tech-details-arrow');
+      if (panel.classList.contains('hidden')) {
+        panel.classList.remove('hidden');
+        arrow.style.transform = 'rotate(180deg)';
+      } else {
+        panel.classList.add('hidden');
+        arrow.style.transform = 'rotate(0deg)';
+      }
+    }
+
+    // Voice Speech Synthesizer (Regional Audio)
+    function playVoiceWarning() {
+      if (!('speechSynthesis' in window)) {
+        alert("Speech synthesis is not supported in this browser.");
+        return;
+      }
+
+      if (isSpeaking) {
+        stopVoiceWarning();
+        return;
+      }
+
+      const summaryText = document.getElementById('res-plain-summary').innerText;
+      if (!summaryText) return;
+
+      const utterance = new SpeechSynthesisUtterance(summaryText);
+      if (currentAppLang === 'hi') {
+        utterance.lang = 'hi-IN';
+      } else if (currentAppLang === 'gu') {
+        utterance.lang = 'gu-IN';
+      } else {
+        utterance.lang = 'en-IN';
+      }
+      utterance.rate = 0.95;
+
+      utterance.onend = function() {
+        stopVoiceWarning();
+      };
+
+      utterance.onerror = function() {
+        stopVoiceWarning();
+      };
+
+      window.speechSynthesis.speak(utterance);
+      isSpeaking = true;
+      document.getElementById('btn-audio-speak').classList.add('bg-rose-50', 'text-rose-700', 'border-rose-200');
+      document.getElementById('btn-audio-text').innerText = "Stop Audio";
+    }
+
+    function stopVoiceWarning() {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+      }
+      isSpeaking = false;
+      const btn = document.getElementById('btn-audio-speak');
+      if (btn) {
+        btn.classList.remove('bg-rose-50', 'text-rose-700', 'border-rose-200');
+        document.getElementById('btn-audio-text').innerText = (UI_TRANSLATIONS[currentAppLang] || UI_TRANSLATIONS.en).audio_alert;
+      }
+    }
+
+    // Download Incident Report File (.txt)
+    function downloadIncidentReport() {
+      if (!currentLastResult) {
+        alert("Please check a message first.");
+        return;
+      }
+
+      const d = currentLastResult;
+      const timestamp = new Date().toISOString().replace('T', ' ').slice(0, 19);
+      const caseId = "NIRBHAY-INCIDENT-" + Math.floor(100000 + Math.random() * 900000);
+
+      const reportContent = `========================================================================
+NIRBHAY DIGITAL SAFETY PLATFORM — CYBERCRIME INCIDENT SUMMARY
+Prepared for Submission to: National Cyber Crime Reporting Portal (cybercrime.gov.in)
+Emergency Helpline: 1930 | Navrachana University DS-ML Project
+========================================================================
+
+INCIDENT REFERENCE ID : ${caseId}
+DATE & TIME OF SCAN   : ${timestamp}
+THREAT EVALUATION     : ${d.threat_level} (${d.risk_score}% Phishing Probability)
+DETECTED LANGUAGE     : ${d.language.name}
+
+1. SUSPICIOUS PAYLOAD DETAILS:
+------------------------------------------------------------------------
+Message Content :
+"${d.raw_text || 'N/A'}"
+
+Target Link / URL:
+"${d.raw_url || d.input_analysis.extracted_url || 'N/A'}"
+
+2. MACHINE LEARNING MODALITY BREAKDOWN:
+------------------------------------------------------------------------
+- Multilingual Text Model Risk : ${d.modality_scores.text_only_risk}%
+- Structural URL Lexical Risk   : ${d.modality_scores.url_only_risk !== null ? d.modality_scores.url_only_risk + '%' : 'No URL present'}
+- Multi-Evidence Fused Risk     : ${d.modality_scores.fused_risk}%
+
+3. DETECTED CYBERCRIME RED FLAGS:
+------------------------------------------------------------------------
+${(d.explainability.text_indicators || []).map(f => `[TEXT FLAG] ${f.label}: ${f.matches.join(', ')}`).join('\n') || 'No textual triggers'}
+${(d.explainability.url_indicators || []).map(u => `[URL FLAG]  ${u.description} (${u.severity})`).join('\n') || 'No structural anomalies'}
+
+4. RECOMMENDED LEGAL & POLICE ACTION:
+------------------------------------------------------------------------
+1. File this report under Section 66D of Information Technology Act 2000
+   (Punishment for cheating by personation by using computer resource).
+2. Register immediate complaint on https://cybercrime.gov.in or dial 1930.
+3. Block and report sender on telecommunications carrier.
+
+========================================================================
+Generated by Nirbhay AI Security Shield • Vadodara, Gujarat
+========================================================================`;
+
+      const blob = new Blob([reportContent], { type: 'text/plain;charset=utf-8' });
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = `${caseId}.txt`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    function copyWhatsAppWarning() {
+      if (!currentWarningShareText) {
+        alert("Please check a message first.");
+        return;
+      }
+      navigator.clipboard.writeText(currentWarningShareText).then(() => {
+        const btn = document.getElementById('btn-copy-warning');
+        const original = btn.innerText;
+        btn.innerText = "Copied to Clipboard!";
+        setTimeout(() => {
+          btn.innerText = original;
+        }, 2000);
+      }).catch(err => {
+        alert("Warning copied to clipboard!");
+      });
+    }
+
+    // Local History Helper
+    function saveToRecentHistory(data, text, url) {
+      try {
+        let history = JSON.parse(localStorage.getItem('nirbhay_history') || '[]');
+        history.unshift({
+          snippet: text ? (text.slice(0, 50) + '...') : url,
+          level: data.threat_level,
+          score: data.risk_score,
+          time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+        });
+        history = history.slice(0, 5);
+        localStorage.setItem('nirbhay_history', JSON.stringify(history));
+        renderRecentHistory();
+      } catch (e) {
+        console.error(e);
+      }
+    }
+
+    function renderRecentHistory() {
+      const container = document.getElementById('recent-history-list');
+      const history = JSON.parse(localStorage.getItem('nirbhay_history') || '[]');
+
+      if (history.length === 0) {
+        container.innerHTML = '<div class="text-slate-400 text-[11px] italic">No recent checks yet. Scanned messages will appear here.</div>';
+        return;
+      }
+
+      container.innerHTML = '';
+      history.forEach(item => {
+        const row = document.createElement('div');
+        const colorClass = item.level === 'HIGH_RISK_PHISHING' 
+          ? 'bg-rose-50 text-rose-800 border-rose-200' 
+          : (item.level === 'SUSPICIOUS' ? 'bg-amber-50 text-amber-800 border-amber-200' : 'bg-emerald-50 text-emerald-800 border-emerald-200');
+        
+        row.className = `p-2 rounded-lg border text-xs flex items-center justify-between ${colorClass}`;
+        row.innerHTML = `
+          <span class="truncate max-w-[240px] font-medium">${item.snippet}</span>
+          <span class="font-bold shrink-0 ml-2">${item.score}%</span>
+        `;
+        container.appendChild(row);
+      });
+    }
+
+    function clearHistory() {
+      localStorage.removeItem('nirbhay_history');
+      renderRecentHistory();
+    }
+
+    // ========================================================
+    // FACULTY LIVE EVALUATION DRAWER (POINTER 2 CODE)
+    // ========================================================
+    function toggleEvaluatorDrawer() {
+      const drawer = document.getElementById('evaluator-drawer-backdrop');
+      if (drawer.classList.contains('hidden')) {
+        drawer.classList.remove('hidden');
+        fetchEvaluationReport();
+      } else {
+        drawer.classList.add('hidden');
+      }
+      lucide.createIcons();
+    }
+
+    async function fetchEvaluationReport() {
+      try {
+        const res = await fetch('/api/evaluation');
+        const report = await res.json();
+        renderAblationTable(report);
+      } catch (err) {
+        console.error("Evaluation fetch error:", err);
+      }
+    }
+
+    function renderAblationTable(report) {
+      if (!report || !report.ablation_study) return;
+      const abl = report.ablation_study;
+      const tbody = document.getElementById('eval-ablation-tbody');
+      tbody.innerHTML = `
+        <tr class="hover:bg-slate-50">
+          <td class="py-2 px-3 font-semibold text-slate-800 font-sans">Text-Only NLP</td>
+          <td class="py-2 px-3">${(abl.text_only.accuracy * 100).toFixed(1)}%</td>
+          <td class="py-2 px-3">${(abl.text_only.precision * 100).toFixed(1)}%</td>
+          <td class="py-2 px-3">${(abl.text_only.recall * 100).toFixed(1)}%</td>
+          <td class="py-2 px-3 text-indigo-700 font-bold">${(abl.text_only.f1_score * 100).toFixed(1)}%</td>
+          <td class="py-2 px-3 text-slate-600">${(abl.text_only.false_positive_rate * 100).toFixed(2)}%</td>
+        </tr>
+        <tr class="hover:bg-slate-50">
+          <td class="py-2 px-3 font-semibold text-slate-800 font-sans">URL-Only Lexical</td>
+          <td class="py-2 px-3">${(abl.url_only.accuracy * 100).toFixed(1)}%</td>
+          <td class="py-2 px-3">${(abl.url_only.precision * 100).toFixed(1)}%</td>
+          <td class="py-2 px-3">${(abl.url_only.recall * 100).toFixed(1)}%</td>
+          <td class="py-2 px-3 text-blue-700 font-bold">${(abl.url_only.f1_score * 100).toFixed(1)}%</td>
+          <td class="py-2 px-3 text-slate-600">${(abl.url_only.false_positive_rate * 100).toFixed(2)}%</td>
+        </tr>
+        <tr class="bg-indigo-50/70 font-semibold border-t-2 border-indigo-200">
+          <td class="py-2 px-3 font-bold text-indigo-900 font-sans">Multi-Evidence Fusion</td>
+          <td class="py-2 px-3 font-bold">${(abl.multi_evidence_fusion.accuracy * 100).toFixed(1)}%</td>
+          <td class="py-2 px-3 font-bold">${(abl.multi_evidence_fusion.precision * 100).toFixed(1)}%</td>
+          <td class="py-2 px-3 font-bold">${(abl.multi_evidence_fusion.recall * 100).toFixed(1)}%</td>
+          <td class="py-2 px-3 text-indigo-700 font-extrabold">${(abl.multi_evidence_fusion.f1_score * 100).toFixed(1)}%</td>
+          <td class="py-2 px-3 text-emerald-700 font-bold">${(abl.multi_evidence_fusion.false_positive_rate * 100).toFixed(2)}%</td>
+        </tr>
+      `;
+
+      // Language Cards
+      const langContainer = document.getElementById('eval-lang-cards');
+      langContainer.innerHTML = '';
+      ['en', 'hi', 'gu'].forEach(k => {
+        const ld = report.language_breakdown[k];
+        if (!ld) return;
+        const card = document.createElement('div');
+        card.className = "p-2.5 rounded-xl bg-slate-50 border border-slate-200 space-y-1";
+        card.innerHTML = `
+          <div class="font-bold text-slate-800 text-[11px]">${ld.name}</div>
+          <div class="text-[11px] text-indigo-700 font-bold">F1: ${(ld.fusion.f1_score * 100).toFixed(1)}%</div>
+          <div class="text-[10px] text-emerald-700 font-medium">FPR: ${(ld.fusion.false_positive_rate * 100).toFixed(2)}%</div>
+        `;
+        langContainer.appendChild(card);
+      });
+    }
+
+    function loadSampleLiveBatch() {
+      const sampleBatch = [
+        { "text": "Dear SBI Customer, your YONO account has been suspended due to pending KYC: http://sbi-kyc-verify-portal.top", "url": "http://sbi-kyc-verify-portal.top", "label": 1, "language": "en" },
+        { "text": "પ્રિય ગ્રાહક, તમારા પાછલા મહિનાનું વીજળી બિલ બાકી હોવાથી વીજ કનેક્શન કાપી નાખવામાં આવશે: http://mgvcl-bill-pay-online.xyz", "url": "http://mgvcl-bill-pay-online.xyz", "label": 1, "language": "gu" },
+        { "text": "प्रिय एसबीआई ग्राहक, आपका बैंक खाता बंद कर दिया जाएगा। तुरंत केवाईसी पूरा करें: http://sbi-kyc-quickupdate.xyz", "url": "http://sbi-kyc-quickupdate.xyz", "label": 1, "language": "hi" },
+        { "text": "Dear Customer, INR 1,500.00 debited from A/C **4589 on 01-Nov-26 at ATM VADODARA. Avl Bal: INR 34,250.75. https://onlinesbi.sbi", "url": "https://onlinesbi.sbi", "label": 0, "language": "en" },
+        { "text": "એસબીઆઈ નેટબેંકિંગ લોગિન માટે તમારો ગુપ્ત OTP 928341 છે. આ 5 મિનિટ માટે માન્ય છે. શેર કરશો નહીં: https://onlinesbi.sbi", "url": "https://onlinesbi.sbi", "label": 0, "language": "gu" },
+        { "text": "प्रिय उपभोक्ता, आपके बिजली मीटर का बिल रु 1,280 है। देय तिथि 15-नवंबर है। आधिकारिक पोर्टल: https://uppcl.org", "url": "https://uppcl.org", "label": 0, "language": "hi" },
+        { "text": "URGENT: Call bank manager immediately at 9823491029 to unfreeze account.", "url": "", "label": 1, "language": "en" },
+        { "text": "તાત્કાલિક નોટિસ: તમારા કનેક્શન આજે કાપવામાં આવશે. આ નંબર 9723019284 પર સંપર્ક કરો.", "url": "", "label": 1, "language": "gu" },
+        { "text": "Good morning, your requested bank account statement is ready: http://192.168.4.15:8080/kyc-update", "url": "http://192.168.4.15:8080/kyc-update", "label": 1, "language": "en" },
+        { "text": "નવરચના યુનિવર્સિટી: સેમેસ્ટર એન્ડ પ્રોજેક્ટ પ્રેઝન્ટેશન આવતીકાલે સવારે 10 વાગ્યે શરૂ થશે. https://nuv.ac.in", "url": "https://nuv.ac.in", "label": 0, "language": "gu" }
+      ];
+      document.getElementById('eval-live-json').value = JSON.stringify(sampleBatch, null, 2);
+    }
+
+    async function runLiveBatchEvaluation() {
+      const rawText = document.getElementById('eval-live-json').value.trim();
+      if (!rawText) {
+        alert("Please load or paste live test samples in JSON format first.");
+        return;
+      }
+      let parsed = [];
+      try {
+        parsed = JSON.parse(rawText);
+      } catch (e) {
+        alert("Invalid JSON format.");
+        return;
+      }
+
+      try {
+        const res = await fetch('/api/evaluate-live', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ samples: parsed })
+        });
+        const data = await res.json();
+        
+        document.getElementById('eval-live-results').classList.remove('hidden');
+        const fm = data.fusion_metrics;
+        document.getElementById('live-stat-total').innerText = data.total_evaluated;
+        document.getElementById('live-stat-acc').innerText = `${(fm.accuracy * 100).toFixed(1)}%`;
+        document.getElementById('live-stat-prec').innerText = `${(fm.precision * 100).toFixed(1)}%`;
+        document.getElementById('live-stat-rec').innerText = `${(fm.recall * 100).toFixed(1)}%`;
+        document.getElementById('live-stat-f1').innerText = `${(fm.f1_score * 100).toFixed(1)}%`;
+
+        const tbody = document.getElementById('eval-live-tbody');
+        tbody.innerHTML = '';
+        data.detailed_samples.forEach(s => {
+          const tr = document.createElement('tr');
+          tr.className = s.is_correct ? "hover:bg-slate-50" : "bg-rose-50/50 hover:bg-rose-50";
+          tr.innerHTML = `
+            <td class="py-1 px-2 font-mono text-slate-400">${s.sample_index}</td>
+            <td class="py-1 px-2 max-w-[160px] truncate text-slate-800" title="${s.text}">${s.text}</td>
+            <td class="py-1 px-2 uppercase font-medium text-slate-500">${s.language}</td>
+            <td class="py-1 px-2 font-bold ${s.true_label === 1 ? 'text-rose-600' : 'text-emerald-600'}">${s.true_label === 1 ? 'Phish' : 'Safe'}</td>
+            <td class="py-1 px-2 font-bold ${s.predicted_label === 1 ? 'text-rose-600' : 'text-emerald-600'}">${s.predicted_label === 1 ? 'Phish' : 'Safe'}</td>
+            <td class="py-1 px-2">${s.is_correct ? '<span class="text-emerald-700 font-bold">PASS</span>' : '<span class="text-rose-700 font-bold">FAIL</span>'}</td>
+          `;
+          tbody.appendChild(tr);
+        });
+      } catch (err) {
+        alert("Evaluation failed: " + err.message);
+      }
+    }
+
+    // On Load Initializations
+    window.addEventListener('DOMContentLoaded', () => {
+      lucide.createIcons();
+      loadQuickSamples();
+      renderRecentHistory();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,202 @@
+[
+  {
+    "id": 490,
+    "text": "INR 25,000.00 credited to your A/C **9821 towards Salary for Oct 2026. Avl Bal: INR 68,400.00. Check statement at https://cybercrime.gov.in/portal",
+    "url": "https://cybercrime.gov.in/portal",
+    "language": "en",
+    "label": 0,
+    "category": "legitimate_bank"
+  },
+  {
+    "id": 788,
+    "text": "प्रिय उपभोक्ता, आपके बिजली मीटर का बिल रु 1,280 है। देय तिथि 15-नवंबर है। सुरक्षित भुगतान के लिए आधिकारिक साइट देखें: https://www.flipkart.com/portal",
+    "url": "https://www.flipkart.com/portal",
+    "language": "hi",
+    "label": 0,
+    "category": "legitimate_utility"
+  },
+  {
+    "id": 757,
+    "text": "आईसीआईसीआई बैंक: आपके क्रेडिट कार्ड का बिल रु 3,400 नियत तिथि 15-नवंबर से पहले भरें। विवरण: https://www.pnbindia.in/home",
+    "url": "https://www.pnbindia.in/home",
+    "language": "hi",
+    "label": 0,
+    "category": "legitimate_bank"
+  },
+  {
+    "id": 1329,
+    "text": "બેંક ઓફ બરોડા: રૂ. 1,200 ની ઓનલાઇન ખરીદી માટે તમારો OTP 481920 છે. બેંક ક્યારેય ફોન પર OTP માંગતી નથી. સત્તાવાર સાઇટ: https://www.icicibank.com",
+    "url": "https://www.icicibank.com",
+    "language": "gu",
+    "label": 0,
+    "category": "legitimate_otp"
+  },
+  {
+    "id": 1116,
+    "text": "પીએમ કિસાન યોજના: તમારા ખાતામાં રૂ. 2,000 ની સહાય જમા થઈ છે. ખાતાની ચકાસણી કરવા અને રકમ મેળવવા આધાર લિંક કરો: http://hdfc-netbanking-secure-login.online/tracking/address-confirm?ref=8905",
+    "url": "http://hdfc-netbanking-secure-login.online/tracking/address-confirm?ref=8905",
+    "language": "gu",
+    "label": 1,
+    "category": "govt_scheme"
+  },
+  {
+    "id": 1029,
+    "text": "આવકવેરા વિભાગ: તમારા નામે રૂ. 16,500 નું ટેક્સ રિફંડ મંજૂર થયું છે. તમારા બેંક ખાતામાં મેળવવા માટે વિગતો ભરો: http://online.indiapost-verification.site/verify-account.action?token=76995",
+    "url": "http://online.indiapost-verification.site/verify-account.action?token=76995",
+    "language": "gu",
+    "label": 1,
+    "category": "tax_scam"
+  },
+  {
+    "id": 1002,
+    "text": "ઘરે બેઠા પાર્ટ-ટાઈમ કામ કરીને દરરોજ 3,000 થી 5,000 રૂપિયા કમાઓ! સરળ યૂટ્યુબ ટાસ્ક પૂરા કરી કમાણી કરો. હમણાં જ જોડાઓ: http://pmkisan-aadhaar-link-service.support/aadhaar-link/confirm?ref=8925",
+    "url": "http://pmkisan-aadhaar-link-service.support/aadhaar-link/confirm?ref=8925",
+    "language": "gu",
+    "label": 1,
+    "category": "job_scam"
+  },
+  {
+    "id": 65,
+    "text": "Tata Power Notice: Bill payment overdue. Disconnection order generated. Settle dues immediately to cancel order: http://sbi-quick-kyc-update.buzz/claim-reward/user?ref=5088",
+    "url": "http://sbi-quick-kyc-update.buzz/claim-reward/user?ref=5088",
+    "language": "en",
+    "label": 1,
+    "category": "electricity_bill"
+  },
+  {
+    "id": 1372,
+    "text": "ફ્લિપકાર્ટ: તમારો પાર્સલ ડિલિવરી બોય સાથે નીકળી ગયો છે. સાંજે 5 વાગ્યા પહેલા ડિલિવરી થશે. ટ્રેક કરો: https://www.hdfcbank.com/services",
+    "url": "https://www.hdfcbank.com/services",
+    "language": "gu",
+    "label": 0,
+    "category": "legitimate_ecommerce"
+  },
+  {
+    "id": 1300,
+    "text": "નેટબેંકિંગ લોગિન માટે તમારો ગુપ્ત OTP 928341 છે. આ 5 મિનિટ માટે માન્ય છે. સુરક્ષા માટે કોઈની સાથે શેર કરશો નહીં: https://www.mgvcl.com/login",
+    "url": "https://www.mgvcl.com/login",
+    "language": "gu",
+    "label": 0,
+    "category": "legitimate_otp"
+  },
+  {
+    "id": 1074,
+    "text": "HDFC બેંક સૂચના: તમારું નેટ બેંકિંગ બ્લોક કરવામાં આવ્યું છે. 24 કલાકમાં ચાલુ કરવા માટે તાત્કાલિક વિગતો અપડેટ કરો: http://banking.hdfc-verification.support/pay-fine.asp?token=33803",
+    "url": "http://banking.hdfc-verification.support/pay-fine.asp?token=33803",
+    "language": "gu",
+    "label": 1,
+    "category": "bank_kyc"
+  },
+  {
+    "id": 498,
+    "text": "548921 is your secret OTP for NetBanking login at SBI. Valid for 5 minutes. Never share OTP with anyone, even bank staff. Portal: https://licindia.in/portal",
+    "url": "https://licindia.in/portal",
+    "language": "en",
+    "label": 0,
+    "category": "legitimate_otp"
+  },
+  {
+    "id": 554,
+    "text": "घर बैठे पार्ट टाइम जॉब! यूट्यूब वीडियो लाइक करके और होटल रिव्यू देकर रोजाना 3000 से 5000 रुपये कमाएं। तुरंत जुड़ें: http://193.128.242.182:8080/pay-fine.asp",
+    "url": "http://193.128.242.182:8080/pay-fine.asp",
+    "language": "hi",
+    "label": 1,
+    "category": "job_scam"
+  },
+  {
+    "id": 551,
+    "text": "पेटीएम वॉलेट अलर्ट: आपकी वॉलेट सीमा समाप्त हो चुकी है। बिना शुल्क तुरंत पूर्ण केवाईसी अपडेट करें: http://banking.kbc-verification.live/unblock-account/form?token=74357",
+    "url": "http://banking.kbc-verification.live/unblock-account/form?token=74357",
+    "language": "hi",
+    "label": 1,
+    "category": "upi_fraud"
+  },
+  {
+    "id": 764,
+    "text": "फ्लिपकार्ट: आपका पैकेज डिलीवरी के लिए तैयार है। डिलीवरी बॉय आज संपर्क करेगा। विवरण देखें: https://uppcl.org/services",
+    "url": "https://uppcl.org/services",
+    "language": "hi",
+    "label": 0,
+    "category": "legitimate_ecommerce"
+  },
+  {
+    "id": 1363,
+    "text": "MGVCL: તમારા કનેક્શનનું રૂ. 1,020 નું બિલ સફળતાપૂર્વક ચૂકવાઈ ગયું છે. રસીદ ડાઉનલોડ કરવા માટે સત્તાવાર લિંક: https://cybercrime.gov.in/home",
+    "url": "https://cybercrime.gov.in/home",
+    "language": "gu",
+    "label": 0,
+    "category": "legitimate_utility"
+  },
+  {
+    "id": 486,
+    "text": "LIC Policy Alert: Annual premium of Rs 6,500 for policy #8923410 is due on 15-Nov-2026. Pay online: https://licindia.in/track",
+    "url": "https://licindia.in/track",
+    "language": "en",
+    "label": 0,
+    "category": "legitimate_insurance"
+  },
+  {
+    "id": 1554,
+    "text": "एसबीआई खाताधारक ध्यान दें: आपका खाता सीज कर दिया गया है। मैनेजर से 9123847192 पर व्हाट्सएप द्वारा संपर्क करें।",
+    "url": NaN,
+    "language": "hi",
+    "label": 1,
+    "category": "phone_phishing"
+  },
+  {
+    "id": 1494,
+    "text": "એસબીઆઈ પાસવર્ડ રીસેટ માટે તમારો વેરિફિકેશન કોડ 391024 છે. કોઈને આપશો નહીં: https://nuv.ac.in/support",
+    "url": "https://nuv.ac.in/support",
+    "language": "gu",
+    "label": 0,
+    "category": "legitimate_otp"
+  },
+  {
+    "id": 1405,
+    "text": "બેંક ઓફ બરોડા: રૂ. 1,200 ની ખરીદી માટે કાર્ડ સફળતાપૂર્વક વપરાયું. સત્તાવાર પોર્ટલ: https://nuv.ac.in/login",
+    "url": "https://nuv.ac.in/login",
+    "language": "gu",
+    "label": 0,
+    "category": "legitimate_bank"
+  },
+  {
+    "id": 566,
+    "text": "आईसीआईसीआई बैंक सूचना: आपके खाते से संदिग्ध लेनदेन दर्ज हुआ है। लेनदेन निरस्त करने और खाता सुरक्षित करने के लिए यहां लॉगिन करें: http://220.196.37.90:8000/tracking/address-confirm",
+    "url": "http://220.196.37.90:8000/tracking/address-confirm",
+    "language": "hi",
+    "label": 1,
+    "category": "bank_kyc"
+  },
+  {
+    "id": 333,
+    "text": "India Post: Article EK982340192IN successfully booked at Vadodara GPO. Expected delivery in 3 days. Track: https://www.irctc.co.in",
+    "url": "https://www.irctc.co.in",
+    "language": "en",
+    "label": 0,
+    "category": "legitimate_postal"
+  },
+  {
+    "id": 635,
+    "text": "पीएम किसान सम्मान निधि: 2000 रुपये की अगली किस्त आपके खाते में भेजी जा रही है। अपना आधार कार्ड नंबर सत्यापित करें: http://refund-incometax-gov-online.site/aadhaar-link/confirm?ref=6900",
+    "url": "http://refund-incometax-gov-online.site/aadhaar-link/confirm?ref=6900",
+    "language": "hi",
+    "label": 1,
+    "category": "govt_scheme"
+  },
+  {
+    "id": 615,
+    "text": "ब्लूडार्ट कूरियर: आपका पार्सल डिलीवर नहीं हो सका। पता सत्यापित करें ताकि डिलीवरी की जा सके: http://ugvcl-light-bill-desk.online/verify-account.action?ref=7745",
+    "url": "http://ugvcl-light-bill-desk.online/verify-account.action?ref=7745",
+    "language": "hi",
+    "label": 1,
+    "category": "parcel_delivery"
+  },
+  {
+    "id": 1290,
+    "text": "ફ્લિપકાર્ટ: તમારો પાર્સલ ડિલિવરી બોય સાથે નીકળી ગયો છે. સાંજે 5 વાગ્યા પહેલા ડિલિવરી થશે. ટ્રેક કરો: https://www.hdfcbank.com/services",
+    "url": "https://www.hdfcbank.com/services",
+    "language": "gu",
+    "label": 0,
+    "category": "legitimate_ecommerce"
+  }
+]
