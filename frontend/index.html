@@ -480,6 +480,230 @@
       border: 1px solid var(--surface-border);
       display: none;
     }
+
+    /* Cure / Incident Response Styles */
+    .authority-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+      padding: 0.75rem 1rem;
+      background: rgba(30, 41, 59, 0.7);
+      border-radius: 10px;
+      border: 1px solid var(--surface-border);
+      align-items: center;
+    }
+
+    .auth-pill {
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.25rem 0.6rem;
+      border-radius: 6px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      background: #0f172a;
+      border: 1px solid #334155;
+      color: #93c5fd;
+    }
+
+    .cure-scenarios-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .cure-scenario-card {
+      background: #0f172a;
+      border: 2px solid var(--surface-border);
+      border-radius: 12px;
+      padding: 1.25rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: left;
+    }
+
+    .cure-scenario-card:hover {
+      border-color: #3b82f6;
+      transform: translateY(-2px);
+    }
+
+    .cure-scenario-card.active {
+      border-color: #ef4444;
+      background: rgba(239, 68, 68, 0.1);
+      box-shadow: 0 4px 14px rgba(239, 68, 68, 0.2);
+    }
+
+    .cure-scenario-icon {
+      font-size: 1.75rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .cure-scenario-title {
+      font-weight: 700;
+      font-size: 1rem;
+      color: #f8fafc;
+      margin-bottom: 0.25rem;
+    }
+
+    .cure-scenario-sub {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.35;
+    }
+
+    .cure-protocol-card {
+      background: #0f172a;
+      border: 1px solid var(--surface-border);
+      border-radius: 14px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .cure-step-box {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+      padding-bottom: 1.25rem;
+      border-bottom: 1px solid #1e293b;
+    }
+
+    .cure-step-box:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    .cure-step-num {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #ef4444;
+      color: white;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 0.95rem;
+    }
+
+    .cure-step-num.warning {
+      background: #f59e0b;
+    }
+
+    .cure-step-content h4 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #f8fafc;
+      margin-bottom: 0.35rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .cure-step-content p {
+      font-size: 0.9rem;
+      color: #cbd5e1;
+      line-height: 1.5;
+    }
+
+    .legal-tag {
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 0.15rem 0.45rem;
+      border-radius: 4px;
+      background: rgba(59, 130, 246, 0.2);
+      color: #60a5fa;
+      border: 1px solid rgba(59, 130, 246, 0.4);
+    }
+
+    .bank-directory {
+      margin-top: 1rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0.75rem;
+    }
+
+    .bank-chip {
+      background: #1e293b;
+      border: 1px solid var(--surface-border);
+      border-radius: 8px;
+      padding: 0.65rem 0.85rem;
+      font-size: 0.82rem;
+    }
+
+    .bank-chip-name {
+      font-weight: 700;
+      color: #f8fafc;
+      margin-bottom: 0.25rem;
+    }
+
+    .bank-chip-phone {
+      color: #60a5fa;
+      text-decoration: none;
+      font-weight: 600;
+      display: block;
+    }
+
+    .bank-chip-sms {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 0.15rem;
+    }
+
+    .generator-panel {
+      background: #0f172a;
+      border: 1px solid var(--surface-border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .generator-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .complaint-preview {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      padding: 1rem;
+      font-family: monospace;
+      font-size: 0.85rem;
+      color: #e2e8f0;
+      white-space: pre-wrap;
+      max-height: 250px;
+      overflow-y: auto;
+      margin: 1rem 0;
+      display: none;
+    }
+
+    .btn-cure-cta {
+      background: linear-gradient(135deg, #ef4444, #dc2626);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 0.65rem 1.25rem;
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 1rem;
+      transition: all 0.2s;
+    }
+
+    .btn-cure-cta:hover {
+      background: #b91c1c;
+      transform: translateY(-1px);
+    }
   </style>
 </head>
 <body>
@@ -511,6 +735,7 @@
       <button class="tab-btn active" onclick="switchTab('message')">💬 <span id="tab-msg">Message Scanner</span></button>
       <button class="tab-btn" onclick="switchTab('url')">🔗 <span id="tab-url">URL Inspector</span></button>
       <button class="tab-btn" onclick="switchTab('qr')">📱 <span id="tab-qr">QR / UPI Scanner</span></button>
+      <button class="tab-btn" onclick="switchTab('cure')">⚖️ <span id="tab-cure">Incident First-Aid (Cure)</span></button>
     </div>
 
     <!-- TAB 1: Message Scanner -->
@@ -566,6 +791,7 @@
           <p id="exp-text-msg" style="font-weight: 500; font-size: 1.05rem;"></p>
         </div>
         <div id="tags-msg" class="tag-list"></div>
+        <div id="cure-cta-msg"></div>
       </div>
     </div>
 
@@ -593,6 +819,7 @@
           <p id="exp-text-url" style="font-weight: 500; font-size: 1.05rem;"></p>
         </div>
         <div id="tags-url" class="tag-list"></div>
+        <div id="cure-cta-url"></div>
       </div>
     </div>
 
@@ -619,7 +846,103 @@
           <p id="exp-text-qr" style="font-weight: 500; font-size: 1.05rem;"></p>
         </div>
         <div id="tags-qr" class="tag-list"></div>
+        <div id="cure-cta-qr"></div>
       </div>
+    </div>
+
+    <!-- TAB 4: Statutory Incident Response & First-Aid (Cure) -->
+    <div id="pane-cure" class="card tab-pane" style="display: none;">
+      <div style="margin-bottom: 1.5rem;">
+        <h2 id="cure-title" style="font-size: 1.5rem; font-weight: 800; color: #f8fafc; margin-bottom: 0.35rem;">🛡️ Statutory Incident First-Aid & Fraud Recovery Protocol</h2>
+        <p id="cure-subtitle" style="color: var(--text-muted); font-size: 0.95rem;">Official post-incident recovery procedures grounded in Ministry of Home Affairs (I4C), RBI Directives, and Information Technology Act, 2000.</p>
+      </div>
+
+      <!-- Legal Authority Badges -->
+      <div class="authority-bar">
+        <span style="font-size: 0.8rem; font-weight: 700; color: #cbd5e1;">Statutory Grounding:</span>
+        <span class="auth-pill">🏛️ MHA I4C (1930 / cybercrime.gov.in)</span>
+        <span class="auth-pill">🏦 RBI Circular DBR.No.Leg.BC.78/2017-18</span>
+        <span class="auth-pill">⚖️ IT Act Sec 66C/66D & BNS Sec 318(4)</span>
+        <span class="auth-pill">📡 DoT Sanchar Saathi (Chakshu & TAFCOP)</span>
+      </div>
+
+      <!-- 4 Compromise Scenarios -->
+      <label style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.75rem;">Step 1: Select What Happened</label>
+      <div class="cure-scenarios-grid">
+        <div id="card-scen-money" class="cure-scenario-card active" onclick="selectCureScenario('money')">
+          <div class="cure-scenario-icon">💸</div>
+          <div class="cure-scenario-title" id="scen-title-money">Money Debited / UPI Fraud</div>
+          <div class="cure-scenario-sub" id="scen-sub-money">Transferred money via UPI, netbanking, or approved a payment collect request.</div>
+        </div>
+
+        <div id="card-scen-creds" class="cure-scenario-card" onclick="selectCureScenario('creds')">
+          <div class="cure-scenario-icon">🔑</div>
+          <div class="cure-scenario-title" id="scen-title-creds">Entered Password / OTP</div>
+          <div class="cure-scenario-sub" id="scen-sub-creds">Shared OTP, CVV, ATM PIN, or entered netbanking login on a suspicious page.</div>
+        </div>
+
+        <div id="card-scen-apk" class="cure-scenario-card" onclick="selectCureScenario('apk')">
+          <div class="cure-scenario-icon">📲</div>
+          <div class="cure-scenario-title" id="scen-title-apk">Installed Malicious APK</div>
+          <div class="cure-scenario-sub" id="scen-sub-apk">Downloaded an APK file (fake bill update, loan app, or AnyDesk/TeamViewer).</div>
+        </div>
+
+        <div id="card-scen-sim" class="cure-scenario-card" onclick="selectCureScenario('sim')">
+          <div class="cure-scenario-icon">📞</div>
+          <div class="cure-scenario-title" id="scen-title-sim">SIM Swap / WhatsApp Hijack</div>
+          <div class="cure-scenario-sub" id="scen-sub-sim">Mobile signal lost unexpectedly, or WhatsApp account was taken over by fraudsters.</div>
+        </div>
+      </div>
+
+      <!-- Dynamic Protocol Instructions Container -->
+      <div id="cure-protocol-container" class="cure-protocol-card">
+        <!-- Content will be dynamically populated by selectCureScenario() -->
+      </div>
+
+      <!-- Legal FIR / Cyber Crime Complaint Draft Generator -->
+      <div class="generator-panel">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem;">
+          <div>
+            <h3 style="font-size: 1.15rem; font-weight: 700; color: #60a5fa;">📄 Official Cybercrime Police Complaint Generator</h3>
+            <p style="font-size: 0.82rem; color: var(--text-muted);">Generates formal written complaint citing IT Act 2000 (Sec 66C/66D) ready for cybercrime.gov.in or local cyber police.</p>
+          </div>
+          <span class="legal-tag">MHA CFCFRMS Format</span>
+        </div>
+
+        <div class="generator-grid">
+          <div>
+            <label style="font-size: 0.82rem;">Suspect Phone / UPI ID / Scam Link:</label>
+            <input type="text" id="comp-suspect" placeholder="e.g. 9876543210 or pgvcl-pay.top">
+          </div>
+          <div>
+            <label style="font-size: 0.82rem;">Amount Lost (₹):</label>
+            <input type="text" id="comp-amount" placeholder="e.g. 15000 (or 0 if stopped in time)">
+          </div>
+          <div>
+            <label style="font-size: 0.82rem;">Bank Name & Transaction ID / UTR:</label>
+            <input type="text" id="comp-txnid" placeholder="e.g. SBI, UTR #410294829104">
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 0.75rem;">
+          <button class="btn-submit" style="flex: 1; min-width: 200px;" onclick="generateFormalComplaint()">📝 Generate Formal Police Complaint</button>
+          <button class="ocr-btn" style="padding: 0.85rem 1.25rem;" onclick="copyComplaintText()">📋 Copy Text</button>
+          <a href="https://cybercrime.gov.in" target="_blank" rel="noopener noreferrer" class="ocr-btn" style="text-decoration: none; padding: 0.85rem 1.25rem; background: #1e3a8a; border-color: #3b82f6;">🌐 Open cybercrime.gov.in</a>
+        </div>
+
+        <div id="complaint-output" class="complaint-preview"></div>
+      </div>
+
+      <!-- 1-Click WhatsApp Family Alert Warning Generator -->
+      <div class="generator-panel" style="margin-top: 1rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+          <h3 style="font-size: 1.05rem; font-weight: 700; color: #34d399;">👨‍👩‍👧 Broadcast WhatsApp Alert to Family & Groups</h3>
+          <button class="ocr-btn" onclick="copyFamilyAlert()">📋 Copy WhatsApp Alert</button>
+        </div>
+        <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 0.75rem;">Protect your family from the same scam. Copy this pre-formatted warning directly into your family/community WhatsApp groups.</p>
+        <div id="family-alert-box" style="background: #1e293b; border: 1px solid #334155; border-radius: 8px; padding: 0.85rem; font-size: 0.88rem; color: #e2e8f0;"></div>
+      </div>
+
     </div>
 
     <!-- Emergency Cyber Crime Action Banner -->
@@ -652,35 +975,41 @@
       en: {
         heroTitle: 'Protect Yourself Against Digital Fraud',
         heroDesc: 'Real-time scam detection for Indian SMS, WhatsApp threats, phishing links, and fraudulent UPI QR codes across English, Hindi, and Gujarati.',
-        tabMsg: 'Message Scanner', tabUrl: 'URL Inspector', tabQr: 'QR / UPI Scanner',
+        tabMsg: 'Message Scanner', tabUrl: 'URL Inspector', tabQr: 'QR / UPI Scanner', tabCure: 'Incident First-Aid (Cure)',
         btnScanMsg: 'Verify Message', btnScanUrl: 'Inspect Link', btnScanQr: 'Decode & Inspect QR',
         lblMsg: 'Paste suspected SMS or WhatsApp message:',
         lblUrl: 'Enter suspicious web address (URL):',
         lblQr: 'Upload or drag a QR code screenshot / image:',
         lblOcrDesc: 'Or upload / paste screenshot of SMS or WhatsApp message:',
-        btnOcrUpload: 'Upload Screenshot (OCR)'
+        btnOcrUpload: 'Upload Screenshot (OCR)',
+        cureTitle: '🛡️ Statutory Incident First-Aid & Fraud Recovery Protocol',
+        cureSubtitle: 'Official post-incident recovery procedures grounded in Ministry of Home Affairs (I4C), RBI Directives, and Information Technology Act, 2000.'
       },
       hi: {
         heroTitle: 'डिजिटल धोखाधड़ी और साइबर अपराध से सुरक्षित रहें',
         heroDesc: 'एसएमएस, व्हाट्सएप, फ़िशिंग लिंक और यूपीआई क्यूआर कोड धोखाधड़ी की हिंदी, गुजराती और अंग्रेजी में तत्काल जांच।',
-        tabMsg: 'संदेश जांच (SMS/WhatsApp)', tabUrl: 'वेबसाइट लिंक जांच', tabQr: 'क्यूआर / यूपीआई जांच',
+        tabMsg: 'संदेश जांच (SMS/WhatsApp)', tabUrl: 'वेबसाइट लिंक जांच', tabQr: 'क्यूआर / यूपीआई जांच', tabCure: 'साइबर फर्स्ट-एड (Cure)',
         btnScanMsg: 'संदेश की जांच करें', btnScanUrl: 'लिंक की जांच करें', btnScanQr: 'क्यूआर कोड जांचें',
         lblMsg: 'संदिग्ध एसएमएस या व्हाट्सएप संदेश यहां पेस्ट करें:',
         lblUrl: 'संदिग्ध वेबसाइट लिंक (URL) दर्ज करें:',
         lblQr: 'क्यूआर कोड की फोटो या स्क्रीनशॉट अपलोड करें:',
         lblOcrDesc: 'या एसएमएस/व्हाट्सएप का स्क्रीनशॉट अपलोड या पेस्ट करें (OCR):',
-        btnOcrUpload: 'स्क्रीनशॉट अपलोड करें (OCR)'
+        btnOcrUpload: 'स्क्रीनशॉट अपलोड करें (OCR)',
+        cureTitle: '🛡️ वैधानिक साइबर प्राथमिक उपचार व रिकवरी प्रोटोकॉल',
+        cureSubtitle: 'गृह मंत्रालय (I4C), भारतीय रिज़र्व बैंक (RBI) और आईटी अधिनियम 2000 पर आधारित आधिकारिक प्रक्रियाएं।'
       },
       gu: {
         heroTitle: 'ડિજિટલ છેતરપિંડી અને સાયબર ફ્રોડથી સુરક્ષિત રહો',
         heroDesc: 'એસએમએસ, વ્હોટ્સએપ, ફિશિંગ લિંક્સ અને યુપીઆઈ ક્યૂઆર કોડ ફ્રોડની ગુજરાતી, હિન્દી અને અંગ્રેજીમાં ત્વરિત ચકાસણી.',
-        tabMsg: 'મેસેજ તપાસ (SMS/WhatsApp)', tabUrl: 'વેબસાઇટ લિંક તપાસ', tabQr: 'QR / UPI તપાસ',
+        tabMsg: 'મેસેજ તપાસ (SMS/WhatsApp)', tabUrl: 'વેબસાઇટ લિંક તપાસ', tabQr: 'QR / UPI તપાસ', tabCure: 'સાયબર ફર્સ્ટ-એઇડ (Cure)',
         btnScanMsg: 'મેસેજ ચકાસો', btnScanUrl: 'લિંક ચકાસો', btnScanQr: 'QR કોડ ચકાસો',
         lblMsg: 'શંકાસ્પદ એસએમએસ અથવા વ્હોટ્સએપ સંદેશ અહીં પેસ્ટ કરો:',
         lblUrl: 'શંકાસ્પદ વેબસાઇટ લિંક (URL) દાખલ કરો:',
         lblQr: 'QR કોડનો ફોટો અથવા સ્ક્રીનશોટ અપલોડ કરો:',
         lblOcrDesc: 'અથવા SMS/WhatsApp નો સ્ક્રીનશોટ અપલોડ અથવા પેસ્ટ કરો (OCR):',
-        btnOcrUpload: 'સ્ક્રીનશોટ અપલોડ કરો (OCR)'
+        btnOcrUpload: 'સ્ક્રીનશોટ અપલોડ કરો (OCR)',
+        cureTitle: '🛡️ કાયદેસર સાયબર પ્રાથમિક સારવાર અને રિકવરી પ્રોટોકોલ',
+        cureSubtitle: 'ગૃહ મંત્રાલય (I4C), આરબીઆઈ અને આઈટી એક્ટ ૨૦૦૦ આધારિત સત્તાવાર રિકવરી માર્ગદર્શિકા.'
       }
     };
 
@@ -695,6 +1024,7 @@
       document.getElementById('tab-msg').innerText = t.tabMsg;
       document.getElementById('tab-url').innerText = t.tabUrl;
       document.getElementById('tab-qr').innerText = t.tabQr;
+      if (document.getElementById('tab-cure')) document.getElementById('tab-cure').innerText = t.tabCure;
       document.getElementById('btn-scan-msg').innerText = t.btnScanMsg;
       document.getElementById('btn-scan-url').innerText = t.btnScanUrl;
       document.getElementById('btn-scan-qr').innerText = t.btnScanQr;
@@ -703,13 +1033,31 @@
       document.getElementById('lbl-qr-input').innerText = t.lblQr;
       if (document.getElementById('lbl-ocr-desc')) document.getElementById('lbl-ocr-desc').innerText = t.lblOcrDesc;
       if (document.getElementById('btn-ocr-upload-lbl')) document.getElementById('btn-ocr-upload-lbl').innerText = t.btnOcrUpload;
+      if (document.getElementById('cure-title')) document.getElementById('cure-title').innerText = t.cureTitle;
+      if (document.getElementById('cure-subtitle')) document.getElementById('cure-subtitle').innerText = t.cureSubtitle;
+
+      // Refresh cure scenario display in the newly selected language
+      renderActiveCureProtocol();
+      updateFamilyAlert();
     }
 
     function switchTab(name) {
       document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
       document.querySelectorAll('.tab-pane').forEach(p => p.style.display = 'none');
-      event.currentTarget.classList.add('active');
-      document.getElementById('pane-' + name).style.display = 'block';
+      
+      const tabIndices = { message: 0, url: 1, qr: 2, cure: 3 };
+      const btn = (typeof event !== 'undefined' && event && event.currentTarget) 
+        ? event.currentTarget 
+        : document.querySelectorAll('.tab-btn')[tabIndices[name] || 0];
+      if (btn) btn.classList.add('active');
+
+      const pane = document.getElementById('pane-' + name);
+      if (pane) pane.style.display = 'block';
+
+      if (name === 'cure') {
+        renderActiveCureProtocol();
+        updateFamilyAlert();
+      }
     }
 
     function loadSample(key) {
@@ -949,6 +1297,24 @@
           tags.innerHTML += `<span class="tag">🔗 Embedded Link: ${u.domain} (${u.risk_level.toUpperCase()})</span>`;
         });
       }
+
+      const ctaBox = document.getElementById('cure-cta-' + prefix);
+      if (ctaBox) {
+        if (data.risk_level === 'scam' || data.risk_level === 'suspicious') {
+          const suspectVal = data.embedded_urls && data.embedded_urls.length > 0 ? data.embedded_urls[0].url : (document.getElementById('msg-text') ? document.getElementById('msg-text').value.substring(0, 80) : '');
+          ctaBox.innerHTML = `
+            <div style="margin-top: 1.25rem; padding: 1rem; background: rgba(239,68,68,0.15); border: 1px solid rgba(239,68,68,0.35); border-radius: 10px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem;">
+              <div>
+                <div style="color: #f87171; font-weight: 700; font-size: 0.95rem;">🚨 Did you already click this link, transfer money, or enter details?</div>
+                <div style="font-size: 0.82rem; color: #cbd5e1; margin-top: 0.2rem;">Access official Golden Hour recovery (Helpline 1930 & RBI Zero Liability Protocol) immediately.</div>
+              </div>
+              <button class="btn-cure-cta" onclick="openCureFromScanner('${encodeURIComponent(suspectVal)}')">⚖️ Launch Legal First-Aid (Cure) →</button>
+            </div>`;
+        } else {
+          ctaBox.innerHTML = '';
+        }
+      }
+
       resBox.style.display = 'block';
     }
 
@@ -974,6 +1340,24 @@
           tags.innerHTML += `<span class="tag">⚠️ ${r}</span>`;
         });
       }
+
+      const ctaBox = document.getElementById('cure-cta-url');
+      if (ctaBox) {
+        if (data.risk_level === 'scam' || data.risk_level === 'suspicious') {
+          const urlVal = document.getElementById('url-text') ? document.getElementById('url-text').value : '';
+          ctaBox.innerHTML = `
+            <div style="margin-top: 1.25rem; padding: 1rem; background: rgba(239,68,68,0.15); border: 1px solid rgba(239,68,68,0.35); border-radius: 10px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem;">
+              <div>
+                <div style="color: #f87171; font-weight: 700; font-size: 0.95rem;">🚨 Did you visit this URL, enter credentials, or install a download?</div>
+                <div style="font-size: 0.82rem; color: #cbd5e1; margin-top: 0.2rem;">Initiate credential lock, bank freeze, or DoT Chakshu blacklist immediately.</div>
+              </div>
+              <button class="btn-cure-cta" onclick="openCureFromScanner('${encodeURIComponent(urlVal)}')">⚖️ Launch Legal First-Aid (Cure) →</button>
+            </div>`;
+        } else {
+          ctaBox.innerHTML = '';
+        }
+      }
+
       resBox.style.display = 'block';
     }
 
@@ -1010,8 +1394,365 @@
           tags.innerHTML += `<span class="tag">💳 Debit Amount: ₹${data.amount}</span>`;
         }
       }
+
+      const ctaBox = document.getElementById('cure-cta-qr');
+      if (ctaBox) {
+        if (data.risk_level === 'scam' || data.risk_level === 'suspicious') {
+          const qrTarget = data.payee_vpa || (data.url_analysis ? data.url_analysis.url : 'Scam QR Code');
+          ctaBox.innerHTML = `
+            <div style="margin-top: 1.25rem; padding: 1rem; background: rgba(239,68,68,0.15); border: 1px solid rgba(239,68,68,0.35); border-radius: 10px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem;">
+              <div>
+                <div style="color: #f87171; font-weight: 700; font-size: 0.95rem;">🚨 Did you scan this QR or authorize the payment?</div>
+                <div style="font-size: 0.82rem; color: #cbd5e1; margin-top: 0.2rem;">Activate NPCI UPI freeze and dial Helpline 1930 within the Golden Hour.</div>
+              </div>
+              <button class="btn-cure-cta" onclick="openCureFromScanner('${encodeURIComponent(qrTarget)}')">⚖️ Launch Legal First-Aid (Cure) →</button>
+            </div>`;
+        } else {
+          ctaBox.innerHTML = '';
+        }
+      }
+
       resBox.style.display = 'block';
     }
+
+    // --- CURE: Statutory Incident Response & First-Aid Logic ---
+    let activeScenario = 'money';
+
+    function selectCureScenario(scenarioKey) {
+      activeScenario = scenarioKey;
+      document.querySelectorAll('.cure-scenario-card').forEach(c => c.classList.remove('active'));
+      const activeCard = document.getElementById('card-scen-' + scenarioKey);
+      if (activeCard) activeCard.classList.add('active');
+      renderActiveCureProtocol();
+      generateFormalComplaint();
+    }
+
+    function renderActiveCureProtocol() {
+      const container = document.getElementById('cure-protocol-container');
+      if (!container) return;
+
+      if (activeScenario === 'money') {
+        container.innerHTML = `
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.25rem; flex-wrap: wrap; gap: 0.5rem;">
+            <h3 style="color: #f87171; font-size: 1.25rem; font-weight: 800;">💸 Financial Fraud Recovery Protocol (Money Debited / UPI)</h3>
+            <span class="legal-tag">MHA I4C & RBI Mandatory Guideline</span>
+          </div>
+
+          <div class="cure-step-box">
+            <div class="cure-step-num">1</div>
+            <div class="cure-step-content">
+              <h4>⏱️ Golden Hour Emergency Freeze — Dial Helpline 1930 Immediately
+                <span class="legal-tag">MHA / I4C CFCFRMS</span>
+              </h4>
+              <p>Call the National Cybercrime Helpline <strong>1930</strong> (formerly 155260) within <strong>2 hours</strong> of transaction. The Citizen Financial Cyber Fraud Reporting & Management System (CFCFRMS) triggers an automated freeze API across 250+ banks, NPCI, and payment gateways to put a <strong>lien on the fraudster's mule account</strong> before cash withdrawal at an ATM.</p>
+              <div style="margin-top: 0.5rem;">
+                <a href="tel:1930" class="emergency-btn" style="display: inline-flex; padding: 0.45rem 1rem; font-size: 0.85rem;">📞 Call National Helpline 1930</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="cure-step-box">
+            <div class="cure-step-num">2</div>
+            <div class="cure-step-content">
+              <h4>🏦 Invoke RBI 3-Day Zero Customer Liability Rule
+                <span class="legal-tag">RBI Circular DBR.No.Leg.BC.78/2017-18</span>
+              </h4>
+              <p>Under <strong>RBI Directive (Clause 6)</strong>, if a customer notifies their bank of an unauthorized electronic transaction within <strong>3 working days</strong>, the customer has <strong>ZERO LIABILITY (100% Bank Refund)</strong>. The bank is legally mandated to credit the shadow reversal within 10 working days.</p>
+
+              <div class="bank-directory">
+                <div class="bank-chip">
+                  <div class="bank-chip-name">State Bank of India (SBI)</div>
+                  <a href="tel:18001234" class="bank-chip-phone">📞 1800 1234 / 1800 2100</a>
+                  <div class="bank-chip-sms">SMS <code>BLOCK</code> to 567676</div>
+                </div>
+                <div class="bank-chip">
+                  <div class="bank-chip-name">HDFC Bank</div>
+                  <a href="tel:18001600" class="bank-chip-phone">📞 1800 1600 / 1800 266 4060</a>
+                  <div class="bank-chip-sms">SMS <code>BLOCK</code> to 5676712</div>
+                </div>
+                <div class="bank-chip">
+                  <div class="bank-chip-name">ICICI Bank</div>
+                  <a href="tel:18001080" class="bank-chip-phone">📞 1800 1080 / 1800 120 7777</a>
+                  <div class="bank-chip-sms">SMS <code>BLOCK &lt;Card&gt;</code> to 9215676766</div>
+                </div>
+                <div class="bank-chip">
+                  <div class="bank-chip-name">Bank of Baroda (BOB)</div>
+                  <a href="tel:18005700" class="bank-chip-phone">📞 1800 5700 / 1800 5000</a>
+                  <div class="bank-chip-sms">SMS <code>BLOCK</code> to 8422009988</div>
+                </div>
+                <div class="bank-chip">
+                  <div class="bank-chip-name">Punjab National Bank (PNB)</div>
+                  <a href="tel:18001802222" class="bank-chip-phone">📞 1800 180 2222</a>
+                  <div class="bank-chip-sms">SMS <code>HOTLIST</code> to 5607040</div>
+                </div>
+                <div class="bank-chip">
+                  <div class="bank-chip-name">Axis Bank</div>
+                  <a href="tel:18004195959" class="bank-chip-phone">📞 1800 419 5959</a>
+                  <div class="bank-chip-sms">SMS <code>BLOCK</code> to 5676782</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="cure-step-box">
+            <div class="cure-step-num">3</div>
+            <div class="cure-step-content">
+              <h4>⚖️ Register Formal FIR on National Cybercrime Portal
+                <span class="legal-tag">cybercrime.gov.in / IT Act Sec 66D</span>
+              </h4>
+              <p>Submit a formal complaint on the official government portal <strong>cybercrime.gov.in</strong> under Financial Cyber Fraud. Provide your 1930 incident acknowledgment number, bank statement, and the transaction UTR reference.</p>
+            </div>
+          </div>
+
+          <div class="cure-step-box">
+            <div class="cure-step-num warning">4</div>
+            <div class="cure-step-content">
+              <h4>🏛️ Unresolved by Bank after 30 Days? Escalate to RBI Ombudsman
+                <span class="legal-tag">RBI Integrated Ombudsman Scheme, 2021</span>
+              </h4>
+              <p>If your bank fails to investigate or refund the unauthorized debit within 30 days, file an online escalation with the <strong>RBI Banking Ombudsman</strong> at <a href="https://cms.rbi.org.in" target="_blank" style="color:#60a5fa; text-decoration: underline;">cms.rbi.org.in</a>.</p>
+            </div>
+          </div>
+        `;
+      } else if (activeScenario === 'creds') {
+        container.innerHTML = `
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.25rem; flex-wrap: wrap; gap: 0.5rem;">
+            <h3 style="color: #fbbf24; font-size: 1.25rem; font-weight: 800;">🔑 Credential Lockout Protocol (OTP / PIN / Password Compromise)</h3>
+            <span class="legal-tag">Digital Payment Security Master Direction</span>
+          </div>
+
+          <div class="cure-step-box">
+            <div class="cure-step-num">1</div>
+            <div class="cure-step-content">
+              <h4>🛑 Emergency Card & Account Lockout
+                <span class="legal-tag">Immediate Threat Neutralization</span>
+              </h4>
+              <p>If you disclosed your ATM PIN, CVV, or card number on a fake portal or over call, block all cards immediately via your mobile banking app or SMS shortcode to stop unauthorized POS/E-commerce debits.</p>
+            </div>
+          </div>
+
+          <div class="cure-step-box">
+            <div class="cure-step-num">2</div>
+            <div class="cure-step-content">
+              <h4>🔐 Change Passwords & UPI PIN from a Clean Device
+                <span class="legal-tag">Multi-Factor Reset</span>
+              </h4>
+              <p>Do <strong>NOT</strong> use the phone that accessed the phishing link. Use a secondary secure computer or family phone to immediately reset your Netbanking Login Password, Transaction Password, and UPI MPIN.</p>
+            </div>
+          </div>
+
+          <div class="cure-step-box">
+            <div class="cure-step-num">3</div>
+            <div class="cure-step-content">
+              <h4>📱 Terminate Active Netbanking & Device Sessions
+                <span class="legal-tag">Session Invalidation</span>
+              </h4>
+              <p>Log into your bank's official portal $\to$ Profile / Security Settings $\to$ select <strong>"Deregister all UPI Devices & Terminate Active Web Sessions"</strong> to revoke any attacker tokens.</p>
+            </div>
+          </div>
+        `;
+      } else if (activeScenario === 'apk') {
+        container.innerHTML = `
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.25rem; flex-wrap: wrap; gap: 0.5rem;">
+            <h3 style="color: #f87171; font-size: 1.25rem; font-weight: 800;">📲 Device Decontamination Protocol (Malicious APK / Trojan)</h3>
+            <span class="legal-tag">DoT Sanchar Saathi & IT Act Sec 43/66</span>
+          </div>
+
+          <div class="cure-step-box">
+            <div class="cure-step-num">1</div>
+            <div class="cure-step-content">
+              <h4>✈️ Immediate Radio Severance — Switch ON Airplane Mode
+                <span class="legal-tag">Stop C2 Server Exfiltration</span>
+              </h4>
+              <p>Turn ON <strong>Airplane Mode</strong> and disable Wi-Fi immediately. Malicious APKs (such as fake PGVCL electricity bill updaters or loan apps) run stealth SMS forwarders that transmit two-factor OTPs to attacker servers in real time. Severing connectivity halts data theft instantly.</p>
+            </div>
+          </div>
+
+          <div class="cure-step-box">
+            <div class="cure-step-num">2</div>
+            <div class="cure-step-content">
+              <h4>🛡️ Revoke Accessibility & Device Admin Privileges
+                <span class="legal-tag">Neutralize Trojan Persistence</span>
+              </h4>
+              <p>Go to Android Settings $\to$ <strong>Accessibility</strong> $\to$ Turn OFF permissions for unfamiliar apps. Next, go to Settings $\to$ <strong>Security $\to$ Device Admin Apps</strong> and deactivate any unknown administrator permissions.</p>
+            </div>
+          </div>
+
+          <div class="cure-step-box">
+            <div class="cure-step-num">3</div>
+            <div class="cure-step-content">
+              <h4>📴 Boot into Android Safe Mode & Delete APK
+                <span class="legal-tag">Malware Safe Evacuation</span>
+              </h4>
+              <p>Long press the physical Power button $\to$ Tap and hold the on-screen "Power Off" icon until the prompt <strong>"Reboot to Safe Mode"</strong> appears $\to$ Tap OK. In Safe Mode, third-party trojans cannot run. Go to Settings $\to$ Apps $\to$ Uninstall the malicious application safely.</p>
+            </div>
+          </div>
+
+          <div class="cure-step-box">
+            <div class="cure-step-num">4</div>
+            <div class="cure-step-content">
+              <h4>📡 Blacklist Phone & APK on DoT Chakshu Portal
+                <span class="legal-tag">DoT Sanchar Saathi</span>
+              </h4>
+              <p>Submit the scam APK download link and sender phone number to the Department of Telecommunications' <strong>Chakshu Facility</strong> (<a href="https://sancharsaathi.gov.in/sfc" target="_blank" style="color:#60a5fa; text-decoration: underline;">sancharsaathi.gov.in/sfc</a>) to initiate carrier-wide blacklisting of the attacker's SIM.</p>
+            </div>
+          </div>
+        `;
+      } else if (activeScenario === 'sim') {
+        container.innerHTML = `
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.25rem; flex-wrap: wrap; gap: 0.5rem;">
+            <h3 style="color: #38bdf8; font-size: 1.25rem; font-weight: 800;">📞 Telecom & Account Recovery Protocol (SIM Swap / WhatsApp Hijack)</h3>
+            <span class="legal-tag">DoT TAFCOP & IT Act Sec 66C</span>
+          </div>
+
+          <div class="cure-step-box">
+            <div class="cure-step-num">1</div>
+            <div class="cure-step-content">
+              <h4>📞 Immediate Telecom Carrier Lockout
+                <span class="legal-tag">Block Fraudulent SIM Swap</span>
+              </h4>
+              <p>If your phone suddenly shows "No Service" or "Emergency Calls Only", call your carrier immediately from another phone: <strong>Airtel (198), Jio (198), Vi (198), BSNL (198)</strong> to lock your IMSI and prevent SMS OTP interception.</p>
+            </div>
+          </div>
+
+          <div class="cure-step-box">
+            <div class="cure-step-num">2</div>
+            <div class="cure-step-content">
+              <h4>🆔 Check All Active SIMs on DoT TAFCOP Portal
+                <span class="legal-tag">DoT Aadhaar Telecom Audit</span>
+              </h4>
+              <p>Visit <a href="https://tafcop.sancharsaathi.gov.in" target="_blank" style="color:#60a5fa; text-decoration: underline;">tafcop.sancharsaathi.gov.in</a>, enter your mobile number, and review all active SIM connections registered under your Aadhaar. Flag any unauthorized numbers for immediate deactivation.</p>
+            </div>
+          </div>
+
+          <div class="cure-step-box">
+            <div class="cure-step-num">3</div>
+            <div class="cure-step-content">
+              <h4>💬 WhatsApp Hijack Recovery & Two-Step Verification
+                <span class="legal-tag">Account Restoration</span>
+              </h4>
+              <p>Re-install WhatsApp and verify via SMS OTP (once SIM is restored). Immediately go to <strong>WhatsApp Settings $\to$ Account $\to$ Two-Step Verification</strong> and create a permanent 6-digit PIN to prevent future takeovers.</p>
+            </div>
+          </div>
+        `;
+      }
+    }
+
+    function generateFormalComplaint() {
+      const suspect = document.getElementById('comp-suspect').value.trim() || '[Suspect Phone / UPI ID / Link]';
+      const amount = document.getElementById('comp-amount').value.trim() || '0';
+      const txnid = document.getElementById('comp-txnid').value.trim() || '[Bank Name / UTR / Transaction Ref ID]';
+      const now = new Date().toLocaleString('en-IN');
+
+      const scenarioNames = {
+        money: 'Financial Cyber Fraud & Unauthorized Debit',
+        creds: 'Cyber Phishing & Credential Theft',
+        apk: 'Malicious Software / Android Trojan Injection',
+        sim: 'SIM Swap Identity Theft & Account Hijacking'
+      };
+
+      const complaintText = `To:
+The Station House Officer / Cyber Crime Police Station,
+National Cybercrime Reporting Portal (cybercrime.gov.in)
+Citizen Financial Cyber Fraud Reporting and Management System (CFCFRMS - 1930)
+
+Subject: Formal Complaint under Section 66C and 66D of Information Technology Act, 2000 and Section 318(4) of Bharatiya Nyaya Sanhita (BNS, 2023) regarding ${scenarioNames[activeScenario]}.
+
+Respected Sir/Madam,
+
+I am lodging this formal complaint regarding a cyber fraud incident perpetrated against me:
+
+1. INCIDENT DETAILS:
+   - Nature of Offense: ${scenarioNames[activeScenario]}
+   - Date and Time of Incident: ${now}
+   - Disputed Financial Amount: Rs. ${amount}
+   - Bank Account / Transaction UTR / Ref: ${txnid}
+   - Perpetrator Identifier (Phone/UPI/Link): ${suspect}
+
+2. BRIEF SUMMARY OF FACTS:
+   The cyber perpetrator contacted/lured me through electronic communication, falsely impersonating legitimate authorities/banking services. By deceptive means and intimidation/urgency, they attempted/executed unauthorized financial extraction and credential compromise.
+
+3. RELEVANT STATUTORY PROVISIONS & LEGAL CITATIONS:
+   - Section 66C, Information Technology Act, 2000: Punishment for identity theft.
+   - Section 66D, Information Technology Act, 2000: Punishment for cheating by personation by using computer resource.
+   - Section 318(4), Bharatiya Nyaya Sanhita, 2023: Cheating and dishonestly inducing delivery of property.
+   - Reserve Bank of India Directive DBR.No.Leg.BC.78/09.07.005/2017-18: Customer Protection - Limiting Liability in Unauthorised Electronic Banking Transactions.
+
+4. PRAYER / RELIEF SOUGHT:
+   I kindly request the Cyber Crime Investigation Cell and Bank Nodal Officers to:
+   a) Immediately register this complaint and issue an acknowledgment / FIR number.
+   b) Trigger lien / freeze request on the beneficiary's mule account under the CFCFRMS framework.
+   c) Direct the concerned intermediary/telecom provider to preserve CDR and IP logs.
+
+Complainant Details:
+Name: [Your Full Name]
+Mobile Number: [Your Contact Number]
+Address: [City, State]`;
+
+      const outputBox = document.getElementById('complaint-output');
+      outputBox.innerText = complaintText;
+      outputBox.style.display = 'block';
+    }
+
+    function copyComplaintText() {
+      const outputBox = document.getElementById('complaint-output');
+      if (!outputBox || !outputBox.innerText) {
+        generateFormalComplaint();
+      }
+      navigator.clipboard.writeText(document.getElementById('complaint-output').innerText)
+        .then(() => alert('✅ Formal Cyber Crime Complaint text copied to clipboard! You can paste it directly onto cybercrime.gov.in or submit it to the police.'))
+        .catch(err => alert('Error copying: ' + err));
+    }
+
+    function updateFamilyAlert() {
+      const suspect = document.getElementById('comp-suspect') ? document.getElementById('comp-suspect').value.trim() : '';
+      const box = document.getElementById('family-alert-box');
+      if (!box) return;
+
+      let alertText = '';
+      if (currentLang === 'hi') {
+        alertText = `⚠️ *साइबर धोखाधड़ी चेतावनी (सावधान रहें)* ⚠️\nहमारे परिवार और संपर्कों को सूचित किया जाता है कि साइबर ठग फर्जी संदेश/कॉल (${suspect || 'बिजली बिल / बैंक केवाईसी'}) के जरिए पैसे ठगने की कोशिश कर रहे हैं। किसी भी अनजान लिंक पर क्लिक न करें और न ही किसी को OTP बताएं। सतर्क रहें!`;
+      } else if (currentLang === 'gu') {
+        alertText = `⚠️ *સાયબર ફ્રોડ ચેતવણી (સાવધાન રહો)* ⚠️\nઆપણા પરિવાર અને મિત્રોને જાણ કરવામાં આવે છે કે સાયબર ઠગ બનાવટી મેસેજ/કોલ (${suspect || 'વીજળી બિલ / બેંક KYC'}) દ્વારા છેતરપિંડી કરી રહ્યા છે. કોઈપણ અજાણી લિંક પર ક્લિક ન કરો અને કોઈને OTP ન આપો. સતર્ક રહો!`;
+      } else {
+        alertText = `⚠️ *CYBER FRAUD ALERT FOR FAMILY & FRIENDS* ⚠️\nPlease be careful! Fraudsters are circulating deceptive messages/calls (${suspect || 'Electricity bill cut / Bank KYC suspension'}) attempting to steal money and OTPs. DO NOT click unknown links or share any OTP/PIN. Stay safe!`;
+      }
+
+      box.innerText = alertText;
+    }
+
+    function copyFamilyAlert() {
+      const box = document.getElementById('family-alert-box');
+      if (box && box.innerText) {
+        navigator.clipboard.writeText(box.innerText)
+          .then(() => alert('✅ Family WhatsApp warning copied to clipboard! Paste it into your WhatsApp family groups.'))
+          .catch(err => alert('Error copying: ' + err));
+      }
+    }
+
+    function openCureFromScanner(encodedSuspect) {
+      const decoded = decodeURIComponent(encodedSuspect || '');
+      // Switch tab to cure
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-pane').forEach(p => p.style.display = 'none');
+      const cureBtn = document.querySelectorAll('.tab-btn')[3];
+      if (cureBtn) cureBtn.classList.add('active');
+      document.getElementById('pane-cure').style.display = 'block';
+
+      // Pre-fill suspect field
+      if (decoded) {
+        document.getElementById('comp-suspect').value = decoded;
+      }
+      selectCureScenario('money');
+      updateFamilyAlert();
+      window.scrollTo({ top: 300, behavior: 'smooth' });
+    }
+
+    // Initialize Cure protocol and alert on initial load
+    document.addEventListener('DOMContentLoaded', () => {
+      renderActiveCureProtocol();
+      updateFamilyAlert();
+    });
   </script>
 </body>
 </html>

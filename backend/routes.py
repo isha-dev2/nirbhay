@@ -116,3 +116,114 @@ async def check_qr_endpoint(file: UploadFile = File(...)):
     analysis["qr_detected"] = True
     return analysis
 
+class ComplaintRequest(BaseModel):
+    incident_type: str = "financial"  # financial, phishing, apk, sim
+    suspect_identifier: Optional[str] = "Unknown / Phone / Link"
+    amount_lost: Optional[float] = 0.0
+    bank_and_txnid: Optional[str] = "Not Specified"
+    complainant_name: Optional[str] = "[Name]"
+    complainant_phone: Optional[str] = "[Mobile]"
+
+@router.get("/cure/guidelines")
+def get_cure_guidelines():
+    """Returns statutory incident recovery guidelines grounded in Indian legal and regulatory bodies."""
+    return {
+        "authorities": [
+            {
+                "name": "Ministry of Home Affairs (MHA) - I4C",
+                "helpline": "1930",
+                "portal": "https://cybercrime.gov.in",
+                "framework": "Citizen Financial Cyber Fraud Reporting & Management System (CFCFRMS)",
+                "golden_hour_rule": "Report within 2 hours to freeze fraudster mule account before cash withdrawal."
+            },
+            {
+                "name": "Reserve Bank of India (RBI)",
+                "citation": "Circular DBR.No.Leg.BC.78/09.07.005/2017-18",
+                "rule": "Zero Customer Liability if notified within 3 working days. Bank must credit shadow reversal within 10 days.",
+                "ombudsman_portal": "https://cms.rbi.org.in"
+            },
+            {
+                "name": "Information Technology Act, 2000 & BNS 2023",
+                "sections": [
+                    "IT Act Sec 66C (Identity Theft & Credential Hacking)",
+                    "IT Act Sec 66D (Cheating by personation using computer resource / phishing)",
+                    "BNS Sec 318(4) (Cheating and dishonestly inducing delivery of property)"
+                ]
+            },
+            {
+                "name": "Department of Telecommunications (DoT)",
+                "portals": {
+                    "Chakshu": "https://sancharsaathi.gov.in/sfc (Report fraudulent calls/SMS/APKs)",
+                    "TAFCOP": "https://tafcop.sancharsaathi.gov.in (Check unauthorized SIMs issued on Aadhaar)",
+                    "CEIR": "https://ceir.sancharsaathi.gov.in (Block device IMEI across Indian networks)"
+                }
+            }
+        ],
+        "bank_fraud_helplines": {
+            "State Bank of India": {"phone": "1800 1234 / 1800 2100", "sms_block": "SMS BLOCK to 567676"},
+            "HDFC Bank": {"phone": "1800 1600 / 1800 266 4060", "sms_block": "SMS BLOCK to 5676712"},
+            "ICICI Bank": {"phone": "1800 1080 / 1800 120 7777", "sms_block": "SMS BLOCK <Card> to 9215676766"},
+            "Bank of Baroda": {"phone": "1800 5700 / 1800 5000", "sms_block": "SMS BLOCK to 8422009988"},
+            "Punjab National Bank": {"phone": "1800 180 2222", "sms_block": "SMS HOTLIST to 5607040"},
+            "Axis Bank": {"phone": "1800 419 5959", "sms_block": "SMS BLOCK to 5676782"}
+        }
+    }
+
+@router.post("/cure/generate-complaint")
+def generate_complaint_endpoint(req: ComplaintRequest):
+    """Generates a formal legal cybercrime police complaint draft citing IT Act and BNS."""
+    from datetime import datetime
+    now_str = datetime.now().strftime("%d-%b-%Y %I:%M %p")
+
+    scenario_titles = {
+        "financial": "Financial Cyber Fraud & Unauthorized Debit",
+        "phishing": "Cyber Phishing & Credential Theft",
+        "apk": "Malicious Software / Android Trojan Injection",
+        "sim": "SIM Swap Identity Theft & Account Hijacking"
+    }
+    title = scenario_titles.get(req.incident_type, "Cyber Financial Fraud")
+
+    complaint_body = f"""To:
+The Station House Officer / Cyber Crime Police Station,
+National Cybercrime Reporting Portal (cybercrime.gov.in)
+Citizen Financial Cyber Fraud Reporting and Management System (CFCFRMS - 1930)
+
+Subject: Formal Complaint under Section 66C & 66D of Information Technology Act, 2000 and Section 318(4) of Bharatiya Nyaya Sanhita (BNS, 2023) regarding {title}.
+
+Respected Sir/Madam,
+
+I am lodging this formal complaint regarding a cyber fraud incident perpetrated against me:
+
+1. INCIDENT DETAILS:
+   - Nature of Offense: {title}
+   - Date and Time: {now_str}
+   - Disputed Financial Amount: Rs. {req.amount_lost:,.2f}
+   - Bank Account / Transaction UTR / Ref: {req.bank_and_txnid}
+   - Perpetrator Identifier (Phone/UPI/Link): {req.suspect_identifier}
+
+2. BRIEF SUMMARY OF FACTS:
+   The cyber perpetrator contacted/lured me through electronic communication, falsely impersonating legitimate authorities/banking services. By deceptive means and intimidation/urgency, they attempted/executed unauthorized financial extraction and credential compromise.
+
+3. RELEVANT STATUTORY PROVISIONS & LEGAL CITATIONS:
+   - Section 66C, Information Technology Act, 2000: Punishment for identity theft.
+   - Section 66D, Information Technology Act, 2000: Punishment for cheating by personation by using computer resource.
+   - Section 318(4), Bharatiya Nyaya Sanhita, 2023: Cheating and dishonestly inducing delivery of property.
+   - Reserve Bank of India Circular DBR.No.Leg.BC.78/09.07.005/2017-18: Customer Protection - Limiting Liability in Unauthorised Electronic Banking Transactions.
+
+4. PRAYER / RELIEF SOUGHT:
+   I kindly request the Cyber Crime Investigation Cell and Bank Nodal Officers to:
+   a) Immediately register this complaint and issue an acknowledgment / FIR number.
+   b) Trigger lien / freeze request on the beneficiary's mule account under the CFCFRMS framework.
+   c) Direct the concerned intermediary/telecom provider to preserve CDR and IP logs.
+
+Complainant Details:
+Name: {req.complainant_name}
+Mobile Number: {req.complainant_phone}
+"""
+    return {
+        "status": "success",
+        "complaint_draft": complaint_body,
+        "filing_url": "https://cybercrime.gov.in",
+        "emergency_helpline": "1930"
+    }
+
