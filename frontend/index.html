@@ -7,6 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;600;700&family=Noto+Sans+Gujarati:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
   <style>
     :root {
       --primary: #1e3a8a;
@@ -405,6 +406,80 @@
       border-radius: 8px;
       display: none;
     }
+
+    .ocr-drop-box {
+      border: 1px dashed var(--surface-border);
+      background: rgba(15, 23, 42, 0.6);
+      border-radius: 10px;
+      padding: 0.75rem 1rem;
+      margin-top: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .ocr-drop-text {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .ocr-btn {
+      background: #334155;
+      color: #f8fafc;
+      border: 1px solid #475569;
+      padding: 0.45rem 1rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: all 0.2s;
+    }
+
+    .ocr-btn:hover {
+      background: #475569;
+      border-color: #64748b;
+      color: white;
+    }
+
+    .ocr-progress-wrap {
+      margin-top: 0.75rem;
+      background: #0f172a;
+      border: 1px solid var(--surface-border);
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+      display: none;
+    }
+
+    .ocr-progress-bar-bg {
+      width: 100%;
+      height: 6px;
+      background: #1e293b;
+      border-radius: 3px;
+      overflow: hidden;
+      margin-top: 0.5rem;
+    }
+
+    .ocr-progress-bar-fill {
+      width: 0%;
+      height: 100%;
+      background: linear-gradient(90deg, #3b82f6, #10b981);
+      transition: width 0.2s ease;
+    }
+
+    .ocr-preview-thumb {
+      max-height: 80px;
+      border-radius: 6px;
+      border: 1px solid var(--surface-border);
+      display: none;
+    }
   </style>
 </head>
 <body>
@@ -450,6 +525,34 @@
           <button class="sample-chip" onclick="loadSample('gu_pgvcl')">💡 Gujarati PGVCL Bill Scam</button>
           <button class="sample-chip" onclick="loadSample('en_kyc')">🏦 English Bank Block Link</button>
           <button class="sample-chip" onclick="loadSample('safe_txn')">✅ Safe Transaction Alert</button>
+        </div>
+
+        <!-- OCR Screenshot Upload Zone -->
+        <div class="ocr-drop-box" id="msg-ocr-zone">
+          <div class="ocr-drop-text">
+            <span style="font-size: 1.25rem;">📸</span>
+            <span id="lbl-ocr-desc">Or upload / paste screenshot of SMS or WhatsApp message:</span>
+          </div>
+          <div>
+            <label class="ocr-btn" for="msg-ocr-file">
+              <span>🖼️</span> <span id="btn-ocr-upload-lbl">Upload Screenshot (OCR)</span>
+              <input type="file" id="msg-ocr-file" accept="image/*" style="display:none;" onchange="handleMessageScreenshotUpload(event)">
+            </label>
+          </div>
+        </div>
+
+        <div id="ocr-progress-container" class="ocr-progress-wrap">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <span id="ocr-status-text" style="font-size:0.85rem; font-weight:600; color:#60a5fa;">⏳ Initializing OCR scanner...</span>
+            <span id="ocr-progress-pct" style="font-size:0.85rem; font-weight:700; color:#93c5fd;">0%</span>
+          </div>
+          <div class="ocr-progress-bar-bg">
+            <div id="ocr-progress-bar" class="ocr-progress-bar-fill"></div>
+          </div>
+          <div style="margin-top: 0.6rem; display: flex; align-items: center; gap: 0.75rem;">
+            <img id="ocr-preview-img" class="ocr-preview-thumb" alt="Screenshot preview">
+            <span id="ocr-tip" style="font-size: 0.78rem; color: var(--text-muted);">Tip: You can also copy a screenshot and press Ctrl+V / Cmd+V directly!</span>
+          </div>
         </div>
       </div>
       <button class="btn-submit" onclick="scanMessage()">🔍 <span id="btn-scan-msg">Verify Message</span></button>
@@ -553,7 +656,9 @@
         btnScanMsg: 'Verify Message', btnScanUrl: 'Inspect Link', btnScanQr: 'Decode & Inspect QR',
         lblMsg: 'Paste suspected SMS or WhatsApp message:',
         lblUrl: 'Enter suspicious web address (URL):',
-        lblQr: 'Upload or drag a QR code screenshot / image:'
+        lblQr: 'Upload or drag a QR code screenshot / image:',
+        lblOcrDesc: 'Or upload / paste screenshot of SMS or WhatsApp message:',
+        btnOcrUpload: 'Upload Screenshot (OCR)'
       },
       hi: {
         heroTitle: 'डिजिटल धोखाधड़ी और साइबर अपराध से सुरक्षित रहें',
@@ -562,7 +667,9 @@
         btnScanMsg: 'संदेश की जांच करें', btnScanUrl: 'लिंक की जांच करें', btnScanQr: 'क्यूआर कोड जांचें',
         lblMsg: 'संदिग्ध एसएमएस या व्हाट्सएप संदेश यहां पेस्ट करें:',
         lblUrl: 'संदिग्ध वेबसाइट लिंक (URL) दर्ज करें:',
-        lblQr: 'क्यूआर कोड की फोटो या स्क्रीनशॉट अपलोड करें:'
+        lblQr: 'क्यूआर कोड की फोटो या स्क्रीनशॉट अपलोड करें:',
+        lblOcrDesc: 'या एसएमएस/व्हाट्सएप का स्क्रीनशॉट अपलोड या पेस्ट करें (OCR):',
+        btnOcrUpload: 'स्क्रीनशॉट अपलोड करें (OCR)'
       },
       gu: {
         heroTitle: 'ડિજિટલ છેતરપિંડી અને સાયબર ફ્રોડથી સુરક્ષિત રહો',
@@ -571,7 +678,9 @@
         btnScanMsg: 'મેસેજ ચકાસો', btnScanUrl: 'લિંક ચકાસો', btnScanQr: 'QR કોડ ચકાસો',
         lblMsg: 'શંકાસ્પદ એસએમએસ અથવા વ્હોટ્સએપ સંદેશ અહીં પેસ્ટ કરો:',
         lblUrl: 'શંકાસ્પદ વેબસાઇટ લિંક (URL) દાખલ કરો:',
-        lblQr: 'QR કોડનો ફોટો અથવા સ્ક્રીનશોટ અપલોડ કરો:'
+        lblQr: 'QR કોડનો ફોટો અથવા સ્ક્રીનશોટ અપલોડ કરો:',
+        lblOcrDesc: 'અથવા SMS/WhatsApp નો સ્ક્રીનશોટ અપલોડ અથવા પેસ્ટ કરો (OCR):',
+        btnOcrUpload: 'સ્ક્રીનશોટ અપલોડ કરો (OCR)'
       }
     };
 
@@ -592,6 +701,8 @@
       document.getElementById('lbl-msg-input').innerText = t.lblMsg;
       document.getElementById('lbl-url-input').innerText = t.lblUrl;
       document.getElementById('lbl-qr-input').innerText = t.lblQr;
+      if (document.getElementById('lbl-ocr-desc')) document.getElementById('lbl-ocr-desc').innerText = t.lblOcrDesc;
+      if (document.getElementById('btn-ocr-upload-lbl')) document.getElementById('btn-ocr-upload-lbl').innerText = t.btnOcrUpload;
     }
 
     function switchTab(name) {
@@ -608,6 +719,138 @@
     function loadUrlSample(key) {
       document.getElementById('url-text').value = URL_SAMPLES[key];
     }
+
+    // --- OCR Screenshot Processing (Tesseract.js WASM) ---
+    function handleMessageScreenshotUpload(e) {
+      const file = e.target.files && e.target.files[0];
+      if (file) {
+        processOcrImage(file);
+      }
+    }
+
+    async function processOcrImage(file) {
+      if (!file || !file.type.startsWith('image/')) {
+        return alert('Please select a valid image file (PNG, JPG, WebP).');
+      }
+
+      // Display thumbnail preview
+      const preview = document.getElementById('ocr-preview-img');
+      const reader = new FileReader();
+      reader.onload = function(evt) {
+        preview.src = evt.target.result;
+        preview.style.display = 'block';
+      };
+      reader.readAsDataURL(file);
+
+      // Show progress container
+      const progressWrap = document.getElementById('ocr-progress-container');
+      const statusText = document.getElementById('ocr-status-text');
+      const pctText = document.getElementById('ocr-progress-pct');
+      const barFill = document.getElementById('ocr-progress-bar');
+
+      progressWrap.style.display = 'block';
+      pctText.innerText = '5%';
+      barFill.style.width = '5%';
+      statusText.innerText = '⏳ Initializing client-side OCR engine...';
+
+      try {
+        let extractedText = '';
+        // Attempt OCR with English + Hindi support
+        try {
+          const result = await Tesseract.recognize(file, 'eng+hin', {
+            logger: m => {
+              if (m.status === 'recognizing text') {
+                const pct = Math.min(99, Math.max(10, Math.round(m.progress * 100)));
+                pctText.innerText = pct + '%';
+                barFill.style.width = pct + '%';
+                statusText.innerText = `🔍 Reading screenshot text: ${pct}%`;
+              } else if (m.status) {
+                statusText.innerText = `⏳ ${m.status}...`;
+              }
+            }
+          });
+          extractedText = result && result.data && result.data.text ? result.data.text.trim() : '';
+        } catch (langErr) {
+          console.warn('Multilingual model loading failed, falling back to English OCR:', langErr);
+          const fallbackResult = await Tesseract.recognize(file, 'eng');
+          extractedText = fallbackResult && fallbackResult.data && fallbackResult.data.text ? fallbackResult.data.text.trim() : '';
+        }
+
+        if (!extractedText) {
+          statusText.innerText = '⚠️ No readable text found in image.';
+          pctText.innerText = '100%';
+          barFill.style.width = '100%';
+          alert('Could not detect readable text from this screenshot. Please try a clearer screenshot with good contrast.');
+          return;
+        }
+
+        pctText.innerText = '100%';
+        barFill.style.width = '100%';
+        statusText.innerText = '✅ Text extracted! Running scam classifier...';
+
+        // Populate textarea with extracted text
+        document.getElementById('msg-text').value = extractedText;
+
+        // Auto-trigger message scanner
+        await scanMessage();
+
+      } catch (err) {
+        console.error('OCR Error:', err);
+        statusText.innerText = '❌ OCR failed: ' + (err.message || 'Unknown error');
+        alert('OCR error: ' + (err.message || 'Failed to process image.'));
+      } finally {
+        setTimeout(() => {
+          progressWrap.style.display = 'none';
+        }, 3500);
+      }
+    }
+
+    // Drag and Drop & Clipboard Paste support for OCR screenshot
+    document.addEventListener('DOMContentLoaded', () => {
+      const zone = document.getElementById('msg-ocr-zone');
+      if (zone) {
+        zone.addEventListener('dragover', (e) => {
+          e.preventDefault();
+          zone.style.borderColor = 'var(--primary-light)';
+          zone.style.background = '#1e293b';
+        });
+        zone.addEventListener('dragleave', (e) => {
+          e.preventDefault();
+          zone.style.borderColor = 'var(--surface-border)';
+          zone.style.background = 'rgba(15, 23, 42, 0.6)';
+        });
+        zone.addEventListener('drop', (e) => {
+          e.preventDefault();
+          zone.style.borderColor = 'var(--surface-border)';
+          zone.style.background = 'rgba(15, 23, 42, 0.6)';
+          if (e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0]) {
+            processOcrImage(e.dataTransfer.files[0]);
+          }
+        });
+      }
+
+      // Allow pasting screenshots directly from clipboard anywhere on the page
+      window.addEventListener('paste', (e) => {
+        const items = e.clipboardData && e.clipboardData.items;
+        if (!items) return;
+        for (let i = 0; i < items.length; i++) {
+          if (items[i].type.indexOf('image') !== -1) {
+            const file = items[i].getAsFile();
+            if (file) {
+              // Switch to message tab
+              document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+              document.querySelectorAll('.tab-pane').forEach(p => p.style.display = 'none');
+              const msgTabBtn = document.querySelectorAll('.tab-btn')[0];
+              if (msgTabBtn) msgTabBtn.classList.add('active');
+              document.getElementById('pane-message').style.display = 'block';
+
+              processOcrImage(file);
+              break;
+            }
+          }
+        }
+      });
+    });
 
     async function scanMessage() {
       const text = document.getElementById('msg-text').value;

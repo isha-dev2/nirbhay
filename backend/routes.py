@@ -45,6 +45,41 @@ def check_message_endpoint(request: TextCheckRequest):
         raise HTTPException(status_code=400, detail="Message text cannot be empty.")
     return text_service.inspect_message(request.text)
 
+@router.post("/check/image-text")
+async def check_image_text_endpoint(file: UploadFile = File(...)):
+    """Extracts text from an uploaded screenshot/image using OCR and runs scam analysis."""
+    contents = await file.read()
+    if not contents:
+        raise HTTPException(status_code=400, detail="Uploaded file is empty.")
+
+    import shutil
+    if not shutil.which("tesseract"):
+        return {
+            "ocr_success": False,
+            "risk_level": "unknown",
+            "message": "Backend native tesseract binary not installed. The Web UI uses client-side WASM OCR (Tesseract.js) in the browser.",
+            "extracted_text": ""
+        }
+
+    try:
+        from PIL import Image
+        import pytesseract
+        img = Image.open(io.BytesIO(contents))
+        extracted = pytesseract.image_to_string(img)
+        if not extracted.strip():
+            return {
+                "ocr_success": False,
+                "risk_level": "unknown",
+                "message": "No readable text could be recognized from the image.",
+                "extracted_text": ""
+            }
+        result = text_service.inspect_message(extracted.strip())
+        result["ocr_success"] = True
+        result["extracted_text"] = extracted.strip()
+        return result
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"OCR processing failed: {str(e)}")
+
 @router.post("/check/url")
 def check_url_endpoint(request: URLCheckRequest):
     """Inspects a web URL for phishing, typosquatting, APK downloads, and malicious TLDs."""
