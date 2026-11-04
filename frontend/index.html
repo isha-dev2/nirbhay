@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nirbhay (निर्भय / નિર્ભય) — AI Digital Safety & Scam Response Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;600;700&family=Noto+Sans+Gujarati:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #1e3a8a;
+      --primary-light: #3b82f6;
+      --bg: #0f172a;
+      --surface: #1e293b;
+      --surface-border: #334155;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --danger: #ef4444;
+      --danger-bg: rgba(239, 68, 68, 0.15);
+      --warning: #f59e0b;
+      --warning-bg: rgba(245, 158, 11, 0.15);
+      --success: #10b981;
+      --success-bg: rgba(16, 185, 129, 0.15);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', 'Noto Sans Devanagari', 'Noto Sans Gujarati', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background: rgba(30, 41, 59, 0.8);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--surface-border);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: var(--text);
+    }
+
+    .shield-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, #f59e0b, #ef4444);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.25rem;
+      box-shadow: 0 4px 14px rgba(245, 158, 11, 0.3);
+    }
+
+    .brand-title {
+      font-weight: 800;
+      font-size: 1.35rem;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-sub {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      display: block;
+    }
+
+    .lang-selector {
+      display: flex;
+      gap: 0.25rem;
+      background: var(--surface);
+      padding: 0.25rem;
+      border-radius: 8px;
+      border: 1px solid var(--surface-border);
+    }
+
+    .lang-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      padding: 0.35rem 0.75rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .lang-btn.active {
+      background: var(--primary-light);
+      color: white;
+    }
+
+    main {
+      flex: 1;
+      max-width: 1100px;
+      width: 100%;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+
+    .hero-banner {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-banner h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 0.75rem;
+      background: linear-gradient(to right, #60a5fa, #f59e0b);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-banner p {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 0.75rem;
+      background: var(--surface);
+      padding: 0.5rem;
+      border-radius: 12px;
+      border: 1px solid var(--surface-border);
+      margin-bottom: 1.5rem;
+    }
+
+    .tab-btn {
+      flex: 1;
+      padding: 0.85rem;
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .tab-btn.active {
+      background: #2563eb;
+      color: white;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+    }
+
+    .card {
+      background: var(--surface);
+      border-radius: 16px;
+      border: 1px solid var(--surface-border);
+      padding: 2rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      margin-bottom: 2rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+
+    label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      font-size: 0.95rem;
+    }
+
+    textarea, input[type="text"] {
+      width: 100%;
+      background: #0f172a;
+      border: 1px solid var(--surface-border);
+      border-radius: 10px;
+      padding: 0.85rem 1rem;
+      color: var(--text);
+      font-family: inherit;
+      font-size: 1rem;
+      transition: border-color 0.2s;
+    }
+
+    textarea:focus, input[type="text"]:focus {
+      outline: none;
+      border-color: var(--primary-light);
+    }
+
+    .quick-samples {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.75rem;
+      align-items: center;
+    }
+
+    .sample-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .sample-chip {
+      background: rgba(51, 65, 85, 0.6);
+      border: 1px solid var(--surface-border);
+      color: #cbd5e1;
+      padding: 0.25rem 0.65rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .sample-chip:hover {
+      background: #334155;
+      color: white;
+    }
+
+    .btn-submit {
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      padding: 0.9rem 2rem;
+      font-size: 1.05rem;
+      font-weight: 700;
+      cursor: pointer;
+      width: 100%;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .btn-submit:hover {
+      opacity: 0.95;
+      transform: translateY(-1px);
+    }
+
+    .result-box {
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--surface-border);
+      display: none;
+    }
+
+    .verdict-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1.25rem;
+      border-radius: 30px;
+      font-weight: 800;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .badge-scam {
+      background: var(--danger-bg);
+      color: var(--danger);
+      border: 1px solid var(--danger);
+    }
+
+    .badge-suspicious {
+      background: var(--warning-bg);
+      color: var(--warning);
+      border: 1px solid var(--warning);
+    }
+
+    .badge-safe {
+      background: var(--success-bg);
+      color: var(--success);
+      border: 1px solid var(--success);
+    }
+
+    .prob-meter {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .prob-val {
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .explanation-card {
+      background: #0f172a;
+      border-radius: 10px;
+      padding: 1.25rem;
+      margin-bottom: 1.25rem;
+      border-left: 4px solid var(--primary-light);
+    }
+
+    .explanation-card.scam { border-left-color: var(--danger); }
+    .explanation-card.suspicious { border-left-color: var(--warning); }
+    .explanation-card.safe { border-left-color: var(--success); }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.75rem;
+    }
+
+    .tag {
+      background: #1e293b;
+      border: 1px solid #334155;
+      padding: 0.35rem 0.75rem;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      color: #e2e8f0;
+    }
+
+    .emergency-card {
+      background: linear-gradient(135deg, rgba(239, 68, 68, 0.15), rgba(15, 23, 42, 0.8));
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      border-radius: 16px;
+      padding: 1.5rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 2rem;
+    }
+
+    .emergency-info h3 {
+      font-size: 1.15rem;
+      color: #f87171;
+      margin-bottom: 0.25rem;
+    }
+
+    .emergency-info p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .emergency-btn {
+      background: var(--danger);
+      color: white;
+      text-decoration: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: background 0.2s;
+    }
+
+    .emergency-btn:hover {
+      background: #dc2626;
+    }
+
+    .upload-zone {
+      border: 2px dashed var(--surface-border);
+      border-radius: 12px;
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+      cursor: pointer;
+      background: #0f172a;
+      transition: all 0.2s;
+    }
+
+    .upload-zone:hover {
+      border-color: var(--primary-light);
+      background: #131d35;
+    }
+
+    .preview-img {
+      max-height: 200px;
+      margin: 1rem auto;
+      border-radius: 8px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-inner">
+      <a href="/" class="brand">
+        <div class="shield-icon">🛡️</div>
+        <div>
+          <span class="brand-title">NIRBHAY</span>
+          <span class="brand-sub">Digital Safety & Scam Response Platform</span>
+        </div>
+      </a>
+      <div class="lang-selector">
+        <button class="lang-btn active" onclick="setLang('en')">English</button>
+        <button class="lang-btn" onclick="setLang('hi')">हिंदी</button>
+        <button class="lang-btn" onclick="setLang('gu')">ગુજરાતી</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="hero-banner">
+      <h1 id="hero-title">Protect Yourself Against Digital Fraud</h1>
+      <p id="hero-desc">Real-time scam detection for Indian SMS, WhatsApp threats, phishing links, and fraudulent UPI QR codes across English, Hindi, and Gujarati.</p>
+    </div>
+
+    <div class="tabs">
+      <button class="tab-btn active" onclick="switchTab('message')">💬 <span id="tab-msg">Message Scanner</span></button>
+      <button class="tab-btn" onclick="switchTab('url')">🔗 <span id="tab-url">URL Inspector</span></button>
+      <button class="tab-btn" onclick="switchTab('qr')">📱 <span id="tab-qr">QR / UPI Scanner</span></button>
+    </div>
+
+    <!-- TAB 1: Message Scanner -->
+    <div id="pane-message" class="card tab-pane">
+      <div class="form-group">
+        <label id="lbl-msg-input" for="msg-text">Paste suspected SMS or WhatsApp message:</label>
+        <textarea id="msg-text" rows="5" placeholder="e.g. Dear Customer, your electricity will be disconnected tonight at 9:30 PM. Call PGVCL officer immediately..."></textarea>
+        
+        <div class="quick-samples">
+          <span class="sample-label">Try sample:</span>
+          <button class="sample-chip" onclick="loadSample('hi_bill')">⚡ Hindi Electricity Threat</button>
+          <button class="sample-chip" onclick="loadSample('gu_pgvcl')">💡 Gujarati PGVCL Bill Scam</button>
+          <button class="sample-chip" onclick="loadSample('en_kyc')">🏦 English Bank Block Link</button>
+          <button class="sample-chip" onclick="loadSample('safe_txn')">✅ Safe Transaction Alert</button>
+        </div>
+      </div>
+      <button class="btn-submit" onclick="scanMessage()">🔍 <span id="btn-scan-msg">Verify Message</span></button>
+
+      <div id="result-message" class="result-box">
+        <div class="verdict-header">
+          <div id="badge-msg" class="badge"></div>
+          <div class="prob-meter">Scam Probability: <span id="prob-msg" class="prob-val"></span></div>
+        </div>
+        <div id="card-exp-msg" class="explanation-card">
+          <p id="exp-text-msg" style="font-weight: 500; font-size: 1.05rem;"></p>
+        </div>
+        <div id="tags-msg" class="tag-list"></div>
+      </div>
+    </div>
+
+    <!-- TAB 2: URL Inspector -->
+    <div id="pane-url" class="card tab-pane" style="display: none;">
+      <div class="form-group">
+        <label id="lbl-url-input" for="url-text">Enter suspicious web address (URL):</label>
+        <input type="text" id="url-text" placeholder="e.g. http://pgvcl-billupdate.top/pay.apk">
+        
+        <div class="quick-samples">
+          <span class="sample-label">Try sample:</span>
+          <button class="sample-chip" onclick="loadUrlSample('scam_apk')">🚨 Fake PGVCL APK Link</button>
+          <button class="sample-chip" onclick="loadUrlSample('sbi_phish')">⚠️ Phishing SBI Domain</button>
+          <button class="sample-chip" onclick="loadUrlSample('official_sbi')">🏛️ Official SBI Portal</button>
+        </div>
+      </div>
+      <button class="btn-submit" onclick="scanUrl()">🛡️ <span id="btn-scan-url">Inspect Link</span></button>
+
+      <div id="result-url" class="result-box">
+        <div class="verdict-header">
+          <div id="badge-url" class="badge"></div>
+          <div class="prob-meter">Domain Risk Score: <span id="prob-url" class="prob-val"></span></div>
+        </div>
+        <div id="card-exp-url" class="explanation-card">
+          <p id="exp-text-url" style="font-weight: 500; font-size: 1.05rem;"></p>
+        </div>
+        <div id="tags-url" class="tag-list"></div>
+      </div>
+    </div>
+
+    <!-- TAB 3: QR / UPI Scanner -->
+    <div id="pane-qr" class="card tab-pane" style="display: none;">
+      <div class="form-group">
+        <label id="lbl-qr-input">Upload or drag a QR code screenshot / image:</label>
+        <div class="upload-zone" onclick="document.getElementById('qr-file').click()">
+          <p style="font-size: 2rem; margin-bottom: 0.5rem;">📷</p>
+          <p style="font-weight: 600;">Click to upload or drag & drop image here</p>
+          <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.25rem;">Supports PNG, JPG, JPEG, WebP</p>
+          <input type="file" id="qr-file" accept="image/*" style="display: none;" onchange="handleQrUpload(event)">
+        </div>
+        <img id="qr-preview" class="preview-img" alt="QR Preview">
+      </div>
+      <button class="btn-submit" onclick="scanQr()">📱 <span id="btn-scan-qr">Decode & Inspect QR</span></button>
+
+      <div id="result-qr" class="result-box">
+        <div class="verdict-header">
+          <div id="badge-qr" class="badge"></div>
+          <div class="prob-meter" id="qr-type-lbl">Payload Type: <span id="type-qr" class="prob-val"></span></div>
+        </div>
+        <div id="card-exp-qr" class="explanation-card">
+          <p id="exp-text-qr" style="font-weight: 500; font-size: 1.05rem;"></p>
+        </div>
+        <div id="tags-qr" class="tag-list"></div>
+      </div>
+    </div>
+
+    <!-- Emergency Cyber Crime Action Banner -->
+    <div class="emergency-card">
+      <div class="emergency-info">
+        <h3>🚨 Fallen Victim to Fraud or Lost Money?</h3>
+        <p>Report financial cyber fraud immediately within the <strong>Golden Hour</strong> to freeze transactions.</p>
+      </div>
+      <a href="tel:1930" class="emergency-btn">📞 Call Helpline 1930</a>
+    </div>
+  </main>
+
+  <script>
+    let currentLang = 'en';
+
+    const SAMPLES = {
+      hi_bill: 'प्रिय उपभोक्ता, आपकी बिजली आज रात 9:30 बजे काट दी जाएगी क्योंकि आपका पिछले महीने का बिल अपडेट नहीं हुआ है। तुरंत बिजली अधिकारी 9876543210 पर संपर्क करें।',
+      gu_pgvcl: 'પ્રિય ગ્રાહક, તમારું PGVCL વીજળી બિલ બાકી હોવાથી આજે કનેક્શન કાપી નાખવામાં આવશે. તરત http://pgvcl-billupdate.top/pay.apk ડાઉનલોડ કરો.',
+      en_kyc: 'URGENT: Your SBI Bank account has been blocked due to incomplete KYC! Update PAN card immediately to avoid permanent suspension: https://bit.ly/sbi-urgent-kyc',
+      safe_txn: 'Dear Customer, your A/C ending XX4912 has been credited with Rs. 5,000.00 on 04-Nov-2026. Available balance is Rs. 14,230.50 - State Bank of India'
+    };
+
+    const URL_SAMPLES = {
+      scam_apk: 'http://pgvcl-billupdate.top/pay.apk',
+      sbi_phish: 'http://sbi-kyc-verification.site/login.html',
+      official_sbi: 'https://www.onlinesbi.sbi/portal/login.htm'
+    };
+
+    const UI_TRANSLATIONS = {
+      en: {
+        heroTitle: 'Protect Yourself Against Digital Fraud',
+        heroDesc: 'Real-time scam detection for Indian SMS, WhatsApp threats, phishing links, and fraudulent UPI QR codes across English, Hindi, and Gujarati.',
+        tabMsg: 'Message Scanner', tabUrl: 'URL Inspector', tabQr: 'QR / UPI Scanner',
+        btnScanMsg: 'Verify Message', btnScanUrl: 'Inspect Link', btnScanQr: 'Decode & Inspect QR',
+        lblMsg: 'Paste suspected SMS or WhatsApp message:',
+        lblUrl: 'Enter suspicious web address (URL):',
+        lblQr: 'Upload or drag a QR code screenshot / image:'
+      },
+      hi: {
+        heroTitle: 'डिजिटल धोखाधड़ी और साइबर अपराध से सुरक्षित रहें',
+        heroDesc: 'एसएमएस, व्हाट्सएप, फ़िशिंग लिंक और यूपीआई क्यूआर कोड धोखाधड़ी की हिंदी, गुजराती और अंग्रेजी में तत्काल जांच।',
+        tabMsg: 'संदेश जांच (SMS/WhatsApp)', tabUrl: 'वेबसाइट लिंक जांच', tabQr: 'क्यूआर / यूपीआई जांच',
+        btnScanMsg: 'संदेश की जांच करें', btnScanUrl: 'लिंक की जांच करें', btnScanQr: 'क्यूआर कोड जांचें',
+        lblMsg: 'संदिग्ध एसएमएस या व्हाट्सएप संदेश यहां पेस्ट करें:',
+        lblUrl: 'संदिग्ध वेबसाइट लिंक (URL) दर्ज करें:',
+        lblQr: 'क्यूआर कोड की फोटो या स्क्रीनशॉट अपलोड करें:'
+      },
+      gu: {
+        heroTitle: 'ડિજિટલ છેતરપિંડી અને સાયબર ફ્રોડથી સુરક્ષિત રહો',
+        heroDesc: 'એસએમએસ, વ્હોટ્સએપ, ફિશિંગ લિંક્સ અને યુપીઆઈ ક્યૂઆર કોડ ફ્રોડની ગુજરાતી, હિન્દી અને અંગ્રેજીમાં ત્વરિત ચકાસણી.',
+        tabMsg: 'મેસેજ તપાસ (SMS/WhatsApp)', tabUrl: 'વેબસાઇટ લિંક તપાસ', tabQr: 'QR / UPI તપાસ',
+        btnScanMsg: 'મેસેજ ચકાસો', btnScanUrl: 'લિંક ચકાસો', btnScanQr: 'QR કોડ ચકાસો',
+        lblMsg: 'શંકાસ્પદ એસએમએસ અથવા વ્હોટ્સએપ સંદેશ અહીં પેસ્ટ કરો:',
+        lblUrl: 'શંકાસ્પદ વેબસાઇટ લિંક (URL) દાખલ કરો:',
+        lblQr: 'QR કોડનો ફોટો અથવા સ્ક્રીનશોટ અપલોડ કરો:'
+      }
+    };
+
+    function setLang(lang) {
+      currentLang = lang;
+      document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+
+      const t = UI_TRANSLATIONS[lang];
+      document.getElementById('hero-title').innerText = t.heroTitle;
+      document.getElementById('hero-desc').innerText = t.heroDesc;
+      document.getElementById('tab-msg').innerText = t.tabMsg;
+      document.getElementById('tab-url').innerText = t.tabUrl;
+      document.getElementById('tab-qr').innerText = t.tabQr;
+      document.getElementById('btn-scan-msg').innerText = t.btnScanMsg;
+      document.getElementById('btn-scan-url').innerText = t.btnScanUrl;
+      document.getElementById('btn-scan-qr').innerText = t.btnScanQr;
+      document.getElementById('lbl-msg-input').innerText = t.lblMsg;
+      document.getElementById('lbl-url-input').innerText = t.lblUrl;
+      document.getElementById('lbl-qr-input').innerText = t.lblQr;
+    }
+
+    function switchTab(name) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-pane').forEach(p => p.style.display = 'none');
+      event.currentTarget.classList.add('active');
+      document.getElementById('pane-' + name).style.display = 'block';
+    }
+
+    function loadSample(key) {
+      document.getElementById('msg-text').value = SAMPLES[key];
+    }
+
+    function loadUrlSample(key) {
+      document.getElementById('url-text').value = URL_SAMPLES[key];
+    }
+
+    async function scanMessage() {
+      const text = document.getElementById('msg-text').value;
+      if (!text.trim()) return alert('Please enter message text to scan.');
+
+      const resBox = document.getElementById('result-message');
+      resBox.style.display = 'none';
+
+      try {
+        const resp = await fetch('/v2/check/message', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ text })
+        });
+        const data = await resp.json();
+        renderResult(data, 'msg');
+      } catch (err) {
+        alert('Server connection error. Ensure FastAPI server is running.');
+      }
+    }
+
+    async function scanUrl() {
+      const url = document.getElementById('url-text').value;
+      if (!url.trim()) return alert('Please enter a URL to inspect.');
+
+      try {
+        const resp = await fetch('/v2/check/url', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ url })
+        });
+        const data = await resp.json();
+        renderUrlResult(data);
+      } catch (err) {
+        alert('Server connection error.');
+      }
+    }
+
+    let selectedFile = null;
+    function handleQrUpload(e) {
+      selectedFile = e.target.files[0];
+      if (selectedFile) {
+        const reader = new FileReader();
+        reader.onload = function(evt) {
+          const prev = document.getElementById('qr-preview');
+          prev.src = evt.target.result;
+          prev.style.display = 'block';
+        };
+        reader.readAsDataURL(selectedFile);
+      }
+    }
+
+    async function scanQr() {
+      if (!selectedFile) return alert('Please select or upload a QR code image.');
+
+      const formData = new FormData();
+      formData.append('file', selectedFile);
+
+      try {
+        const resp = await fetch('/v2/check/qr', {
+          method: 'POST',
+          body: formData
+        });
+        const data = await resp.json();
+        renderQrResult(data);
+      } catch (err) {
+        alert('Error scanning QR code.');
+      }
+    }
+
+    function renderResult(data, prefix) {
+      const resBox = document.getElementById('result-' + prefix);
+      const badge = document.getElementById('badge-' + prefix);
+      const prob = document.getElementById('prob-' + prefix);
+      const card = document.getElementById('card-exp-' + prefix);
+      const expText = document.getElementById('exp-text-' + prefix);
+      const tags = document.getElementById('tags-' + prefix);
+
+      badge.className = 'badge badge-' + data.risk_level;
+      badge.innerText = data.risk_level === 'scam' ? '🚨 SCAM / PHISHING' : (data.risk_level === 'suspicious' ? '⚠️ SUSPICIOUS' : '✅ SAFE MESSAGE');
+
+      prob.innerText = (data.scam_probability * 100).toFixed(1) + '%';
+      card.className = 'explanation-card ' + data.risk_level;
+
+      const explanation = currentLang === 'hi' ? data.explanation_hi : (currentLang === 'gu' ? data.explanation_gu : data.explanation_en);
+      expText.innerText = explanation;
+
+      tags.innerHTML = '';
+      if (data.red_flags) {
+        data.red_flags.forEach(f => {
+          tags.innerHTML += `<span class="tag">🚩 ${f}</span>`;
+        });
+      }
+      if (data.embedded_urls && data.embedded_urls.length > 0) {
+        data.embedded_urls.forEach(u => {
+          tags.innerHTML += `<span class="tag">🔗 Embedded Link: ${u.domain} (${u.risk_level.toUpperCase()})</span>`;
+        });
+      }
+      resBox.style.display = 'block';
+    }
+
+    function renderUrlResult(data) {
+      const resBox = document.getElementById('result-url');
+      const badge = document.getElementById('badge-url');
+      const prob = document.getElementById('prob-url');
+      const card = document.getElementById('card-exp-url');
+      const expText = document.getElementById('exp-text-url');
+      const tags = document.getElementById('tags-url');
+
+      badge.className = 'badge badge-' + data.risk_level;
+      badge.innerText = data.risk_level === 'scam' ? '🚨 HIGH RISK PHISHING' : (data.risk_level === 'suspicious' ? '⚠️ SUSPICIOUS DOMAIN' : '✅ VERIFIED SAFE DOMAIN');
+      prob.innerText = (data.scam_probability * 100).toFixed(1) + '%';
+      card.className = 'explanation-card ' + data.risk_level;
+
+      const exp = currentLang === 'hi' ? data.explanation_hi : (currentLang === 'gu' ? data.explanation_gu : data.explanation_en);
+      expText.innerText = exp;
+
+      tags.innerHTML = '';
+      if (data.reasons) {
+        data.reasons.forEach(r => {
+          tags.innerHTML += `<span class="tag">⚠️ ${r}</span>`;
+        });
+      }
+      resBox.style.display = 'block';
+    }
+
+    function renderQrResult(data) {
+      const resBox = document.getElementById('result-qr');
+      const badge = document.getElementById('badge-qr');
+      const type = document.getElementById('type-qr');
+      const card = document.getElementById('card-exp-qr');
+      const expText = document.getElementById('exp-text-qr');
+      const tags = document.getElementById('tags-qr');
+
+      if (!data.qr_detected) {
+        badge.className = 'badge badge-suspicious';
+        badge.innerText = 'NO QR CODE FOUND';
+        card.className = 'explanation-card suspicious';
+        expText.innerText = data.message;
+        tags.innerHTML = '';
+        resBox.style.display = 'block';
+        return;
+      }
+
+      badge.className = 'badge badge-' + (data.risk_level || 'safe');
+      badge.innerText = data.risk_level === 'scam' ? '🚨 FRAUD / DEBIT RISK' : (data.risk_level === 'suspicious' ? '⚠️ SUSPICIOUS' : '✅ SAFE QR CODE');
+      type.innerText = (data.payload_type || 'generic').toUpperCase();
+      card.className = 'explanation-card ' + (data.risk_level || 'safe');
+
+      const exp = currentLang === 'hi' ? (data.explanation_hi || data.explanation) : (currentLang === 'gu' ? (data.explanation_gu || data.explanation) : data.explanation);
+      expText.innerText = exp;
+
+      tags.innerHTML = '';
+      if (data.is_upi) {
+        tags.innerHTML += `<span class="tag">💸 Payee: ${data.payee_name || data.payee_vpa}</span>`;
+        if (data.amount > 0) {
+          tags.innerHTML += `<span class="tag">💳 Debit Amount: ₹${data.amount}</span>`;
+        }
+      }
+      resBox.style.display = 'block';
+    }
+  </script>
+</body>
+</html>
+

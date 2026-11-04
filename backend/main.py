@@ -1,8 +1,16 @@
+import os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import FileResponse, HTMLResponse
 from pydantic import BaseModel
 
-app = FastAPI(title="Nirbhay API")
+from backend.routes import router as routes_v2
+from backend.text_service import TextClassifierService
+
+app = FastAPI(
+    title="Nirbhay API",
+    description="Multilingual Digital Safety & Scam Response Platform (En/Hi/Gu)"
+)
 
 app.add_middleware(
     CORSMiddleware,
@@ -11,6 +19,11 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Register v2 safety routes
+app.include_router(routes_v2)
+
+text_service = TextClassifierService()
+
 class CheckRequest(BaseModel):
     text: str
 
@@ -18,23 +31,21 @@ class CheckResponse(BaseModel):
     risk_level: str
     explanation: str
 
-@app.get("/")
+INDEX_HTML_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "frontend", "index.html"))
+
+@app.get("/", response_class=HTMLResponse)
 def root():
-    return {"message": "Nirbhay API is running"}
+    """Serves the interactive Nirbhay Web UI dashboard."""
+    if os.path.exists(INDEX_HTML_PATH):
+        return FileResponse(INDEX_HTML_PATH)
+    return HTMLResponse("<h2>Nirbhay API is running. UI file frontend/index.html not found.</h2>")
 
 @app.post("/check", response_model=CheckResponse)
 def check_message(request: CheckRequest):
-    # Placeholder logic — real classifier replaces this later
-    red_flags = ["otp", "urgent", "verify", "blocked", "kyc", "click here"]
-    text_lower = request.text.lower()
-    matched = [flag for flag in red_flags if flag in text_lower]
-
-    if matched:
-        return CheckResponse(
-            risk_level="suspicious",
-            explanation=f"This message contains red-flag terms: {', '.join(matched)}."
-        )
+    """Production endpoint powered by Multilingual NLP & URL fusion."""
+    res = text_service.inspect_message(request.text)
     return CheckResponse(
-        risk_level="safe",
-        explanation="No obvious scam indicators detected."
+        risk_level=res["risk_level"],
+        explanation=res["explanation_en"]
     )
+

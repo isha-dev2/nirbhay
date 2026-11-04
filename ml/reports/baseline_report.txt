@@ -1,0 +1,145 @@
+================================================================================
+STAGE 4 - BASELINE TF-IDF & FEATURE FUSION EVALUATION
+================================================================================
+Loading train-ready dataset from ml/data/processed/train_ready.csv...
+Total rows: 7949
+Total tabular features: 22
+URL feature subset: ['feat_has_url', 'feat_n_urls', 'feat_url_is_ip', 'feat_url_suspicious_tld', 'feat_url_is_shortener', 'feat_url_https', 'feat_url_length']
+Non-URL feature subset count: 15
+
+Starting 5-fold StratifiedGroupKFold cross-validation...
+
+--- Fold 1/5 ---
+  Train samples: 6359 (Real: 1225, Synthetic: 5134)
+  Test samples:  1590 (Real: 309, Synthetic: 1281)
+
+--- Fold 2/5 ---
+  Train samples: 6359 (Real: 1228, Synthetic: 5131)
+  Test samples:  1590 (Real: 306, Synthetic: 1284)
+
+--- Fold 3/5 ---
+  Train samples: 6359 (Real: 1225, Synthetic: 5134)
+  Test samples:  1590 (Real: 309, Synthetic: 1281)
+
+--- Fold 4/5 ---
+  Train samples: 6360 (Real: 1224, Synthetic: 5136)
+  Test samples:  1589 (Real: 310, Synthetic: 1279)
+
+--- Fold 5/5 ---
+  Train samples: 6359 (Real: 1234, Synthetic: 5125)
+  Test samples:  1590 (Real: 300, Synthetic: 1290)
+
+Cross-validation complete in 29.51s.
+
+Saving Out-Of-Fold predictions to ml/reports/oof_baseline.csv...
+Saved 7949 rows to ml/reports/oof_baseline.csv.
+
+================================================================================
+EVALUATION: Model A (TF-IDF char 2-5) [Train: All]
+================================================================================
+Real - Overall               | N=1534 (Scam=415, Safe=1119) | Prec=0.8169 | Rec=0.9566 | F1=0.8812 | MacroF1=0.9159 | CM=[[1030,89],[18,397]]
+Real - English (en)          | N=1195 (Scam=400, Safe=795 ) | Prec=0.8297 | Rec=0.9625 | F1=0.8912 | MacroF1=0.9148 | CM=[[716,79],[15,385]]
+Real - Gujarati (gu)         | N=322  (Scam=7  , Safe=315 ) | Prec=0.5000 | Rec=0.5714 | F1=0.5333 | MacroF1=0.7611 | CM=[[311,4],[3,4]]
+Real - Hindi (hi)            | N=17   (Scam=8  , Safe=9   ) | Prec=0.5714 | Rec=1.0000 | F1=0.7273 | MacroF1=0.6136 | CM=[[3,6],[0,8]]
+Synthetic - Overall          | N=6415 (Scam=1357, Safe=5058) | Prec=0.7652 | Rec=0.8909 | F1=0.8233 | MacroF1=0.8854 | CM=[[4687,371],[148,1209]]
+Synthetic - English (en)     | N=509  (Scam=263, Safe=246 ) | Prec=0.5680 | Rec=0.9848 | F1=0.7204 | MacroF1=0.5241 | CM=[[49,197],[4,259]]
+Synthetic - Gujarati (gu)    | N=497  (Scam=259, Safe=238 ) | Prec=0.7883 | Rec=0.9344 | F1=0.8551 | MacroF1=0.8318 | CM=[[173,65],[17,242]]
+Synthetic - Hindi (hi)       | N=5409 (Scam=835, Safe=4574) | Prec=0.8666 | Rec=0.8479 | F1=0.8571 | MacroF1=0.9157 | CM=[[4465,109],[127,708]]
+
+================================================================================
+EVALUATION: Model B (TF-IDF + All Feat) [Train: All]
+================================================================================
+Real - Overall               | N=1534 (Scam=415, Safe=1119) | Prec=0.8378 | Rec=0.9084 | F1=0.8717 | MacroF1=0.9106 | CM=[[1046,73],[38,377]]
+Real - English (en)          | N=1195 (Scam=400, Safe=795 ) | Prec=0.8703 | Rec=0.9225 | F1=0.8956 | MacroF1=0.9204 | CM=[[740,55],[31,369]]
+Real - Gujarati (gu)         | N=322  (Scam=7  , Safe=315 ) | Prec=0.0909 | Rec=0.1429 | F1=0.1111 | MacroF1=0.5428 | CM=[[305,10],[6,1]]
+Real - Hindi (hi)            | N=17   (Scam=8  , Safe=9   ) | Prec=0.4667 | Rec=0.8750 | F1=0.6087 | MacroF1=0.3953 | CM=[[1,8],[1,7]]
+Synthetic - Overall          | N=6415 (Scam=1357, Safe=5058) | Prec=0.9596 | Rec=0.9278 | F1=0.9434 | MacroF1=0.9643 | CM=[[5005,53],[98,1259]]
+Synthetic - English (en)     | N=509  (Scam=263, Safe=246 ) | Prec=0.9925 | Rec=1.0000 | F1=0.9962 | MacroF1=0.9961 | CM=[[244,2],[0,263]]
+Synthetic - Gujarati (gu)    | N=497  (Scam=259, Safe=238 ) | Prec=0.9922 | Rec=0.9807 | F1=0.9864 | MacroF1=0.9859 | CM=[[236,2],[5,254]]
+Synthetic - Hindi (hi)       | N=5409 (Scam=835, Safe=4574) | Prec=0.9381 | Rec=0.8886 | F1=0.9127 | MacroF1=0.9486 | CM=[[4525,49],[93,742]]
+
+================================================================================
+EVALUATION: Model B (TF-IDF + Feat No-URL) [Train: All]
+================================================================================
+Real - Overall               | N=1534 (Scam=415, Safe=1119) | Prec=0.8017 | Rec=0.9253 | F1=0.8591 | MacroF1=0.9006 | CM=[[1024,95],[31,384]]
+Real - English (en)          | N=1195 (Scam=400, Safe=795 ) | Prec=0.8382 | Rec=0.9325 | F1=0.8828 | MacroF1=0.9094 | CM=[[723,72],[27,373]]
+Real - Gujarati (gu)         | N=322  (Scam=7  , Safe=315 ) | Prec=0.1667 | Rec=0.4286 | F1=0.2400 | MacroF1=0.6047 | CM=[[300,15],[4,3]]
+Real - Hindi (hi)            | N=17   (Scam=8  , Safe=9   ) | Prec=0.5000 | Rec=1.0000 | F1=0.6667 | MacroF1=0.4333 | CM=[[1,8],[0,8]]
+Synthetic - Overall          | N=6415 (Scam=1357, Safe=5058) | Prec=0.7961 | Rec=0.9123 | F1=0.8503 | MacroF1=0.9032 | CM=[[4741,317],[119,1238]]
+Synthetic - English (en)     | N=509  (Scam=263, Safe=246 ) | Prec=0.7005 | Rec=0.9962 | F1=0.8226 | MacroF1=0.7630 | CM=[[134,112],[1,262]]
+Synthetic - Gujarati (gu)    | N=497  (Scam=259, Safe=238 ) | Prec=0.8643 | Rec=0.9344 | F1=0.8980 | MacroF1=0.8885 | CM=[[200,38],[17,242]]
+Synthetic - Hindi (hi)       | N=5409 (Scam=835, Safe=4574) | Prec=0.8147 | Rec=0.8790 | F1=0.8456 | MacroF1=0.9081 | CM=[[4407,167],[101,734]]
+
+================================================================================
+EVALUATION: Ablation: Model A [Train: Real Only]
+================================================================================
+Real - Overall               | N=1534 (Scam=415, Safe=1119) | Prec=0.8945 | Rec=0.9398 | F1=0.9166 | MacroF1=0.9423 | CM=[[1073,46],[25,390]]
+Real - English (en)          | N=1195 (Scam=400, Safe=795 ) | Prec=0.9035 | Rec=0.9600 | F1=0.9309 | MacroF1=0.9472 | CM=[[754,41],[16,384]]
+Real - Gujarati (gu)         | N=322  (Scam=7  , Safe=315 ) | Prec=0.0000 | Rec=0.0000 | F1=0.0000 | MacroF1=0.4945 | CM=[[315,0],[7,0]]
+Real - Hindi (hi)            | N=17   (Scam=8  , Safe=9   ) | Prec=0.5455 | Rec=0.7500 | F1=0.6316 | MacroF1=0.5825 | CM=[[4,5],[2,6]]
+Synthetic - Overall          | N=6415 (Scam=1357, Safe=5058) | Prec=0.4226 | Rec=0.4584 | F1=0.4397 | MacroF1=0.6406 | CM=[[4208,850],[735,622]]
+Synthetic - English (en)     | N=509  (Scam=263, Safe=246 ) | Prec=0.5000 | Rec=0.2890 | F1=0.3663 | MacroF1=0.4651 | CM=[[170,76],[187,76]]
+Synthetic - Gujarati (gu)    | N=497  (Scam=259, Safe=238 ) | Prec=0.0000 | Rec=0.0000 | F1=0.0000 | MacroF1=0.3238 | CM=[[238,0],[259,0]]
+Synthetic - Hindi (hi)       | N=5409 (Scam=835, Safe=4574) | Prec=0.4136 | Rec=0.6539 | F1=0.5067 | MacroF1=0.6920 | CM=[[3800,774],[289,546]]
+
+================================================================================
+EVALUATION: Ablation: Model B [Train: Real Only]
+================================================================================
+Real - Overall               | N=1534 (Scam=415, Safe=1119) | Prec=0.8679 | Rec=0.9181 | F1=0.8923 | MacroF1=0.9254 | CM=[[1061,58],[34,381]]
+Real - English (en)          | N=1195 (Scam=400, Safe=795 ) | Prec=0.8818 | Rec=0.9325 | F1=0.9064 | MacroF1=0.9287 | CM=[[745,50],[27,373]]
+Real - Gujarati (gu)         | N=322  (Scam=7  , Safe=315 ) | Prec=0.3333 | Rec=0.1429 | F1=0.2000 | MacroF1=0.5937 | CM=[[313,2],[6,1]]
+Real - Hindi (hi)            | N=17   (Scam=8  , Safe=9   ) | Prec=0.5385 | Rec=0.8750 | F1=0.6667 | MacroF1=0.5641 | CM=[[3,6],[1,7]]
+Synthetic - Overall          | N=6415 (Scam=1357, Safe=5058) | Prec=0.3618 | Rec=0.8077 | F1=0.4998 | MacroF1=0.6200 | CM=[[3125,1933],[261,1096]]
+Synthetic - English (en)     | N=509  (Scam=263, Safe=246 ) | Prec=0.9771 | Rec=0.8099 | F1=0.8857 | MacroF1=0.8916 | CM=[[241,5],[50,213]]
+Synthetic - Gujarati (gu)    | N=497  (Scam=259, Safe=238 ) | Prec=1.0000 | Rec=0.6023 | F1=0.7518 | MacroF1=0.7870 | CM=[[238,0],[103,156]]
+Synthetic - Hindi (hi)       | N=5409 (Scam=835, Safe=4574) | Prec=0.2738 | Rec=0.8707 | F1=0.4166 | MacroF1=0.5694 | CM=[[2646,1928],[108,727]]
+
+================================================================================
+EVALUATION: Ablation: Model B (No-URL) [Train: Real Only]
+================================================================================
+Real - Overall               | N=1534 (Scam=415, Safe=1119) | Prec=0.8584 | Rec=0.9060 | F1=0.8816 | MacroF1=0.9180 | CM=[[1057,62],[39,376]]
+Real - English (en)          | N=1195 (Scam=400, Safe=795 ) | Prec=0.8744 | Rec=0.9225 | F1=0.8978 | MacroF1=0.9221 | CM=[[742,53],[31,369]]
+Real - Gujarati (gu)         | N=322  (Scam=7  , Safe=315 ) | Prec=0.0000 | Rec=0.0000 | F1=0.0000 | MacroF1=0.4913 | CM=[[311,4],[7,0]]
+Real - Hindi (hi)            | N=17   (Scam=8  , Safe=9   ) | Prec=0.5833 | Rec=0.8750 | F1=0.7000 | MacroF1=0.6357 | CM=[[4,5],[1,7]]
+Synthetic - Overall          | N=6415 (Scam=1357, Safe=5058) | Prec=0.2641 | Rec=0.7811 | F1=0.3947 | MacroF1=0.4794 | CM=[[2104,2954],[297,1060]]
+Synthetic - English (en)     | N=509  (Scam=263, Safe=246 ) | Prec=0.6563 | Rec=0.8061 | F1=0.7235 | MacroF1=0.6743 | CM=[[135,111],[51,212]]
+Synthetic - Gujarati (gu)    | N=497  (Scam=259, Safe=238 ) | Prec=0.9196 | Rec=0.3977 | F1=0.5553 | MacroF1=0.6452 | CM=[[229,9],[156,103]]
+Synthetic - Hindi (hi)       | N=5409 (Scam=835, Safe=4574) | Prec=0.2082 | Rec=0.8922 | F1=0.3376 | MacroF1=0.4405 | CM=[[1740,2834],[90,745]]
+
+Metrics table saved to ml/reports/metrics_summary.csv
+
+================================================================================
+SUMMARY COMPARISON ON REAL TEST ROWS (is_real == True)
+================================================================================
+
+[Scam F1 Score on Real Data]:
+slice                                          Real - English (en)  Real - Gujarati (gu)  Real - Hindi (hi)  Real - Overall
+model                                                                                                                      
+Ablation: Model A [Train: Real Only]                      0.930909              0.000000           0.631579        0.916569
+Ablation: Model B (No-URL) [Train: Real Only]             0.897810              0.000000           0.700000        0.881594
+Ablation: Model B [Train: Real Only]                      0.906440              0.200000           0.666667        0.892272
+Model A (TF-IDF char 2-5) [Train: All]                    0.891204              0.533333           0.727273        0.881243
+Model B (TF-IDF + All Feat) [Train: All]                  0.895631              0.111111           0.608696        0.871676
+Model B (TF-IDF + Feat No-URL) [Train: All]               0.882840              0.240000           0.666667        0.859060
+
+[Macro F1 Score on Real Data]:
+slice                                          Real - English (en)  Real - Gujarati (gu)  Real - Hindi (hi)  Real - Overall
+model                                                                                                                      
+Ablation: Model A [Train: Real Only]                      0.947244              0.494505           0.582456        0.942272
+Ablation: Model B (No-URL) [Train: Real Only]             0.922119              0.491311           0.635714        0.917998
+Ablation: Model B [Train: Real Only]                      0.928651              0.593691           0.564103        0.925359
+Model A (TF-IDF char 2-5) [Train: All]                    0.914802              0.761102           0.613636        0.915933
+Model B (TF-IDF + All Feat) [Train: All]                  0.920357              0.542776           0.395257        0.910645
+Model B (TF-IDF + Feat No-URL) [Train: All]               0.909381              0.604653           0.433333        0.900551
+
+================================================================================
+SUMMARY COMPARISON ON SYNTHETIC TEST ROWS (is_real == False)
+================================================================================
+slice                                          Synthetic - English (en)  Synthetic - Gujarati (gu)  Synthetic - Hindi (hi)  Synthetic - Overall
+model                                                                                                                                          
+Ablation: Model A [Train: Real Only]                           0.366265                   0.000000                0.506729             0.439731
+Ablation: Model B (No-URL) [Train: Real Only]                  0.723549                   0.555256                0.337562             0.394712
+Ablation: Model B [Train: Real Only]                           0.885655                   0.751807                0.416619             0.499772
+Model A (TF-IDF char 2-5) [Train: All]                         0.720445                   0.855124                0.857143             0.823289
+Model B (TF-IDF + All Feat) [Train: All]                       0.996212                   0.986408                0.912669             0.943425
+Model B (TF-IDF + Feat No-URL) [Train: All]                    0.822606                   0.897959                0.845622             0.850275

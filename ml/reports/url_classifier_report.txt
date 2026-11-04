@@ -1,0 +1,42 @@
+============================================================
+NIRBHAY CLASSIFIER 2: URL DETECTOR PERFORMANCE REPORT
+============================================================
+Total Samples: 156
+Safe URLs: 84
+Scam URLs: 72
+
+Cross-Validation Metrics:
+              precision    recall  f1-score   support
+
+    Safe URL     0.9882    1.0000    0.9941        84
+    Scam URL     1.0000    0.9861    0.9930        72
+
+    accuracy                         0.9936       156
+   macro avg     0.9941    0.9931    0.9935       156
+weighted avg     0.9937    0.9936    0.9936       156
+
+Confusion Matrix:
+[[TN=84, FP=0],
+ [FN=1, TP=71]]
+
+ROC-AUC: 0.9998
+
+Feature Importances:
+                 feature  importance
+                is_https    0.219887
+          suspicious_tld    0.202241
+             num_hyphens    0.107617
+     brand_impersonation    0.084900
+         subdomain_count    0.066551
+             host_length    0.063327
+             digit_ratio    0.063212
+              path_depth    0.061725
+              num_digits    0.033733
+suspicious_keyword_count    0.032732
+            is_shortener    0.028306
+              url_length    0.016577
+                num_dots    0.008956
+                 has_apk    0.007006
+                  has_ip    0.003230
+           has_at_symbol    0.000000
+============================================================

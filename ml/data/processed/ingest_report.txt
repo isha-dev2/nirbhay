@@ -1,0 +1,89 @@
+============================================================
+STAGE 1 - INGESTION OF EXTRA SOURCES REPORT
+============================================================
+
+[1] Loading existing master dataset from ml/data/processed/master_dataset.csv...
+    Master v1 loaded: 866 rows
+
+[2] Ingesting source (c): Hugging Face dbarbedillo/SMS_Spam_Multilingual_Collection_Dataset...
+    Total rows in HF dataset: 5572
+    Available text columns in HF dataset: ['text', 'text_hi', 'text_de', 'text_fr', 'text_es', 'text_zh', 'text_ar', 'text_bn', 'text_ru', 'text_pt', 'text_ja', 'text_id', 'text_ur', 'text_pa', 'text_jv', 'text_tr', 'text_ko', 'text_mr', 'text_uk', 'text_sv', 'text_no']
+    Gujarati language check: No 'text_gu' or Gujarati column exists in this dataset.
+    Extracted Hindi rows with >=50% Devanagari script: 5323
+    HF label breakdown:
+label
+safe    4641
+scam     682
+    Saved raw HF extract to ml/data/raw/hf_hi_gu_extract.csv
+
+[3] Ingesting source (a): Pari dataset from ml/data/raw/multilingual_phishing_dataset_pari.csv...
+    Pari dataset loaded: 1588 rows
+    Pari processed: 1588 rows (en: 532, gu: 528, hi: 528)
+
+[4] Ingesting source (b): Priya dataset from ml/data/raw/sms_spam_cleaned_priya.xlsx...
+    Priya raw rows loaded: 2113
+    Rows after dropping blank rows: 2112
+    Rows after dropping Kaggle 800 rows: 1312 (phone SMS remaining)
+    Rows after dropping texts already present in master: 1310 (dropped 2)
+    Applying PII masking (<PHONE>, <EMAIL>, <NUM>, <NAME>) to phone SMS...
+    Normalized language distribution in phone SMS:
+language
+en       786
+gu       502
+gu-en     20
+hi-en      1
+hi         1
+    Auto-SCAM rows isolated for manual review: 93
+    Auto-SAFE rows candidate for ingestion: 1217
+    Saved 93 rows to review queue: ml/data/processed/needs_manual_review.csv
+    Unique safe templates: 326. Kept at most 5 per template: 676 rows (from 1217)
+
+[5] Combining all sources and performing global deduplication...
+    Total rows combined before global deduplication: 8453
+    Exact-duplicate texts dropped: 504
+    Final master_v2 total rows: 7949
+    Written final master dataset to ml/data/processed/master_v2.csv
+
+============================================================
+STAGE 1 SUMMARY COUNTS (language x label x collected_by):
+============================================================
+language label          collected_by  count
+      en  safe               dataset    400
+      en  safe             synthetic    246
+      en  safe user_consented_device    395
+      en  scam               dataset    400
+      en  scam             synthetic    263
+      gu  safe                  isha     44
+      gu  safe             synthetic    238
+      gu  safe user_consented_device    265
+      gu  scam               scraper      7
+      gu  scam             synthetic    259
+   gu-en  safe user_consented_device      6
+      hi  safe                  isha      7
+      hi  safe             synthetic   4574
+      hi  safe user_consented_device      1
+      hi  scam               scraper      8
+      hi  scam             synthetic    835
+   hi-en  safe user_consented_device      1
+
+Language totals:
+language
+hi       5425
+en       1704
+gu        813
+gu-en       6
+hi-en       1
+
+Label totals:
+label
+safe    6177
+scam    1772
+
+Collected_by totals:
+collected_by
+synthetic                6415
+dataset                   800
+user_consented_device     668
+isha                       51
+scraper                    15
+============================================================
