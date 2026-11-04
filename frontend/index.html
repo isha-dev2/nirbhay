@@ -1200,6 +1200,10 @@
       });
     });
 
+    const API_BASE = (window.location.protocol === 'file:' || (window.location.port !== '8000' && window.location.port !== '')) 
+      ? 'http://localhost:8000' 
+      : '';
+
     async function scanMessage() {
       const text = document.getElementById('msg-text').value;
       if (!text.trim()) return alert('Please enter message text to scan.');
@@ -1208,7 +1212,7 @@
       resBox.style.display = 'none';
 
       try {
-        const resp = await fetch('/v2/check/message', {
+        const resp = await fetch(API_BASE + '/v2/check/message', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ text })
@@ -1216,7 +1220,8 @@
         const data = await resp.json();
         renderResult(data, 'msg');
       } catch (err) {
-        alert('Server connection error. Ensure FastAPI server is running.');
+        console.error('Fetch error:', err);
+        alert('Server connection error. Please ensure the server is running by running in your terminal:\n\n./backend/venv/bin/python run_app.py\n\nand open http://localhost:8000');
       }
     }
 
@@ -1225,7 +1230,7 @@
       if (!url.trim()) return alert('Please enter a URL to inspect.');
 
       try {
-        const resp = await fetch('/v2/check/url', {
+        const resp = await fetch(API_BASE + '/v2/check/url', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ url })
@@ -1233,7 +1238,8 @@
         const data = await resp.json();
         renderUrlResult(data);
       } catch (err) {
-        alert('Server connection error.');
+        console.error('Fetch error:', err);
+        alert('Server connection error. Ensure FastAPI server is running on http://localhost:8000.');
       }
     }
 
@@ -1258,14 +1264,15 @@
       formData.append('file', selectedFile);
 
       try {
-        const resp = await fetch('/v2/check/qr', {
+        const resp = await fetch(API_BASE + '/v2/check/qr', {
           method: 'POST',
           body: formData
         });
         const data = await resp.json();
         renderQrResult(data);
       } catch (err) {
-        alert('Error scanning QR code.');
+        console.error('Fetch error:', err);
+        alert('Error scanning QR code. Ensure FastAPI server is running on http://localhost:8000.');
       }
     }
 
