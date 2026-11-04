@@ -782,7 +782,7 @@
       </div>
       <button class="btn-submit" onclick="scanMessage()">🔍 <span id="btn-scan-msg">Verify Message</span></button>
 
-      <div id="result-message" class="result-box">
+      <div id="result-msg" class="result-box">
         <div class="verdict-header">
           <div id="badge-msg" class="badge"></div>
           <div class="prob-meter">Scam Probability: <span id="prob-msg" class="prob-val"></span></div>
@@ -1208,20 +1208,31 @@
       const text = document.getElementById('msg-text').value;
       if (!text.trim()) return alert('Please enter message text to scan.');
 
-      const resBox = document.getElementById('result-message');
-      resBox.style.display = 'none';
+      const resBox = document.getElementById('result-msg') || document.getElementById('result-message');
+      if (resBox) resBox.style.display = 'none';
 
+      let data;
       try {
         const resp = await fetch(API_BASE + '/v2/check/message', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ text })
         });
-        const data = await resp.json();
-        renderResult(data, 'msg');
+        if (!resp.ok) {
+          throw new Error('HTTP Error ' + resp.status + ': ' + resp.statusText);
+        }
+        data = await resp.json();
       } catch (err) {
         console.error('Fetch error:', err);
-        alert('Server connection error. Please ensure the server is running by running in your terminal:\n\n./backend/venv/bin/python run_app.py\n\nand open http://localhost:8000');
+        alert('Server connection error. Please ensure the server is running on http://localhost:8000.\n\nDetails: ' + err.message);
+        return;
+      }
+
+      try {
+        renderResult(data, 'msg');
+      } catch (renderErr) {
+        console.error('Render error:', renderErr);
+        alert('Display error: ' + renderErr.message);
       }
     }
 
@@ -1229,17 +1240,28 @@
       const url = document.getElementById('url-text').value;
       if (!url.trim()) return alert('Please enter a URL to inspect.');
 
+      let data;
       try {
         const resp = await fetch(API_BASE + '/v2/check/url', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ url })
         });
-        const data = await resp.json();
-        renderUrlResult(data);
+        if (!resp.ok) {
+          throw new Error('HTTP Error ' + resp.status);
+        }
+        data = await resp.json();
       } catch (err) {
         console.error('Fetch error:', err);
-        alert('Server connection error. Ensure FastAPI server is running on http://localhost:8000.');
+        alert('Server connection error on URL check: ' + err.message);
+        return;
+      }
+
+      try {
+        renderUrlResult(data);
+      } catch (renderErr) {
+        console.error('Render error:', renderErr);
+        alert('Display error: ' + renderErr.message);
       }
     }
 
@@ -1263,26 +1285,42 @@
       const formData = new FormData();
       formData.append('file', selectedFile);
 
+      let data;
       try {
         const resp = await fetch(API_BASE + '/v2/check/qr', {
           method: 'POST',
           body: formData
         });
-        const data = await resp.json();
-        renderQrResult(data);
+        if (!resp.ok) {
+          throw new Error('HTTP Error ' + resp.status);
+        }
+        data = await resp.json();
       } catch (err) {
         console.error('Fetch error:', err);
-        alert('Error scanning QR code. Ensure FastAPI server is running on http://localhost:8000.');
+        alert('Error scanning QR code: ' + err.message);
+        return;
+      }
+
+      try {
+        renderQrResult(data);
+      } catch (renderErr) {
+        console.error('Render error:', renderErr);
+        alert('Display error: ' + renderErr.message);
       }
     }
 
     function renderResult(data, prefix) {
-      const resBox = document.getElementById('result-' + prefix);
+      const resBox = document.getElementById('result-' + prefix) || document.getElementById('result-message');
       const badge = document.getElementById('badge-' + prefix);
       const prob = document.getElementById('prob-' + prefix);
       const card = document.getElementById('card-exp-' + prefix);
       const expText = document.getElementById('exp-text-' + prefix);
       const tags = document.getElementById('tags-' + prefix);
+
+      if (!resBox || !badge || !prob || !card || !expText || !tags) {
+        console.error('Missing result DOM elements for prefix:', prefix);
+        return;
+      }
 
       badge.className = 'badge badge-' + data.risk_level;
       badge.innerText = data.risk_level === 'scam' ? '🚨 SCAM / PHISHING' : (data.risk_level === 'suspicious' ? '⚠️ SUSPICIOUS' : '✅ SAFE MESSAGE');
