@@ -52,7 +52,7 @@ class NirbhayEngine:
             self.text_model = joblib.load(text_path)
             self.url_model = joblib.load(url_path)
             self.fusion_model = joblib.load(fusion_path)
-            print("Nirbhay models loaded successfully from disk.")
+            print("Sanket (TRINETRA) models loaded successfully from disk.")
         else:
             print("Models not found on disk. Training initial models...")
             self.eval_report = train_and_evaluate()
@@ -102,14 +102,25 @@ class NirbhayEngine:
             p_url = 0.0
 
         # 3. Evidence Fusion Inference
-        if self.fusion_model and (text or final_url):
-            fusion_feats = np.array([[p_text, p_url, has_url, p_text * p_url]])
+        if not text and final_url:
+            p_fusion = p_url
+        elif text and not final_url:
+            if self.fusion_model:
+                try:
+                    fusion_feats = np.array([[p_text, 0.0, 0, 0.0]])
+                    p_fusion = float(self.fusion_model.predict_proba(fusion_feats)[0, 1])
+                except Exception:
+                    p_fusion = p_text
+            else:
+                p_fusion = p_text
+        elif self.fusion_model and text and final_url:
+            fusion_feats = np.array([[p_text, p_url, 1, p_text * p_url]])
             try:
                 p_fusion = float(self.fusion_model.predict_proba(fusion_feats)[0, 1])
             except Exception:
-                p_fusion = (p_text * 0.6 + p_url * 0.4) if has_url else p_text
+                p_fusion = (p_text * 0.6 + p_url * 0.4)
         else:
-            p_fusion = p_text
+            p_fusion = p_text if text else p_url
 
         # 4. Domain Whitelist & Structural Heuristics Safety Net
         if final_url:
@@ -158,9 +169,9 @@ class NirbhayEngine:
 
         # WhatsApp share text for family protection
         share_texts = {
-            "en": f"⚠️ CYBER FRAUD ALERT: I verified this message on Nirbhay Safety Shield. It is flagged as {threat_level.replace('_', ' ')} ({risk_score}% Risk). Please DO NOT click any links, DO NOT share your OTP or bank details! If in doubt, call National Cybercrime Helpline 1930.",
-            "hi": f"⚠️ साइबर फ्रॉड चेतावनी: मैंने निर्भय डिजिटल सुरक्षा ऐप पर इस मैसेज की जांच की है। यह अत्यधिक संदिग्ध/फिशिंग फ्रॉड ({risk_score}% जोखिम) पाया गया है। कृपया किसी भी लिंक पर क्लिक न करें, ओटीपी न दें और पैसे न भेजें! सहायता के लिए 1930 पर संपर्क करें।",
-            "gu": f"⚠️ સાયબર છેતરપિંડી સાવચેતી: મેં નિર્ભય સુરક્ષા એપ પર આ મેસેજ તપાસ્યો છે. આ બનાવટી ફિશિંગ ફ્રોડ ({risk_score}% જોખમ) જણાયો છે. કોઈ લિંક પર ક્લિક ન કરશો કે OTP કોઈને આપશો નહીં! સાયબર હેલ્પલાઇન: 1930."
+            "en": f"⚠️ CYBER FRAUD ALERT: I verified this on Nirbhay AI Threat Platform. It is flagged as {threat_level.replace('_', ' ')} ({risk_score}% Risk). Please DO NOT click any links, DO NOT share your OTP or bank details! National Cybercrime Helpline: 1930.",
+            "hi": f"⚠️ साइबर फ्रॉड चेतावनी: मैंने निर्भय (Nirbhay) सुरक्षा प्लेटफॉर्म पर इसकी जांच की है। यह अत्यधिक संदिग्ध/फिशिंग फ्रॉड ({risk_score}% जोखिम) पाया गया है। कृपया किसी भी लिंक पर क्लिक न करें, ओटीपी न दें और पैसे न भेजें! राष्ट्रीय साइबर हेल्पलाइन: 1930.",
+            "gu": f"⚠️ સાયબર છેતરપિંડી સાવચેતી: મેં નિર્ભય (Nirbhay) સુરક્ષા પ્લેટફોર્મ પર આ તપાસ્યું છે. આ બનાવટી ફિશિંગ ફ્રોડ ({risk_score}% જોખમ) જણાયું છે. કોઈ લિંક પર ક્લિક ન કરશો કે OTP કોઈને આપશો નહીં! રાષ્ટ્રીય સાયબર હેલ્પલાઇન: 1930."
         }
 
         return {
@@ -178,7 +189,7 @@ class NirbhayEngine:
                 "text_char_count": len(text)
             },
             "modality_scores": {
-                "text_only_risk": round(p_text * 100, 1),
+                "text_only_risk": round(p_text * 100, 1) if text else None,
                 "url_only_risk": round(p_url * 100, 1) if has_url else None,
                 "fused_risk": risk_score
             },

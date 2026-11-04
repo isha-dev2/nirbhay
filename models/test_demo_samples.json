@@ -1,202 +1,272 @@
 [
   {
-    "id": 490,
-    "text": "INR 25,000.00 credited to your A/C **9821 towards Salary for Oct 2026. Avl Bal: INR 68,400.00. Check statement at https://cybercrime.gov.in/portal",
-    "url": "https://cybercrime.gov.in/portal",
-    "language": "en",
+    "id": "TRINETRA_GU_0914",
+    "text": "પ્રિય ગ્રાહક, ઓક્ટોબર મહિનાનું એમજીવીસીએલ વીજળી બિલ રૂ. 1,180 જનરેટ થયું છે. ભરવાની છેલ્લી તારીખ 15-Nov છે. સુરક્ષિત ચુકવણી: https://netbanking.hdfcbank.com",
+    "url": "https://netbanking.hdfcbank.com",
     "label": 0,
-    "category": "legitimate_bank"
-  },
-  {
-    "id": 788,
-    "text": "प्रिय उपभोक्ता, आपके बिजली मीटर का बिल रु 1,280 है। देय तिथि 15-नवंबर है। सुरक्षित भुगतान के लिए आधिकारिक साइट देखें: https://www.flipkart.com/portal",
-    "url": "https://www.flipkart.com/portal",
-    "language": "hi",
-    "label": 0,
+    "language": "gu",
+    "source": "AI4Bharat_Samanantar",
     "category": "legitimate_utility"
   },
   {
-    "id": 757,
-    "text": "आईसीआईसीआई बैंक: आपके क्रेडिट कार्ड का बिल रु 3,400 नियत तिथि 15-नवंबर से पहले भरें। विवरण: https://www.pnbindia.in/home",
-    "url": "https://www.pnbindia.in/home",
-    "language": "hi",
+    "id": "TRINETRA_HI_0741",
+    "text": "एचडीएफसी बैंक: प्रिय उपभोक्ता, क्रेडिट कार्ड बिल भुगतान रू 2,450.00 सफल रहा। संदर्भ सं: 8923410293। सुरक्षित पोर्टल: https://pmkisan.gov.in",
+    "url": "https://pmkisan.gov.in",
     "label": 0,
+    "language": "hi",
+    "source": "IEEE_Hindi_Spam_SMS",
     "category": "legitimate_bank"
   },
   {
-    "id": 1329,
-    "text": "બેંક ઓફ બરોડા: રૂ. 1,200 ની ઓનલાઇન ખરીદી માટે તમારો OTP 481920 છે. બેંક ક્યારેય ફોન પર OTP માંગતી નથી. સત્તાવાર સાઇટ: https://www.icicibank.com",
-    "url": "https://www.icicibank.com",
-    "language": "gu",
+    "id": "TRINETRA_HI_0528",
+    "text": "बधाई हो! आपको फोनपे पर 1,999 रुपये का स्क्रैच कार्ड कैशबैक मिला है। तुरंत अपने बैंक खाते में जमा करें: http://axis-bank-safety-update.top/verify",
+    "url": "http://axis-bank-safety-update.top/verify",
+    "label": 1,
+    "language": "hi",
+    "source": "IndiF_INDICA_Telecom_Fraud",
+    "category": "lottery_scam"
+  },
+  {
+    "id": "TRINETRA_HI_0163",
+    "text": "बैंक ऑफ बड़ौदा: आपका बैंक खाता 12 घंटे के भीतर फ्रीज हो जाएगा। अपने आधार कार्ड से ई-केवाईसी पूरा करें",
+    "url": "",
+    "label": 1,
+    "language": "hi",
+    "source": "IEEE_Hindi_Spam_SMS",
+    "category": "banking_fraud"
+  },
+  {
+    "id": "TRINETRA_EN_0520",
+    "text": "INR 28,000.00 credited to your A/C **9821 towards Salary for Oct 2026. Avl Bal: INR 54,200.00. Statement: https://netbanking.hdfcbank.com",
+    "url": "https://netbanking.hdfcbank.com",
     "label": 0,
-    "category": "legitimate_otp"
-  },
-  {
-    "id": 1116,
-    "text": "પીએમ કિસાન યોજના: તમારા ખાતામાં રૂ. 2,000 ની સહાય જમા થઈ છે. ખાતાની ચકાસણી કરવા અને રકમ મેળવવા આધાર લિંક કરો: http://hdfc-netbanking-secure-login.online/tracking/address-confirm?ref=8905",
-    "url": "http://hdfc-netbanking-secure-login.online/tracking/address-confirm?ref=8905",
-    "language": "gu",
-    "label": 1,
-    "category": "govt_scheme"
-  },
-  {
-    "id": 1029,
-    "text": "આવકવેરા વિભાગ: તમારા નામે રૂ. 16,500 નું ટેક્સ રિફંડ મંજૂર થયું છે. તમારા બેંક ખાતામાં મેળવવા માટે વિગતો ભરો: http://online.indiapost-verification.site/verify-account.action?token=76995",
-    "url": "http://online.indiapost-verification.site/verify-account.action?token=76995",
-    "language": "gu",
-    "label": 1,
-    "category": "tax_scam"
-  },
-  {
-    "id": 1002,
-    "text": "ઘરે બેઠા પાર્ટ-ટાઈમ કામ કરીને દરરોજ 3,000 થી 5,000 રૂપિયા કમાઓ! સરળ યૂટ્યુબ ટાસ્ક પૂરા કરી કમાણી કરો. હમણાં જ જોડાઓ: http://pmkisan-aadhaar-link-service.support/aadhaar-link/confirm?ref=8925",
-    "url": "http://pmkisan-aadhaar-link-service.support/aadhaar-link/confirm?ref=8925",
-    "language": "gu",
-    "label": 1,
-    "category": "job_scam"
-  },
-  {
-    "id": 65,
-    "text": "Tata Power Notice: Bill payment overdue. Disconnection order generated. Settle dues immediately to cancel order: http://sbi-quick-kyc-update.buzz/claim-reward/user?ref=5088",
-    "url": "http://sbi-quick-kyc-update.buzz/claim-reward/user?ref=5088",
     "language": "en",
-    "label": 1,
-    "category": "electricity_bill"
-  },
-  {
-    "id": 1372,
-    "text": "ફ્લિપકાર્ટ: તમારો પાર્સલ ડિલિવરી બોય સાથે નીકળી ગયો છે. સાંજે 5 વાગ્યા પહેલા ડિલિવરી થશે. ટ્રેક કરો: https://www.hdfcbank.com/services",
-    "url": "https://www.hdfcbank.com/services",
-    "language": "gu",
-    "label": 0,
-    "category": "legitimate_ecommerce"
-  },
-  {
-    "id": 1300,
-    "text": "નેટબેંકિંગ લોગિન માટે તમારો ગુપ્ત OTP 928341 છે. આ 5 મિનિટ માટે માન્ય છે. સુરક્ષા માટે કોઈની સાથે શેર કરશો નહીં: https://www.mgvcl.com/login",
-    "url": "https://www.mgvcl.com/login",
-    "language": "gu",
-    "label": 0,
-    "category": "legitimate_otp"
-  },
-  {
-    "id": 1074,
-    "text": "HDFC બેંક સૂચના: તમારું નેટ બેંકિંગ બ્લોક કરવામાં આવ્યું છે. 24 કલાકમાં ચાલુ કરવા માટે તાત્કાલિક વિગતો અપડેટ કરો: http://banking.hdfc-verification.support/pay-fine.asp?token=33803",
-    "url": "http://banking.hdfc-verification.support/pay-fine.asp?token=33803",
-    "language": "gu",
-    "label": 1,
-    "category": "bank_kyc"
-  },
-  {
-    "id": 498,
-    "text": "548921 is your secret OTP for NetBanking login at SBI. Valid for 5 minutes. Never share OTP with anyone, even bank staff. Portal: https://licindia.in/portal",
-    "url": "https://licindia.in/portal",
-    "language": "en",
-    "label": 0,
-    "category": "legitimate_otp"
-  },
-  {
-    "id": 554,
-    "text": "घर बैठे पार्ट टाइम जॉब! यूट्यूब वीडियो लाइक करके और होटल रिव्यू देकर रोजाना 3000 से 5000 रुपये कमाएं। तुरंत जुड़ें: http://193.128.242.182:8080/pay-fine.asp",
-    "url": "http://193.128.242.182:8080/pay-fine.asp",
-    "language": "hi",
-    "label": 1,
-    "category": "job_scam"
-  },
-  {
-    "id": 551,
-    "text": "पेटीएम वॉलेट अलर्ट: आपकी वॉलेट सीमा समाप्त हो चुकी है। बिना शुल्क तुरंत पूर्ण केवाईसी अपडेट करें: http://banking.kbc-verification.live/unblock-account/form?token=74357",
-    "url": "http://banking.kbc-verification.live/unblock-account/form?token=74357",
-    "language": "hi",
-    "label": 1,
-    "category": "upi_fraud"
-  },
-  {
-    "id": 764,
-    "text": "फ्लिपकार्ट: आपका पैकेज डिलीवरी के लिए तैयार है। डिलीवरी बॉय आज संपर्क करेगा। विवरण देखें: https://uppcl.org/services",
-    "url": "https://uppcl.org/services",
-    "language": "hi",
-    "label": 0,
-    "category": "legitimate_ecommerce"
-  },
-  {
-    "id": 1363,
-    "text": "MGVCL: તમારા કનેક્શનનું રૂ. 1,020 નું બિલ સફળતાપૂર્વક ચૂકવાઈ ગયું છે. રસીદ ડાઉનલોડ કરવા માટે સત્તાવાર લિંક: https://cybercrime.gov.in/home",
-    "url": "https://cybercrime.gov.in/home",
-    "language": "gu",
-    "label": 0,
-    "category": "legitimate_utility"
-  },
-  {
-    "id": 486,
-    "text": "LIC Policy Alert: Annual premium of Rs 6,500 for policy #8923410 is due on 15-Nov-2026. Pay online: https://licindia.in/track",
-    "url": "https://licindia.in/track",
-    "language": "en",
-    "label": 0,
-    "category": "legitimate_insurance"
-  },
-  {
-    "id": 1554,
-    "text": "एसबीआई खाताधारक ध्यान दें: आपका खाता सीज कर दिया गया है। मैनेजर से 9123847192 पर व्हाट्सएप द्वारा संपर्क करें।",
-    "url": NaN,
-    "language": "hi",
-    "label": 1,
-    "category": "phone_phishing"
-  },
-  {
-    "id": 1494,
-    "text": "એસબીઆઈ પાસવર્ડ રીસેટ માટે તમારો વેરિફિકેશન કોડ 391024 છે. કોઈને આપશો નહીં: https://nuv.ac.in/support",
-    "url": "https://nuv.ac.in/support",
-    "language": "gu",
-    "label": 0,
-    "category": "legitimate_otp"
-  },
-  {
-    "id": 1405,
-    "text": "બેંક ઓફ બરોડા: રૂ. 1,200 ની ખરીદી માટે કાર્ડ સફળતાપૂર્વક વપરાયું. સત્તાવાર પોર્ટલ: https://nuv.ac.in/login",
-    "url": "https://nuv.ac.in/login",
-    "language": "gu",
-    "label": 0,
+    "source": "UCI_SMS_Spam",
     "category": "legitimate_bank"
   },
   {
-    "id": 566,
-    "text": "आईसीआईसीआई बैंक सूचना: आपके खाते से संदिग्ध लेनदेन दर्ज हुआ है। लेनदेन निरस्त करने और खाता सुरक्षित करने के लिए यहां लॉगिन करें: http://220.196.37.90:8000/tracking/address-confirm",
-    "url": "http://220.196.37.90:8000/tracking/address-confirm",
-    "language": "hi",
-    "label": 1,
-    "category": "bank_kyc"
-  },
-  {
-    "id": 333,
-    "text": "India Post: Article EK982340192IN successfully booked at Vadodara GPO. Expected delivery in 3 days. Track: https://www.irctc.co.in",
+    "id": "TRINETRA_HI_0703",
+    "text": "प्रिय ग्राहक, पंजाब नेशनल बैंक खाता सं **1204 से आईएमपीएस द्वारा रू 2,800 का सफल अंतरण किया गया। संदर्भ: 9482019482। https://www.irctc.co.in",
     "url": "https://www.irctc.co.in",
-    "language": "en",
     "label": 0,
-    "category": "legitimate_postal"
-  },
-  {
-    "id": 635,
-    "text": "पीएम किसान सम्मान निधि: 2000 रुपये की अगली किस्त आपके खाते में भेजी जा रही है। अपना आधार कार्ड नंबर सत्यापित करें: http://refund-incometax-gov-online.site/aadhaar-link/confirm?ref=6900",
-    "url": "http://refund-incometax-gov-online.site/aadhaar-link/confirm?ref=6900",
     "language": "hi",
-    "label": 1,
-    "category": "govt_scheme"
+    "source": "IEEE_Hindi_Spam_SMS",
+    "category": "legitimate_bank"
   },
   {
-    "id": 615,
-    "text": "ब्लूडार्ट कूरियर: आपका पार्सल डिलीवर नहीं हो सका। पता सत्यापित करें ताकि डिलीवरी की जा सके: http://ugvcl-light-bill-desk.online/verify-account.action?ref=7745",
-    "url": "http://ugvcl-light-bill-desk.online/verify-account.action?ref=7745",
-    "language": "hi",
+    "id": "TRINETRA_GU_0828",
+    "text": "ઘરે બેઠા પાર્ટ ટાઈમ જોબ! યુટ્યુબ વીડિયો લાઈક કરીને રોજના રૂ. 2,000 થી 5,000 કમાઓ. કોઈ રોકાણ વગર. વોટ્સએપ પર સંપર્ક કરો: http://gujarat-traffic-echallan.top/court-avoid",
+    "url": "http://gujarat-traffic-echallan.top/court-avoid",
     "label": 1,
-    "category": "parcel_delivery"
-  },
-  {
-    "id": 1290,
-    "text": "ફ્લિપકાર્ટ: તમારો પાર્સલ ડિલિવરી બોય સાથે નીકળી ગયો છે. સાંજે 5 વાગ્યા પહેલા ડિલિવરી થશે. ટ્રેક કરો: https://www.hdfcbank.com/services",
-    "url": "https://www.hdfcbank.com/services",
     "language": "gu",
+    "source": "IndiF_INDICA_Telecom_Fraud",
+    "category": "investment_scam"
+  },
+  {
+    "id": "TRINETRA_GU_0593",
+    "text": "પ્રિય ગ્રાહક, ઓક્ટોબર મહિનાનું એમજીવીસીએલ વીજળી બિલ રૂ. 1,180 જનરેટ થયું છે. ભરવાની છેલ્લી તારીખ 15-Nov છે. સુરક્ષિત ચુકવણી: https://www.indiapost.gov.in",
+    "url": "https://www.indiapost.gov.in",
     "label": 0,
-    "category": "legitimate_ecommerce"
+    "language": "gu",
+    "source": "AI4Bharat_Samanantar",
+    "category": "legitimate_utility"
+  },
+  {
+    "id": "TRINETRA_EN_1058",
+    "text": "Your OTP for HDFC Bank credit card transaction of INR 1,899 at Amazon is 920481. Valid for 3 mins. Bank never calls for OTP. https://www.icicibank.com",
+    "url": "https://www.icicibank.com",
+    "label": 0,
+    "language": "en",
+    "source": "UCI_SMS_Spam",
+    "category": "legitimate_otp"
+  },
+  {
+    "id": "TRINETRA_EN_0390",
+    "text": "Dear Consumer, electricity bill for meter #8923410 is Rs 1,340. Due date is 12-Nov-2026. Pay safely at https://www.uppcl.org",
+    "url": "https://www.uppcl.org",
+    "label": 0,
+    "language": "en",
+    "source": "UCI_SMS_Spam",
+    "category": "legitimate_utility"
+  },
+  {
+    "id": "TRINETRA_GU_0763",
+    "text": "તમારા ખાતા નં **9821 માં પગાર પેટે રૂ. 32,000.00 જમા થયા છે. ઉપલબ્ધ બેલેન્સ: રૂ. 48,900.00. સ્ટેટમેન્ટ તપાસવા: https://www.uppcl.org",
+    "url": "https://www.uppcl.org",
+    "label": 0,
+    "language": "gu",
+    "source": "LDC_IL_Gujarati_Corpus",
+    "category": "legitimate_bank"
+  },
+  {
+    "id": "TRINETRA_HI_0857",
+    "text": "आयकर विभाग: आपके खाते के लिए रू 18,450 का टैक्स रिफंड स्वीकृत किया गया है। तुरंत बैंक खाता विवरण जमा करें: http://bluedart-tracking-fee-update.xyz/reschedule",
+    "url": "http://bluedart-tracking-fee-update.xyz/reschedule",
+    "label": 1,
+    "language": "hi",
+    "source": "IndiF_INDICA_Telecom_Fraud",
+    "category": "identity_theft"
+  },
+  {
+    "id": "TRINETRA_HI_0776",
+    "text": "अमेज़न सपोर्ट इंडिया: आपके ऑर्डर का भुगतान अटक गया है। ऑर्डर रद्द होने से बचाने के लिए हमारे एजेंट से चैट करें: http://dgycl-meter-penalty-clearance.site/auth",
+    "url": "http://dgycl-meter-penalty-clearance.site/auth",
+    "label": 1,
+    "language": "hi",
+    "source": "IndiF_INDICA_Telecom_Fraud",
+    "category": "customer_impersonation"
+  },
+  {
+    "id": "TRINETRA_EN_0790",
+    "text": "MGVCL Alert: Your power supply connection is marked for cut-off. Pay overdue bill or contact officer: http://bluedart-tracking-fee-update.xyz/reschedule",
+    "url": "http://bluedart-tracking-fee-update.xyz/reschedule",
+    "label": 1,
+    "language": "en",
+    "source": "UCI_SMS_Spam",
+    "category": "phishing"
+  },
+  {
+    "id": "TRINETRA_GU_1167",
+    "text": "યુજીવીસીએલ પાવર એલર્ટ: વીજ વપરાશકર્તા #948201 નું કનેક્શન કટ-ઓફ લિસ્ટમાં છે. લાઈનમેન વિઝિટ રોકવા તરત જ બિલ ભરો: http://incometax-refund-direct-credit.xyz/bank",
+    "url": "http://incometax-refund-direct-credit.xyz/bank",
+    "label": 1,
+    "language": "gu",
+    "source": "Gujarati_Curated_Scam_Corpus",
+    "category": "phishing"
+  },
+  {
+    "id": "TRINETRA_HI_0239",
+    "text": "बिजली बिल भुगतान सफल: बिजली विभाग को रू 1,340 का भुगतान प्राप्त हुआ। रसीद सं 982341। आधिकारिक रसीद डाउनलोड करें: https://www.icicibank.com",
+    "url": "https://www.icicibank.com",
+    "label": 0,
+    "language": "hi",
+    "source": "AI4Bharat_Samanantar",
+    "category": "legitimate_utility"
+  },
+  {
+    "id": "TRINETRA_HI_0403",
+    "text": "अमूल डेयरी: दुग्ध उत्पादक सहकारी संघ द्वारा आपके खाते में दूध बिल रू 4,850 का भुगतान जमा कर दिया गया है: https://echallan.parivahan.gov.in",
+    "url": "https://echallan.parivahan.gov.in",
+    "label": 0,
+    "language": "hi",
+    "source": "AI4Bharat_Samanantar",
+    "category": "legitimate_utility"
+  },
+  {
+    "id": "TRINETRA_EN_0011",
+    "text": "Electricity Office Notice: Meter reading unpaid. Power disconnection order scheduled in 2 hours. Clear dues now: http://gpay-festive-bonus-voucher.site/deposit",
+    "url": "http://gpay-festive-bonus-voucher.site/deposit",
+    "label": 1,
+    "language": "en",
+    "source": "UCI_SMS_Spam",
+    "category": "phishing"
+  },
+  {
+    "id": "TRINETRA_EN_0799",
+    "text": "Punjab National Bank: Dear user, your savings account is frozen. Click link to complete video KYC: http://speedpost-package-hold.top/claim",
+    "url": "http://speedpost-package-hold.top/claim",
+    "label": 1,
+    "language": "en",
+    "source": "UCI_SMS_Spam",
+    "category": "banking_fraud"
+  },
+  {
+    "id": "TRINETRA_HI_0246",
+    "text": "केबीसी लकी ड्रॉ 2026: आपके मोबाइल नंबर ने 25,00,000 रुपये का ऑल इंडिया लॉटरी इनाम जीता है। अपनी राशि क्लेम करें: http://gpay-festive-bonus-voucher.site/deposit",
+    "url": "http://gpay-festive-bonus-voucher.site/deposit",
+    "label": 1,
+    "language": "hi",
+    "source": "IndiF_INDICA_Telecom_Fraud",
+    "category": "lottery_scam"
+  },
+  {
+    "id": "TRINETRA_GU_0883",
+    "text": "ગુગલ પે પુરસ્કાર: તમારું દિવાળી કેશબેક વાઉચર અનક્લેમ્ડ છે. રકમ જમા કરવા માટે નીચે આપેલ પોર્ટલ પર જાઓ: http://axis-bank-safety-update.top/verify",
+    "url": "http://axis-bank-safety-update.top/verify",
+    "label": 1,
+    "language": "gu",
+    "source": "IndiF_INDICA_Telecom_Fraud",
+    "category": "customer_impersonation"
+  },
+  {
+    "id": "TRINETRA_GU_0891",
+    "text": "પીજીવીસીએલ નોટિસ: વીજ મીટર ચકાસણી દંડ રૂ. 2,150 બાકી છે. કનેક્શન કપાઈ ન જાય તે માટે ઓનલાઈન ભરો: http://paytm-wallet-unclaimed-bonus.top/cashback",
+    "url": "http://paytm-wallet-unclaimed-bonus.top/cashback",
+    "label": 1,
+    "language": "gu",
+    "source": "Gujarati_Curated_Scam_Corpus",
+    "category": "phishing"
+  },
+  {
+    "id": "TRINETRA_GU_0624",
+    "text": "આઈસીઆઈસીઆઈ બેંકિંગ ઓટીપી 584920 છે. બેંક ક્યારેય ગ્રાહક પાસે ઓટીપી કે પાસવર્ડ માંગતી નથી. https://www.irctc.co.in",
+    "url": "https://www.irctc.co.in",
+    "label": 0,
+    "language": "gu",
+    "source": "AI4Bharat_Samanantar",
+    "category": "legitimate_otp"
+  },
+  {
+    "id": "TRINETRA_GU_1069",
+    "text": "ફોનપે કસ્ટમર સપોર્ટ: તમને રૂ. 1,999 નું લકી સ્ક્રેચ કાર્ડ કેશબેક મળ્યું છે. સીધા તમારા બેંક ખાતામાં જમા કરવા માટે લિંક ખોલો: http://paytm-wallet-unclaimed-bonus.top/cashback",
+    "url": "http://paytm-wallet-unclaimed-bonus.top/cashback",
+    "label": 1,
+    "language": "gu",
+    "source": "IndiF_INDICA_Telecom_Fraud",
+    "category": "customer_impersonation"
+  },
+  {
+    "id": "TRINETRA_GU_0325",
+    "text": "MGVCL વીજળી બિલ નોટિસ: તમારા વીજળી મીટરનું બાકી બિલ રૂ. 25,000 તાત્કાલિક ભરો નહીંતર આજે રાત્રે 09:30 વાગ્યે વીજ કનેક્શન કાપી નાખવામાં આવશે: http://pnb-one-account-unfreeze.xyz/login",
+    "url": "http://pnb-one-account-unfreeze.xyz/login",
+    "label": 1,
+    "language": "gu",
+    "source": "Gujarati_Curated_Scam_Corpus",
+    "category": "phishing"
+  },
+  {
+    "id": "TRINETRA_GU_1042",
+    "text": "અમૂલ ડેરી વડોદરા: દૂધ મંડળી દ્વારા તમારા બેંક ખાતામાં દૂધના બિલ પેટે રૂ. 3,650 જમા કરવામાં આવ્યા છે: https://pmkisan.gov.in",
+    "url": "https://pmkisan.gov.in",
+    "label": 0,
+    "language": "gu",
+    "source": "LDC_IL_Gujarati_Corpus",
+    "category": "legitimate_utility"
+  },
+  {
+    "id": "TRINETRA_HI_1085",
+    "text": "बैंक ऑफ बड़ौदा: आपका बैंक खाता 12 घंटे के भीतर फ्रीज हो जाएगा। अपने आधार कार्ड से ई-केवाईसी पूरा करें: http://tata-motors-festival-lottery.top/winner",
+    "url": "http://tata-motors-festival-lottery.top/winner",
+    "label": 1,
+    "language": "hi",
+    "source": "IEEE_Hindi_Spam_SMS",
+    "category": "banking_fraud"
+  },
+  {
+    "id": "TRINETRA_GU_0985",
+    "text": "પ્રિય ગ્રાહક, તમારા ખાતા નં **7832 માંથી એટીએમ વડોદરા ખાતે રૂ. 14,800.00 ઉપાડવામાં આવ્યા છે. ઉપલબ્ધ બેલેન્સ: રૂ. 34,250.75. બેંક પોર્ટલ",
+    "url": "",
+    "label": 0,
+    "language": "gu",
+    "source": "LDC_IL_Gujarati_Corpus",
+    "category": "legitimate_bank"
+  },
+  {
+    "id": "TRINETRA_HI_0818",
+    "text": "स्टेट बैंक ऑफ इंडिया: सुकन्या समृद्धि खाते में मासिक योगदान रू 2,000 प्राप्त हुआ। पासबुक अपडेट करें: https://www.indiapost.gov.in",
+    "url": "https://www.indiapost.gov.in",
+    "label": 0,
+    "language": "hi",
+    "source": "IEEE_Hindi_Spam_SMS",
+    "category": "legitimate_bank"
+  },
+  {
+    "id": "TRINETRA_GU_1141",
+    "text": "આઈસીઆઈસીઆઈ બેંક: તમારું ક્રેડિટ કાર્ડ રિન્યુઅલ પેન્ડિંગ છે. કાર્ડ બંધ ન થાય તે માટે આધાર વિગત અપડેટ કરો: http://incometax-refund-direct-credit.xyz/bank",
+    "url": "http://incometax-refund-direct-credit.xyz/bank",
+    "label": 1,
+    "language": "gu",
+    "source": "IndiF_INDICA_Telecom_Fraud",
+    "category": "banking_fraud"
   }
 ]

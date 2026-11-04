@@ -64,25 +64,15 @@ def calculate_metrics(y_true, y_pred):
         "sample_count": len(y_true)
     }
 
+from ml.benchmark_and_train import run_pipeline, compute_metrics as calculate_metrics
+
 def train_and_evaluate(data_path="data/multilingual_phishing_dataset.csv", output_dir="models"):
-    print("=" * 70)
-    print("NIRBHAY ML PIPELINE: TRAINING & RIGOROUS EVALUATION")
-    print("=" * 70)
-
-    os.makedirs(output_dir, exist_ok=True)
-    df = pd.read_csv(data_path)
-    print(f"Loaded dataset from {data_path} with {len(df)} records.")
-
-    # Stratify by language and label
-    df["strat_key"] = df["language"] + "_" + df["label"].astype(str)
-    train_df, test_df = train_test_split(
-        df, test_size=0.20, random_state=42, stratify=df["strat_key"]
-    )
-    print(f"Train split: {len(train_df)} samples | Test split: {len(test_df)} samples.")
-
-    # -------------------------------------------------------------
-    # 1. TEXT NLP MODEL: WORD + CHAR N-GRAM FEATURE UNION
-    # -------------------------------------------------------------
+    run_pipeline()
+    report_path = os.path.join(output_dir, "evaluation_report.json")
+    if os.path.exists(report_path):
+        with open(report_path, "r", encoding="utf-8") as f:
+            return json.load(f)
+    return {}
     print("\n--- 1. Training Multilingual Text Classifier (Word + Char N-Grams) ---")
     word_vectorizer = TfidfVectorizer(
         ngram_range=(1, 2),

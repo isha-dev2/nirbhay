@@ -1,5 +1,5 @@
 """
-Nirbhay — AI-Powered Digital Safety Platform
+Sanket (સંકેત / संकेत) — AI-Powered Cyber Threat Indicator & Safety Platform
 Launcher script: starts FastAPI server and opens Web Dashboard in browser.
 """
 import os
@@ -17,12 +17,12 @@ import uvicorn
 def open_browser():
     time.sleep(1.8)
     url = "http://localhost:8000"
-    print(f"\n[NIRBHAY] Opening browser dashboard at: {url}\n")
+    print(f"\n[SANKET] Opening browser dashboard at: {url}\n")
     webbrowser.open(url)
 
 if __name__ == "__main__":
     print("=" * 75)
-    print("NIRBHAY — AI-POWERED DIGITAL SAFETY & RESPONSE PLATFORM")
+    print("SANKET (સંકેત / संकेत) — AI CYBER THREAT INDICATOR & RESPONSE PLATFORM")
     print("Major Project | Department of Data Science & Machine Learning")
     print("Navrachana University, Vadodara, Gujarat (2026-27)")
     print("Guide: Prof. Ujwala Patigara")
@@ -33,6 +33,5 @@ if __name__ == "__main__":
     # Launch browser in separate thread
     threading.Thread(target=open_browser, daemon=True).start()
 
-    # Run Uvicorn server
+    # Run Uvicorn server (host 0.0.0.0 makes it accessible to both laptop and phone on local WiFi!)
     uvicorn.run("backend.main:app", host="0.0.0.0", port=8000, reload=False)
-

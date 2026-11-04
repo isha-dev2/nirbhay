@@ -1,5 +1,5 @@
 """
-Nirbhay — AI-Powered Digital Safety & Response Platform
+Sanket (TRINETRA) — AI-Powered Digital Safety & Scam Detection Platform
 FastAPI Application Server
 Integrates Multilingual Text Classification, Structural URL Analysis, Evidence Fusion,
 Explainable AI in English/Hindi/Gujarati, and Live Data Evaluation Dashboard.
@@ -34,8 +34,8 @@ from pydantic import BaseModel, Field
 from backend.ml_engine.predictor import nirbhay_engine
 
 app = FastAPI(
-    title="Nirbhay — AI Digital Safety & Multilingual Scam Detection Platform",
-    description="End-semester Major Project DS-ML Demonstration API",
+    title="Sanket (संकेत • સંકેત) — AI Digital Safety & Threat Intelligence Platform",
+    description="End-semester Major Project DS-ML Demonstration API (Sanket / TRINETRA / Nirbhay)",
     version="2.0.0"
 )
 
@@ -71,10 +71,12 @@ class EvaluateLiveBatchRequest(BaseModel):
 def health_check():
     return {
         "status": "online",
-        "platform": "Nirbhay Digital Safety Platform",
+        "platform": "Sanket AI Digital Safety & Threat Intelligence Platform",
+        "brand_name": "Sanket (संकेत • સંકેત)",
         "models_ready": bool(nirbhay_engine.text_model and nirbhay_engine.url_model and nirbhay_engine.fusion_model),
         "institution": "Navrachana University, Vadodara, Gujarat",
         "guide": "Prof. Ujwala Patigara",
+        "team": "Team Nirbhay",
         "presenters": ["Isha Rajput", "Parisha Parmar", "Priya Bhatt"]
     }
 
@@ -248,7 +250,8 @@ def get_sample_cases():
 @app.get("/api/system-info")
 def get_system_info():
     return {
-        "project": "Nirbhay — AI-Powered Digital Safety & Response Platform",
+        "project": "Nirbhay — AI-Powered Digital Safety & Scam Threat Indicator Platform",
+        "brand_name": "Nirbhay (निर्भय • નિર્ભય)",
         "department": "Department of Data Science & Machine Learning",
         "institution": "Navrachana University, Vadodara, Gujarat",
         "academic_session": "Major Project 2026-27",
@@ -258,6 +261,7 @@ def get_system_info():
             {"name": "Parisha Parmar", "role": "Multilingual NLP & Explainability"},
             {"name": "Priya Bhatt", "role": "URL Analysis & System Integration"}
         ],
+        "research_question": "Does combining message text and URL evidence improve scam detection compared to analyzing either source alone across English, Hindi, and Gujarati?",
         "research_contributions": [
             "Multilingual Text Classification using Word & Character N-Grams for English, Hindi (Devanagari), and Gujarati",
             "Structural URL Analysis with 25+ Lexical, Host, Domain, and Shannon Entropy Features (inspired by QsecR IEEE Access 2023)",
@@ -279,7 +283,7 @@ def serve_ui():
     index_file = os.path.join(static_dir, "index.html")
     if os.path.exists(index_file):
         return FileResponse(index_file)
-    return {"message": "Nirbhay API is running. UI index.html not found in static folder."}
+    return {"message": "Sanket (TRINETRA) API is running. UI index.html not found in static folder."}
 
 if __name__ == "__main__":
     import uvicorn
