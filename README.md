@@ -1,7 +1,7 @@
-# Nirbhay — AI-Powered Digital Safety & Response Platform
+# Sanket (સંકેત • संकेत) — AI Cyber Threat Indicator & Safety Platform
 
 AI security assistant for non-technical users in India, with multilingual 
-(English/Hindi/Gujarati) scam and phishing detection.
+(English/Hindi/Gujarati) scam, phishing, and UPI quishing detection.
 
 ## Structure
 - /backend — FastAPI server

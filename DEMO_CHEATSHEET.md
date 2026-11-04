@@ -1,4 +1,4 @@
-# Nirbhay (निर्भय • નિર્ભય) — Presentation Day Cheatsheet
+# Sanket (સંકેત • संकेत) — Presentation Day Cheatsheet
 > **Keep this sheet open during your presentation with Prof. Ujwala Patigara!**  
 > **Major Project 2026–27 | Department of Data Science & Machine Learning, Navrachana University**  
 > **Team:** Isha Rajput, Priya Bhatt, Parisha Parmar | **Guide:** Prof. Ujwala Patigara
@@ -60,9 +60,10 @@ To launch the application:
 | **What was the Central Research Question?** | *"Does combining message text and structural URL evidence improve scam detection compared to analyzing either source alone across English, Hindi, and Gujarati?"* |
 | **Why use Character N-grams for text?** | Indic languages (Hindi, Gujarati) are morphologically rich and agglutinative (prefixes and suffixes attach to root words). Subword Character N-grams (3–5 chars) capture semantic roots and withstand phonetic Hinglish and deliberate typos without OOV tokenization failure. |
 | **What were your MuRIL Colab Experimental Findings?** | We fine-tuned `google/muril-base-cased` on Google Colab T4 GPU under 5-fold Stratified Group CV (`PIPELINE_NOTES.md`). Training MuRIL solely on real data achieved 0.948 F1 on English but completely collapsed on regional languages (**0.000 F1 on Real Hindi, 0.000 F1 on Real Gujarati**). Synthetic data augmentation recovered Hindi recall to **100% (8/8 caught, 0.889 F1)** and Gujarati to **57.1% (4/7 caught, 0.533 F1)**, proving that synthetic augmentation is mathematically indispensable for low-resource Indic scam detection. |
-| **Why is False Positive Rate (FPR) critical?** | If a safety filter flags legitimate bank alerts or OTPs as scams, users lose trust and disable the protection. Nirbhay achieves near-zero FPR through legitimate institutional whitelisting and calibrated multi-evidence thresholds. |
-| **What is Quishing?** | QR code phishing. Scammers embed deceptive payment or login links inside QR codes (often on WhatsApp or fake electricity bills) to evade email text scanners. Nirbhay decodes QR codes before URL execution, as recommended by *QsecR (IEEE Access 2023)*. |
+| **Why is False Positive Rate (FPR) critical?** | If a safety filter flags legitimate bank alerts or OTPs as scams, users lose trust and disable the protection. Sanket achieves near-zero FPR through legitimate institutional whitelisting and calibrated multi-evidence thresholds. |
+| **What is Quishing?** | QR code phishing. Scammers embed deceptive payment or login links inside QR codes (often on WhatsApp or fake electricity bills) to evade email text scanners. Sanket decodes QR codes before URL execution, as recommended by *QsecR (IEEE Access 2023)*. |
 | **What is the statutory basis of the Cure module?** | Grounded in: (1) **Ministry of Home Affairs (I4C) Helpline 1930 & CFCFRMS** for real-time account freeze, (2) **RBI Circular DBR.No.Leg.BC.78/09.07.005/2017-18** for 3-day customer zero liability, (3) **IT Act Sec 66C & 66D** and **BNS Sec 318(4)** for formal FIR registration, and (4) **DoT Sanchar Saathi (Chakshu & TAFCOP)** for carrier blacklisting. |
 
 ---
 **Navrachana University, Vadodara • Major Project 2026-27**
+

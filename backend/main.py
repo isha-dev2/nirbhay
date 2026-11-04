@@ -8,8 +8,8 @@ from backend.routes import router as routes_v2
 from backend.text_service import TextClassifierService
 
 app = FastAPI(
-    title="Nirbhay API",
-    description="Multilingual Digital Safety & Scam Response Platform (En/Hi/Gu)"
+    title="Sanket (संकेत • સંકેત) API",
+    description="Multilingual Digital Safety & Cyber Threat Indicator Platform (En/Hi/Gu)"
 )
 
 app.add_middleware(
@@ -35,10 +35,10 @@ INDEX_HTML_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", 
 
 @app.get("/", response_class=HTMLResponse)
 def root():
-    """Serves the interactive Nirbhay Web UI dashboard."""
+    """Serves the interactive Sanket Web UI dashboard."""
     if os.path.exists(INDEX_HTML_PATH):
         return FileResponse(INDEX_HTML_PATH)
-    return HTMLResponse("<h2>Nirbhay API is running. UI file frontend/index.html not found.</h2>")
+    return HTMLResponse("<h2>Sanket API is running. UI file frontend/index.html not found.</h2>")
 
 @app.post("/check", response_model=CheckResponse)
 def check_message(request: CheckRequest):

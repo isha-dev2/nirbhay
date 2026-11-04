@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-run_app.py — Nirbhay Application Launcher
+run_app.py — Sanket Application Launcher
 Starts FastAPI backend on port 8000 and automatically opens the Web Dashboard.
 """
 import os
@@ -17,12 +17,12 @@ if BASE_DIR not in sys.path:
 def open_browser():
     time.sleep(1.5)
     url = "http://localhost:8000"
-    print(f"\n[NIRBHAY] Opening Web Dashboard: {url}\n")
+    print(f"\n[SANKET] Opening Web Dashboard: {url}\n")
     webbrowser.open(url)
 
 if __name__ == "__main__":
     print("=" * 72)
-    print("🛡️  NIRBHAY (निर्भय • નિર્ભય) — AI Digital Safety & Response Platform")
+    print("🛡️  SANKET (સંકેત • संकेत) — AI Cyber Threat Indicator & Safety Platform")
     print("   Major Project 2026-27 | Dept of Data Science & Machine Learning")
     print("   Navrachana University, Vadodara, Gujarat")
     print("   Guide: Prof. Ujwala Patigara")
