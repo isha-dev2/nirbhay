@@ -1224,7 +1224,7 @@
         data = await resp.json();
       } catch (err) {
         console.error('Fetch error:', err);
-        alert('Server connection error. Please ensure the server is running on http://localhost:8000.\n\nDetails: ' + err.message);
+        alert('Threat analysis connection error: ' + err.message);
         return;
       }
 

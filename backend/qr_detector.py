@@ -12,16 +12,28 @@ import io
 import re
 from typing import Dict, Any, Optional
 from urllib.parse import urlparse, parse_qs
-import cv2
+try:
+    import cv2
+    CV2_AVAILABLE = True
+except (ImportError, Exception):
+    cv2 = None
+    CV2_AVAILABLE = False
 import numpy as np
 from PIL import Image
 
 class QRDetector:
     def __init__(self):
-        self.detector = cv2.QRCodeDetector()
+        self.detector = None
+        if CV2_AVAILABLE and cv2 is not None:
+            try:
+                self.detector = cv2.QRCodeDetector()
+            except Exception:
+                self.detector = None
 
     def decode_image_bytes(self, image_bytes: bytes) -> Optional[str]:
         """Decode a QR code from raw image bytes."""
+        if not CV2_AVAILABLE or self.detector is None or cv2 is None:
+            return None
         try:
             image = Image.open(io.BytesIO(image_bytes))
             # Convert PIL Image to OpenCV BGR format
@@ -33,6 +45,8 @@ class QRDetector:
 
     def decode_file(self, file_path: str) -> Optional[str]:
         """Decode a QR code from a file path."""
+        if not CV2_AVAILABLE or self.detector is None or cv2 is None:
+            return None
         try:
             img = cv2.imread(file_path)
             if img is None:
