@@ -1213,11 +1213,18 @@
 
       let data;
       try {
-        const resp = await fetch(API_BASE + '/v2/check/message', {
+        let resp = await fetch(API_BASE + '/v2/check/message', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ text })
         });
+        if (resp.status === 404) {
+          resp = await fetch(API_BASE + '/api/v2/check/message', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ text })
+          });
+        }
         if (!resp.ok) {
           throw new Error('HTTP Error ' + resp.status + ': ' + resp.statusText);
         }
@@ -1242,11 +1249,18 @@
 
       let data;
       try {
-        const resp = await fetch(API_BASE + '/v2/check/url', {
+        let resp = await fetch(API_BASE + '/v2/check/url', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ url })
         });
+        if (resp.status === 404) {
+          resp = await fetch(API_BASE + '/api/v2/check/url', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ url })
+          });
+        }
         if (!resp.ok) {
           throw new Error('HTTP Error ' + resp.status);
         }
@@ -1287,10 +1301,16 @@
 
       let data;
       try {
-        const resp = await fetch(API_BASE + '/v2/check/qr', {
+        let resp = await fetch(API_BASE + '/v2/check/qr', {
           method: 'POST',
           body: formData
         });
+        if (resp.status === 404) {
+          resp = await fetch(API_BASE + '/api/v2/check/qr', {
+            method: 'POST',
+            body: formData
+          });
+        }
         if (!resp.ok) {
           throw new Error('HTTP Error ' + resp.status);
         }

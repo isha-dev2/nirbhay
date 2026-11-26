@@ -19,8 +19,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Register v2 safety routes
+# Register v2 safety routes under both /v2 and /api/v2
 app.include_router(routes_v2)
+app.include_router(routes_v2, prefix="/api")
 
 text_service = TextClassifierService()
 
@@ -30,6 +31,16 @@ class CheckRequest(BaseModel):
 class CheckResponse(BaseModel):
     risk_level: str
     explanation: str
+
+@app.post("/check", response_model=CheckResponse)
+@app.post("/api/check", response_model=CheckResponse)
+def check_message_legacy(request: CheckRequest):
+    """Legacy endpoint support."""
+    res = text_service.inspect_message(request.text)
+    return CheckResponse(
+        risk_level=res["risk_level"],
+        explanation=res["explanation_en"]
+    )
 
 # Search across multiple potential root paths (local run, Docker, Vercel lambda)
 POSSIBLE_HTML_PATHS = [
