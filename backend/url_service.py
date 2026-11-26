@@ -12,7 +12,8 @@ import pandas as pd
 from urllib.parse import urlparse
 from typing import Dict, Any, List
 
-MODEL_PATH = "backend/models/url_classifier.joblib"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+MODEL_PATH = os.path.join(BASE_DIR, "models", "url_classifier.joblib")
 
 class URLClassifierService:
     def __init__(self, model_path: str = MODEL_PATH):

@@ -12,8 +12,9 @@ import joblib
 from typing import Dict, Any, List
 from backend.url_service import URLClassifierService
 
-TEXT_MODEL_PATH = "backend/models/text_classifier.joblib"
-MURIL_MODEL_DIR = "muril_scam_model"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+TEXT_MODEL_PATH = os.path.join(BASE_DIR, "models", "text_classifier.joblib")
+MURIL_MODEL_DIR = os.path.join(BASE_DIR, "..", "muril_scam_model")
 
 URL_REGEX = re.compile(
     r'(?:https?://|www\.)[^\s<>\"\'\)]+|'
