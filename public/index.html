@@ -160,22 +160,22 @@
       <!-- Center Desktop Navigation (Quick Screen Jump) -->
       <nav class="hidden lg:flex items-center space-x-1 text-xs font-bold text-slate-600">
         <button onclick="switchScreen('home')" id="top-nav-home" class="px-3 py-2 rounded-xl text-blue-600 bg-blue-50 hover:bg-blue-100 transition flex items-center gap-1.5">
-          <i data-lucide="home" class="w-4 h-4"></i> Home
+          <i data-lucide="home" class="w-4 h-4"></i> <span data-i18n="nav_home">Home</span>
         </button>
         <button onclick="openCheckTab('message')" id="top-nav-check" class="px-3 py-2 rounded-xl hover:bg-slate-100 transition flex items-center gap-1.5">
-          <i data-lucide="scan" class="w-4 h-4"></i> Check Something
+          <i data-lucide="scan" class="w-4 h-4"></i> <span data-i18n="nav_check">Check Threat</span>
         </button>
         <button onclick="openCheckTab('screenshot')" id="top-nav-ocr" class="px-3 py-2 rounded-xl hover:bg-slate-100 transition flex items-center gap-1.5 text-indigo-600">
-          <i data-lucide="camera" class="w-4 h-4"></i> Screenshot OCR
+          <i data-lucide="camera" class="w-4 h-4"></i> <span data-i18n="nav_ocr">Screenshot OCR</span>
         </button>
         <button onclick="switchScreen('incident')" id="top-nav-incident" class="px-3 py-2 rounded-xl hover:bg-rose-50 text-rose-600 transition flex items-center gap-1.5 font-bold">
-          <i data-lucide="phone-call" class="w-4 h-4 text-rose-500"></i> SOS 1930
+          <i data-lucide="phone-call" class="w-4 h-4 text-rose-500"></i> <span data-i18n="nav_incident">SOS 1930</span>
         </button>
         <button onclick="switchScreen('login')" id="top-nav-login" class="px-3 py-2 rounded-xl hover:bg-slate-100 text-slate-700 transition flex items-center gap-1.5">
-          <i data-lucide="log-in" class="w-4 h-4 text-blue-500"></i> Citizen Login
+          <i data-lucide="log-in" class="w-4 h-4 text-blue-500"></i> <span data-i18n="nav_login">Citizen Login</span>
         </button>
         <button onclick="switchScreen('academic')" id="top-nav-academic" class="px-3 py-2 rounded-xl hover:bg-slate-100 text-slate-700 transition flex items-center gap-1.5">
-          <i data-lucide="graduation-cap" class="w-4 h-4 text-indigo-500"></i> Research & Viva Suite
+          <i data-lucide="graduation-cap" class="w-4 h-4 text-indigo-500"></i> <span data-i18n="nav_academic">Research & Viva Suite</span>
         </button>
       </nav>
 
@@ -186,7 +186,7 @@
         <button id="device-mode-btn" onclick="toggleDeviceViewMode()" title="Toggle Phone / Laptop View"
           class="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-slate-200 bg-slate-50 hover:bg-slate-100 text-slate-700 text-xs font-semibold transition shadow-sm">
           <i id="device-mode-icon" data-lucide="smartphone" class="w-4 h-4 text-blue-600"></i>
-          <span id="device-mode-label">Phone View</span>
+          <span id="device-mode-label" data-i18n="device_mode_phone">Phone View</span>
         </button>
 
         <!-- Trilingual Switcher Pill (Matching Stitch: EN / हिन्दी / ગુજ) -->
@@ -389,12 +389,12 @@
               <span id="home-greeting">Good morning, Ramesh</span>
               <span class="text-xl">👋</span>
             </h1>
-            <p id="home-subgreeting" class="text-xs sm:text-sm text-slate-600 mt-0.5">Let's keep your digital world safe today.</p>
+            <p id="home-subgreeting" data-i18n="home_subgreeting" class="text-xs sm:text-sm text-slate-600 mt-0.5">Let's keep your digital world safe today.</p>
           </div>
           <div class="text-right">
             <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold border border-emerald-200">
               <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-              Live Shield Active
+              <span data-i18n="shield_active">Live Shield Active</span>
             </span>
           </div>
         </div>
@@ -407,17 +407,17 @@
             </div>
             <div>
               <div class="flex items-center gap-2">
-                <h3 class="font-bold text-slate-900 text-sm sm:text-base">No active threats found</h3>
+                <h3 class="font-bold text-slate-900 text-sm sm:text-base" data-i18n="guard_title">No active threats found</h3>
                 <span class="text-[10px] px-2 py-0.5 bg-emerald-100 text-emerald-800 rounded-md font-bold uppercase tracking-wider">Live Guard</span>
               </div>
-              <p class="text-xs text-slate-600 mt-0.5">Device scans clear • Safe Browsing active</p>
+              <p class="text-xs text-slate-600 mt-0.5" data-i18n="guard_sub">Device scans clear • Safe Browsing active</p>
               <div class="mt-2 inline-flex items-center gap-1.5 text-[11px] font-semibold text-emerald-700 bg-white/80 px-2.5 py-0.5 rounded-full border border-emerald-200/60">
                 <i data-lucide="clock" class="w-3 h-3"></i>
-                <span>Last automated scan: 14m • WhatsApp & SMS active</span>
+                <span data-i18n="guard_last">Last automated scan: 14m • WhatsApp & SMS active</span>
               </div>
             </div>
           </div>
-          <button onclick="triggerQuickScan()" class="hidden sm:inline-flex px-3.5 py-2 rounded-xl bg-white hover:bg-emerald-50 text-emerald-700 border border-emerald-200 font-bold text-xs shadow-sm transition">
+          <button onclick="triggerQuickScan()" class="hidden sm:inline-flex px-3.5 py-2 rounded-xl bg-white hover:bg-emerald-50 text-emerald-700 border border-emerald-200 font-bold text-xs shadow-sm transition" data-i18n="guard_scan_btn">
             Scan Now
           </button>
         </div>
@@ -427,22 +427,22 @@
           <div class="relative z-10 max-w-xl space-y-3">
             <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-500/20 text-sky-300 text-[11px] font-extrabold uppercase tracking-wider border border-blue-400/30">
               <i data-lucide="sparkles" class="w-3.5 h-3.5 text-sky-300"></i>
-              AI THREAT VERIFIER
+              <span data-i18n="hero_tag">AI THREAT VERIFIER</span>
             </div>
-            <h2 class="text-2xl sm:text-3xl font-black tracking-tight text-white leading-tight">
+            <h2 class="text-2xl sm:text-3xl font-black tracking-tight text-white leading-tight" data-i18n="hero_title">
               Check Something
             </h2>
-            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed" data-i18n="hero_desc">
               Received a fishy SMS, unknown APK link, WhatsApp forward, electricity disconnection warning, or UPI payment request?
             </p>
             <div class="pt-2 flex flex-wrap items-center gap-3">
               <button onclick="openCheckTab('message')" class="px-5 py-3 rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-black text-xs sm:text-sm shadow-lg shadow-blue-500/30 transition flex items-center gap-2 group">
-                <span>Check Now</span>
+                <span data-i18n="hero_check_btn">Check Now</span>
                 <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
               </button>
               <button onclick="openCheckTab('screenshot')" class="px-4 py-3 rounded-2xl bg-white/10 hover:bg-white/15 text-slate-200 border border-white/10 font-bold text-xs sm:text-sm transition flex items-center gap-2">
                 <i data-lucide="camera" class="w-4 h-4 text-sky-400"></i>
-                <span>Upload Screenshot OCR</span>
+                <span data-i18n="hero_ocr_btn">Upload Screenshot OCR</span>
               </button>
             </div>
           </div>
@@ -453,11 +453,39 @@
           </div>
         </div>
 
+        <!-- 1-Click Real World Test Scenarios Bar -->
+        <div class="card-stitch p-4 sm:p-5 bg-gradient-to-r from-slate-900 via-slate-800 to-indigo-950 text-white rounded-3xl shadow-lg border border-slate-700/60 space-y-3">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-blue-400 animate-ping"></span>
+              <span class="text-xs font-black uppercase tracking-wider text-blue-300" data-i18n="quick_samples_label">Try 1-Click Real Scenarios:</span>
+            </div>
+            <span class="text-[11px] text-slate-300 hidden sm:inline" data-i18n="tap_to_inspect">Tap to inspect immediately</span>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <button onclick="loadAndRunSample('sbi_kyc_hi')" class="px-3 py-1.5 rounded-xl bg-rose-500/25 hover:bg-rose-500/40 text-rose-200 border border-rose-500/50 text-xs font-bold transition flex items-center gap-1.5 shadow-sm">
+              <span data-i18n="sample_sbi_hi">🔴 SBI KYC Scam (Hindi)</span>
+            </button>
+            <button onclick="loadAndRunSample('torrent_power_gu')" class="px-3 py-1.5 rounded-xl bg-rose-500/25 hover:bg-rose-500/40 text-rose-200 border border-rose-500/50 text-xs font-bold transition flex items-center gap-1.5 shadow-sm">
+              <span data-i18n="sample_mgvcl_gu">🔴 MGVCL Power Cut (Gujarati)</span>
+            </button>
+            <button onclick="loadAndRunSample('courier_en')" class="px-3 py-1.5 rounded-xl bg-amber-500/25 hover:bg-amber-500/40 text-amber-200 border border-amber-500/50 text-xs font-bold transition flex items-center gap-1.5 shadow-sm">
+              <span data-i18n="sample_courier_en">🔴 India Post Phishing (English)</span>
+            </button>
+            <button onclick="loadAndRunSample('safe_hdfc')" class="px-3 py-1.5 rounded-xl bg-emerald-500/25 hover:bg-emerald-500/40 text-emerald-200 border border-emerald-500/50 text-xs font-bold transition flex items-center gap-1.5 shadow-sm">
+              <span data-i18n="sample_safe_sbi">🟢 Legitimate Bank SMS</span>
+            </button>
+            <button onclick="loadAndRunSample('safe_mgvcl_gu')" class="px-3 py-1.5 rounded-xl bg-emerald-500/25 hover:bg-emerald-500/40 text-emerald-200 border border-emerald-500/50 text-xs font-bold transition flex items-center gap-1.5 shadow-sm">
+              <span data-i18n="sample_safe_gu">🟢 Official MGVCL Bill (Gujarati)</span>
+            </button>
+          </div>
+        </div>
+
         <!-- Instant Safety Scanners (4 Cards Grid from Stitch) -->
         <div class="space-y-2.5">
           <div class="flex items-center justify-between px-1">
-            <h3 class="text-sm font-extrabold text-slate-800 uppercase tracking-wider">Instant Safety Scanners</h3>
-            <span class="text-xs font-semibold text-blue-600">Tap to inspect</span>
+            <h3 class="text-sm font-extrabold text-slate-800 uppercase tracking-wider" data-i18n="instant_scanners_title">Instant Safety Scanners</h3>
+            <span class="text-xs font-semibold text-blue-600" data-i18n="tap_to_inspect">Tap to inspect</span>
           </div>
 
           <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
@@ -466,8 +494,8 @@
               <div class="w-10 h-10 rounded-xl bg-purple-100 text-purple-600 flex items-center justify-center mb-3 group-hover:scale-105 transition-transform">
                 <i data-lucide="message-square" class="w-5 h-5"></i>
               </div>
-              <h4 class="font-extrabold text-slate-900 text-xs sm:text-sm">Check Message</h4>
-              <p class="text-[11px] text-slate-600 mt-0.5">SMS & WhatsApp text</p>
+              <h4 class="font-extrabold text-slate-900 text-xs sm:text-sm" data-i18n="scan_card_msg_title">Check Message</h4>
+              <p class="text-[11px] text-slate-600 mt-0.5" data-i18n="scan_card_msg_sub">SMS & WhatsApp text</p>
             </div>
 
             <!-- 2. Check Link -->
@@ -610,8 +638,8 @@
             <i data-lucide="chevron-left" class="w-5 h-5"></i>
           </button>
           <div>
-            <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight">Check Something</h2>
-            <p class="text-xs text-slate-600">Not sure about something? Check it before you act.</p>
+            <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight" data-i18n="check_title">Check Something</h2>
+            <p class="text-xs text-slate-600" data-i18n="check_sub">Not sure about something? Check it before you act.</p>
           </div>
         </div>
 
@@ -647,16 +675,16 @@
         <div id="panel-check-message" class="card-stitch p-5 space-y-4">
           <div class="flex items-center justify-between">
             <div>
-              <h3 class="font-extrabold text-slate-900 text-sm sm:text-base">Analyze a Suspicious Message</h3>
-              <p class="text-xs text-slate-600 mt-0.5">Paste the SMS, WhatsApp text, Telegram forward, or email you received.</p>
+              <h3 class="font-extrabold text-slate-900 text-sm sm:text-base" data-i18n="msg_panel_title">Analyze a Suspicious Message</h3>
+              <p class="text-xs text-slate-600 mt-0.5" data-i18n="msg_panel_sub">Paste the SMS, WhatsApp text, Telegram forward, or email you received.</p>
             </div>
             <!-- Action Chips: Paste & Try Sample -->
             <div class="flex items-center space-x-2">
               <button onclick="pasteFromClipboard()" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold flex items-center gap-1 transition">
-                <i data-lucide="clipboard" class="w-3 h-3"></i> Paste
+                <i data-lucide="clipboard" class="w-3 h-3"></i> <span data-i18n="btn_paste">Paste</span>
               </button>
               <button onclick="toggleSampleModal()" class="px-2.5 py-1 rounded-lg bg-blue-50 hover:bg-blue-100 text-blue-700 text-xs font-semibold flex items-center gap-1 transition">
-                <i data-lucide="sparkles" class="w-3 h-3"></i> Try Sample
+                <i data-lucide="sparkles" class="w-3 h-3"></i> <span data-i18n="btn_samples">Try Sample</span>
               </button>
             </div>
           </div>
@@ -664,7 +692,7 @@
           <!-- Textarea Input Area -->
           <div class="relative">
             <textarea id="check-msg-input" rows="4" oninput="handleMessageInput(this.value)"
-              placeholder="e.g. 'Dear customer, your SBI YONO account will be blocked today due to pending KYC. Click http://bit.ly/sbi-kyc-update to verify your Aadhaar immediately...'"
+              data-i18n-placeholder="input_msg_placeholder" placeholder="e.g. 'Dear customer, your SBI YONO account will be blocked today due to pending KYC. Click http://bit.ly/sbi-kyc to verify your Aadhaar immediately...'"
               class="w-full p-4 rounded-2xl border border-slate-200 bg-slate-50/60 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-xs sm:text-sm text-slate-900 transition leading-relaxed"></textarea>
             
             <!-- Character Counter & Auto-detected Script Badge -->
@@ -698,7 +726,7 @@
 
           <!-- Primary CTA Button -->
           <button onclick="startAnalysis()" id="btn-analyze-msg" class="w-full py-3.5 rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-black text-sm shadow-lg shadow-blue-500/25 transition flex items-center justify-center gap-2">
-            <span>Analyze Message with Sanket AI</span>
+            <span data-i18n="btn_analyze">Analyze Message with Sanket AI</span>
             <i data-lucide="arrow-right" class="w-4 h-4"></i>
           </button>
         </div>
@@ -1001,11 +1029,11 @@
           <div class="flex items-center space-x-2">
             <button onclick="readAloudExplanation()" id="btn-read-aloud" class="px-3 py-1.5 rounded-xl bg-indigo-50 hover:bg-indigo-100 text-indigo-700 text-xs font-bold flex items-center gap-1.5 transition">
               <i data-lucide="volume-2" class="w-4 h-4"></i>
-              <span>Read Aloud</span>
+              <span data-i18n="btn_listen_audio">Read Aloud</span>
             </button>
             <button onclick="copyWhatsAppWarning()" class="px-3 py-1.5 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-700 text-xs font-bold flex items-center gap-1.5 transition">
               <i data-lucide="share-2" class="w-4 h-4"></i>
-              <span>WhatsApp Alert</span>
+              <span data-i18n="btn_copy_alert">WhatsApp Alert</span>
             </button>
           </div>
         </div>
@@ -1446,8 +1474,8 @@
               <i data-lucide="chevron-left" class="w-5 h-5"></i>
             </button>
             <div>
-              <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight">Academic Research & Viva Suite</h2>
-              <p class="text-xs text-slate-600">Major Project 2026–27 • Department of Data Science & Machine Learning</p>
+              <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight" data-i18n="academic_title">Academic Research & Viva Suite</h2>
+              <p class="text-xs text-slate-600" data-i18n="academic_sub">Major Project 2026–27 • Department of Data Science & Machine Learning</p>
             </div>
           </div>
           <span class="text-xs font-extrabold px-3 py-1 rounded-full bg-indigo-100 text-indigo-800 border border-indigo-200">
@@ -1457,9 +1485,9 @@
 
         <!-- Research Defense & Mission Card -->
         <div class="card-stitch p-6 bg-gradient-to-br from-indigo-900 via-slate-900 to-slate-950 text-white space-y-3">
-          <div class="text-[10px] font-black uppercase tracking-wider text-indigo-300">Core Research Question</div>
+          <div class="text-[10px] font-black uppercase tracking-wider text-indigo-300" data-i18n="core_rq_title">Core Research Question</div>
           <h3 class="text-lg sm:text-xl font-black text-white leading-snug">
-            "Does combining message text and URL evidence improve scam detection compared to analyzing either source alone across English, Hindi, and Gujarati?"
+            <span data-i18n="core_rq">"Does combining message text and URL evidence improve scam detection compared to analyzing either source alone across English, Hindi, and Gujarati?"</span>
           </h3>
           <p class="text-xs text-slate-300 leading-relaxed">
             Evaluated across 1,330 balanced multilingual records and a strict 315-sample zero-template-leakage held-out citizen evaluation set.
@@ -1802,6 +1830,18 @@
         url: "",
         lang: "en",
         title: "HDFC Official Transaction Alert (Safe)"
+      },
+      safe_mgvcl_gu: {
+        text: "પ્રિય ગ્રાહક, તમારા વીજળી જોડાણનું બિલ રૂ. 1,150 છે. છેલ્લી તારીખ 12-નવેમ્બર છે. ઓનલાઇન બિલ ભરવા માટે મુલાકાત લો: https://www.mgvcl.com",
+        url: "https://www.mgvcl.com",
+        lang: "gu",
+        title: "MGVCL Official Bill Reminder (Gujarati Safe)"
+      },
+      safe_sbi: {
+        text: "Dear SBI Customer, INR 15,000.00 credited to A/C **1234 on 02-Nov-26 via NEFT from Salary. Login to YONO at https://onlinesbi.sbi to check balance.",
+        url: "https://onlinesbi.sbi",
+        lang: "en",
+        title: "SBI Official Salary Credit (Safe)"
       }
     };
 
@@ -1812,14 +1852,23 @@
       setupPasteListener();
       applyUserDataToUI();
 
-      // Check if user is logged in
-      const saved = localStorage.getItem('sanket_user');
-      if (!saved) {
-        // If first visit, show the Login screen for realistic citizen onboarding!
-        switchScreen('login');
-      } else {
-        switchScreen('home');
+      // Citizen Onboarding: Ensure user profile exists and default to home dashboard
+      if (!localStorage.getItem('sanket_user')) {
+        localStorage.setItem('sanket_user', JSON.stringify({
+          name: "Ramesh Patel",
+          role: "Citizen",
+          city: "Vadodara, Gujarat",
+          shield: "Active"
+        }));
       }
+      applyUserDataToUI();
+      
+      // Restore saved language preference (or default to 'en')
+      const savedLang = localStorage.getItem('sanket_lang') || 'en';
+      setAppLanguage(savedLang);
+
+      // Always launch on the home screen so users can immediately test
+      switchScreen('home');
     });
 
     // Device View Mode Toggle (Mobile vs Laptop)
@@ -2191,9 +2240,373 @@
       startAnalysis();
     }
 
-    // Global Language Toggle
+    // =============================================================
+    // COMPLETE TRILINGUAL TRANSLATION DICTIONARY (EN, HI, GU)
+    // =============================================================
+    const I18N = {
+      en: {
+        "app_title": "SANKET",
+        "app_tagline": "AI SAFETY",
+        "app_subtext": "AI-Powered Citizen Threat Intelligence • Navrachana Univ.",
+        "nav_home": "Home",
+        "nav_check": "Check Threat",
+        "nav_ocr": "Screenshot OCR",
+        "nav_incident": "SOS 1930",
+        "nav_login": "Citizen Login",
+        "nav_academic": "Research & Viva Suite",
+        "device_mode_phone": "Phone View",
+        "device_mode_laptop": "Laptop View",
+        "home_greeting": "Good morning, Ramesh",
+        "home_subgreeting": "Let's keep your digital world safe today.",
+        "shield_active": "Live Shield Active",
+        "guard_title": "No active threats found",
+        "guard_sub": "Device scans clear • Safe Browsing active",
+        "guard_last": "Last automated scan: 14m • WhatsApp & SMS active",
+        "guard_scan_btn": "Scan Now",
+        "hero_tag": "AI THREAT VERIFIER",
+        "hero_title": "Check Something",
+        "hero_desc": "Received a fishy SMS, unknown APK link, WhatsApp forward, electricity disconnection warning, or UPI payment request?",
+        "hero_check_btn": "Check Now",
+        "hero_ocr_btn": "Upload Screenshot OCR",
+        "quick_samples_label": "Try 1-Click Real Scenarios:",
+        "sample_sbi_hi": "🔴 SBI KYC Scam (Hindi)",
+        "sample_mgvcl_gu": "🔴 MGVCL Power Cut (Gujarati)",
+        "sample_courier_en": "🔴 India Post Phishing (English)",
+        "sample_safe_sbi": "🟢 Legitimate SBI SMS",
+        "sample_safe_gu": "🟢 Official MGVCL Bill (Gujarati)",
+        "instant_scanners_title": "Instant Safety Scanners",
+        "tap_to_inspect": "Tap to inspect",
+        "scan_card_msg_title": "Check Message",
+        "scan_card_msg_sub": "SMS & WhatsApp text",
+        "scan_card_link_title": "Check Link",
+        "scan_card_link_sub": "Website & URL scan",
+        "scan_card_ocr_title": "Screenshot OCR",
+        "scan_card_ocr_sub": "Analyze photo or bill",
+        "scan_card_qr_title": "QR Code / UPI",
+        "scan_card_qr_sub": "Quishing & payment check",
+        "stat_protected": "Messages Protected",
+        "stat_threats": "Threats Blocked",
+        "stat_languages": "3 Regional Languages",
+        "tips_title": "Common Digital Frauds in Gujarat & India",
+        "tip_1_title": "Electricity Bill Disconnection Scam",
+        "tip_1_desc": "Fake SMS claiming power will be disconnected at 9:30 PM. Asking to call a mobile number or install a remote-access APK.",
+        "tip_2_title": "SBI / Bank YONO Account Block Scam",
+        "tip_2_desc": "False claim that PAN or KYC is incomplete. Real banks never use .xyz, .top, or unofficial link shorteners.",
+        "tip_3_title": "Fake Lottery & Part-Time Job Schemes",
+        "tip_3_desc": "Promises of daily easy earnings for video likes or demanding upfront deposits to personal UPI accounts.",
+        "check_title": "Check Something",
+        "check_sub": "Not sure about something? Check it before you act.",
+        "privacy_banner": "Free, instant & private AI scan: When in doubt, check before you click, reply or pay. Sanket never stores your private personal messages or banking passwords.",
+        "tab_msg": "Message",
+        "tab_url": "Link / URL",
+        "tab_ocr": "Screenshot",
+        "tab_payment": "UPI / Pay",
+        "msg_panel_title": "Analyze a Suspicious Message",
+        "msg_panel_sub": "Paste the SMS, WhatsApp text, Telegram forward, or email you received.",
+        "btn_paste": "Paste",
+        "btn_samples": "Try Sample",
+        "input_msg_placeholder": "e.g. 'Dear customer, your SBI YONO account will be blocked today due to pending KYC. Click http://bit.ly/sbi-kyc to verify your Aadhaar immediately...'",
+        "detected_script_label": "Script: Auto-detecting...",
+        "url_label": "Extracted or Target Web Link (Optional)",
+        "url_label_sub": "Auto-extracted from text",
+        "url_input_placeholder": "https://example-scam-link.top/login",
+        "privacy_guarantee": "Privacy Guarantee: Sanket checks this instantly via private isolated sandbox. Never paste your OTP, UPI MPIN, or net-banking passwords.",
+        "btn_analyze": "Analyze Message with Sanket AI",
+        "link_panel_title": "Inspect Suspicious Website or URL",
+        "link_panel_sub": "Detect brand impersonation, deceptive top-level domains (.xyz, .top), and phishing links.",
+        "btn_analyze_url": "Inspect Link Safety",
+        "ocr_panel_title": "Screenshot & Image OCR Scanner",
+        "ocr_panel_sub": "Upload a screenshot of WhatsApp, SMS, or notice to extract text and links automatically.",
+        "ocr_drop_text": "Click or drag screenshot image here",
+        "ocr_drop_sub": "Supports PNG, JPG, WebP from phone or computer",
+        "btn_test_ocr_mgvcl": "Test MGVCL Gujarati Bill",
+        "btn_test_ocr_sbi": "Test SBI KYC Block",
+        "btn_run_ocr": "Extract & Analyze with AI",
+        "qr_panel_title": "QR Code & UPI Quishing Inspector",
+        "qr_panel_sub": "Scan QR codes on electricity bills or WhatsApp to detect malicious links before opening.",
+        "btn_test_qr": "Test Malicious UPI / Phishing QR",
+        "inspecting_title": "Scanning & Fusing Modalities...",
+        "inspecting_sub": "Extracting Indic character n-grams and URL lexical features",
+        "step_1": "1. Multilingual Subword & Script Analysis",
+        "step_2": "2. Lexical & Structural URL Forensics",
+        "step_3": "3. Stacking Late Fusion Threat Assessment",
+        "res_heading_phish": "High Risk Phishing Threat Detected",
+        "res_heading_susp": "Suspicious Content Detected",
+        "res_heading_safe": "Verified Safe & Legitimate",
+        "res_sub_phish": "This content contains multiple confirmed indicators of active banking fraud and malicious impersonation.",
+        "res_sub_susp": "This content has suspicious elements. Proceed with caution and do not share sensitive information.",
+        "res_sub_safe": "No deceptive indicators, spoofed domains, or credential harvesting patterns were found.",
+        "golden_rule_phish": "GOLDEN SAFETY RULE: Never enter your bank password, OTP, or UPI MPIN on this link. Do not call numbers in the message.",
+        "golden_rule_safe": "SAFE TO PROCEED: Verified institutional format. Always confirm bank requests through official banking apps.",
+        "threat_meter_title": "Multi-Evidence Threat Gauge",
+        "why_flagged_title": "Why this was flagged",
+        "red_flags_title": "Detected Red Flags",
+        "actions_title": "Recommended Next Steps",
+        "btn_copy_alert": "Copy WhatsApp Alert",
+        "btn_listen_audio": "Listen Audio Alert",
+        "btn_report_1930": "Report to 1930",
+        "btn_check_another": "Check Another Message",
+        "emergency_title": "National Cybercrime Emergency Assistance",
+        "emergency_sub": "Direct statutory guidance aligned with Ministry of Home Affairs (I4C) & RBI Regulations",
+        "helpline_1930": "National Helpline: 1930",
+        "portal_link": "National Cybercrime Portal: cybercrime.gov.in",
+        "academic_title": "Academic Research & Viva Suite",
+        "academic_sub": "Major Project 2026–27 • Department of Data Science & Machine Learning",
+        "nuv_badge": "Navrachana University, Vadodara",
+        "core_rq_title": "Core Research Question",
+        "core_rq": "\"Does combining message text and URL evidence improve scam detection compared to analyzing either source alone across English, Hindi, and Gujarati?\"",
+        "guide_label": "Guide: Prof. Ujwala Patigara",
+        "team_label": "Team: Isha Rajput, Priya Bhatt, Parisha Parmar",
+        "ablation_title": "Ablation Study Matrix (Empirical Proof)",
+        "live_test_title": "Live Unseen Batch Testing Sandbox",
+        "btn_load_samples": "Load Faculty Test Batch",
+        "btn_run_eval": "Run Live Evaluation"
+      },
+      hi: {
+        "app_title": "संकेत",
+        "app_tagline": "एआई साइबर सुरक्षा",
+        "app_subtext": "एआई संचालित नागरिक साइबर सुरक्षा • नवरचना यूनिवर्सिटी",
+        "nav_home": "मुख्य पृष्ठ",
+        "nav_check": "ख़तरा जांचें",
+        "nav_ocr": "स्क्रीनशॉट ओसीआर",
+        "nav_incident": "आपातकालीन 1930",
+        "nav_login": "नागरिक लॉगिन",
+        "nav_academic": "रिसर्च एवं फैकल्टी कंसोल",
+        "device_mode_phone": "फ़ोन व्यू",
+        "device_mode_laptop": "लैपटॉप व्यू",
+        "home_greeting": "नमस्ते, रमेश जी",
+        "home_subgreeting": "आज आपकी डिजिटल सुरक्षा सुनिश्चित करते हैं।",
+        "shield_active": "लाइव सुरक्षा सक्रिय",
+        "guard_title": "कोई सक्रिय ख़तरा नहीं मिला",
+        "guard_sub": "डिवाइस सुरक्षित है • सुरक्षित ब्राउज़िंग सक्रिय",
+        "guard_last": "अंतिम स्वचालित जांच: 14 मिनट पूर्व • व्हाट्सएप एवं एसएमएस सुरक्षा सक्रिय",
+        "guard_scan_btn": "अभी जांचें",
+        "hero_tag": "एआई साइबर ख़तरा विश्लेषक",
+        "hero_title": "किसी भी संदिग्ध संदेश या लिंक की जांच करें",
+        "hero_desc": "क्या आपको कोई संदिग्ध एसएमएस, अज्ञात एपीके लिंक, व्हाट्सएप संदेश, बिजली बिल काटने की चेतावनी या यूपीआई भुगतान अनुरोध मिला है?",
+        "hero_check_btn": "संदेश जांचें",
+        "hero_ocr_btn": "स्क्रीनशॉट फोटो अपलोड करें",
+        "quick_samples_label": "1-क्लिक में वास्तविक उदाहरण जांचें:",
+        "sample_sbi_hi": "🔴 SBI KYC फ्रॉड (हिन्दी)",
+        "sample_mgvcl_gu": "🔴 MGVCL बिजली बिल (गुजराती)",
+        "sample_courier_en": "🔴 डाक पार्सल फ्रॉड (अंग्रेजी)",
+        "sample_safe_sbi": "🟢 प्रामाणिक बैंक एसएमएस",
+        "sample_safe_gu": "🟢 MGVCL आधिकारिक बिल (गुजराती)",
+        "instant_scanners_title": "त्वरित सुरक्षा स्कैनर",
+        "tap_to_inspect": "जांचने के लिए स्पर्श करें",
+        "scan_card_msg_title": "संदेश जांचें",
+        "scan_card_msg_sub": "एसएमएस एवं व्हाट्सएप टेक्स्ट",
+        "scan_card_link_title": "लिंक जांचें",
+        "scan_card_link_sub": "वेबसाइट एवं यूआरएल जांच",
+        "scan_card_ocr_title": "स्क्रीनशॉट ओसीआर",
+        "scan_card_ocr_sub": "फोटो या बिल का विश्लेषण",
+        "scan_card_qr_title": "क्यूआर कोड / यूपीआई",
+        "scan_card_qr_sub": "क्विशिंग एवं पेमेंट जांच",
+        "stat_protected": "सुरक्षित संदेश",
+        "stat_threats": "रोके गए फ्रॉड",
+        "stat_languages": "3 क्षेत्रीय भाषाएं",
+        "tips_title": "गुजरात एवं भारत में आम डिजिटल फ्रॉड",
+        "tip_1_title": "बिजली बिल कनेक्शन कटने का फ्रॉड",
+        "tip_1_desc": "नकली एसएमएस जिसमें दावा किया जाता है कि बिल न भरने पर रात 9:30 बजे बिजली काट दी जाएगी और दिए गए नंबर पर कॉल करने या एपीके डाउनलोड करने को कहा जाता है।",
+        "tip_2_title": "एसबीआई / बैंक योनो खाता ब्लॉक फ्रॉड",
+        "tip_2_desc": "पैन कार्ड या केवाईसी अधूरा होने का झूठा दावा। असली बैंक कभी भी .xyz, .top या गैर-सरकारी लिंक नहीं भेजते।",
+        "tip_3_title": "नकली लॉटरी एवं पार्ट-टाइम जॉब स्कीम",
+        "tip_3_desc": "यूट्यूब वीडियो लाइक करने पर भारी कमाई का लालच देकर व्यक्तिगत यूपीआई खातों में पैसे जमा करवाने का झांसा।",
+        "check_title": "साइबर ख़तरा विश्लेषक",
+        "check_sub": "किसी संदेश पर संदेह है? कोई भी कदम उठाने से पहले जांचें।",
+        "privacy_banner": "निःशुल्क, तुरंत एवं गोपनीय एआई जांच: संदेह होने पर क्लिक करने, उत्तर देने या भुगतान करने से पहले जांचें। संकेत आपके निजी संदेश या पासवर्ड कभी सुरक्षित नहीं रखता।",
+        "tab_msg": "संदेश",
+        "tab_url": "लिंक / URL",
+        "tab_ocr": "स्क्रीनशॉट",
+        "tab_payment": "UPI / भुगतान",
+        "msg_panel_title": "संदिग्ध संदेश का विश्लेषण करें",
+        "msg_panel_sub": "आपको मिला हुआ एसएमएस, व्हाट्सएप संदेश, टेलीग्राम पोस्ट या ईमेल यहां पेस्ट करें।",
+        "btn_paste": "पेस्ट करें",
+        "btn_samples": "उदाहरण आज़माएं",
+        "input_msg_placeholder": "उदा. 'प्रिय ग्राहक, आपका एसबीआई योनो खाता केवाईसी लंबित होने के कारण आज रात बंद कर दिया जाएगा। तुरंत आधार सत्यापित करने के लिए http://bit.ly/sbi-kyc पर क्लिक करें...'",
+        "detected_script_label": "भाषा: स्वतः पहचान...",
+        "url_label": "निकाली गई या लक्षित वेब लिंक (वैकल्पिक)",
+        "url_label_sub": "संदेश से स्वतः निकाली गई",
+        "url_input_placeholder": "https://example-scam-link.top/login",
+        "privacy_guarantee": "गोपनीयता गारंटी: संकेत निजी सुरक्षित सैंडबॉक्स में तुरंत जांच करता है। कभी भी अपना ओटीपी, यूपीआई पिन या बैंक पासवर्ड यहां न डालें।",
+        "btn_analyze": "संकेत एआई से ख़तरे की जांच करें",
+        "link_panel_title": "संदिग्ध वेबसाइट या लिंक की जांच करें",
+        "link_panel_sub": "नकली बैंक वेबसाइट, संदिग्ध डोमेन (.xyz, .top) एवं फ़िशिंग लिंक की पहचान करें।",
+        "btn_analyze_url": "लिंक सुरक्षा की जांच करें",
+        "ocr_panel_title": "स्क्रीनशॉट एवं इमेज ओसीआर स्कैनर",
+        "ocr_panel_sub": "व्हाट्सएप, एसएमएस या नोटिस का स्क्रीनशॉट अपलोड करें, टेक्स्ट और लिंक स्वतः निकाल लिए जाएंगे।",
+        "ocr_drop_text": "स्क्रीनशॉट फोटो यहां क्लिक करें या ड्रैग करें",
+        "ocr_drop_sub": "मोबाइल या कंप्यूटर से PNG, JPG, WebP समर्थित",
+        "btn_test_ocr_mgvcl": "MGVCL गुजराती बिल का परीक्षण",
+        "btn_test_ocr_sbi": "SBI KYC फ्रॉड का परीक्षण",
+        "btn_run_ocr": "ओसीआर टेक्स्ट निकालें एवं जांचें",
+        "qr_panel_title": "क्यूआर कोड एवं यूपीआई क्विशिंग जांच",
+        "qr_panel_sub": "बिजली बिल या व्हाट्सएप पर आए क्यूआर कोड को खोलने से पहले स्कैन करके धोखाधड़ी पहचानें।",
+        "btn_test_qr": "फ़िशिंग यूपीआई क्यूआर का परीक्षण",
+        "inspecting_title": "विश्लेषण एवं डेटा एकत्रीकरण जारी है...",
+        "inspecting_sub": "भारतीय भाषाई विशेषताओं एवं यूआरएल संरचना का विश्लेषण",
+        "step_1": "1. बहुभाषी सबवर्ड एवं लिपि विश्लेषण",
+        "step_2": "2. यूआरएल संरचना एवं लेक्सिकल फोरेंसिक",
+        "step_3": "3. मल्टी-एविडेंस स्टैकिंग लेट फ्यूजन मूल्यांकन",
+        "res_heading_phish": "उच्च जोखिम: फ़िशिंग / स्कैम ख़तरा पहचाना गया",
+        "res_heading_susp": "सावधानी: संदेहास्पद सामग्री पाई गई",
+        "res_heading_safe": "सत्यापित सुरक्षित एवं प्रामाणिक",
+        "res_sub_phish": "इस सामग्री में बैंकिंग धोखाधड़ी और फर्जी पहचान के कई पुख्ता प्रमाण पाए गए हैं।",
+        "res_sub_susp": "इस सामग्री में संदिग्ध तत्व मौजूद हैं। सावधानी बरतें और कोई भी व्यक्तिगत जानकारी साझा न करें।",
+        "res_sub_safe": "कोई भ्रामक संकेत, नकली डोमेन या पासवर्ड चुराने वाले पैटर्न नहीं पाए गए।",
+        "golden_rule_phish": "स्वर्ण सुरक्षा नियम: इस लिंक पर कभी भी अपना बैंक पासवर्ड, ओटीपी या यूपीआई पिन न डालें। संदेश में दिए नंबर पर कॉल न करें।",
+        "golden_rule_safe": "आगे बढ़ना सुरक्षित है: प्रामाणिक संस्थान प्रारूप। हमेशा बैंक अनुरोधों की पुष्टि आधिकारिक बैंकिंग ऐप के माध्यम से करें।",
+        "threat_meter_title": "मल्टी-एविडेंस ख़तरा मापक (Threat Gauge)",
+        "why_flagged_title": "इसे ख़तरनाक क्यों माना गया?",
+        "red_flags_title": "पहचाने गए ख़तरे के संकेत (Red Flags)",
+        "actions_title": "आपको तुरंत क्या करना चाहिए?",
+        "btn_copy_alert": "व्हाट्सएप चेतावनी कॉपी करें",
+        "btn_listen_audio": "ऑडियो चेतावनी सुनें",
+        "btn_report_1930": "साइबर हेल्पलाइन 1930 पर रिपोर्ट करें",
+        "btn_check_another": "अन्य संदेश की जांच करें",
+        "emergency_title": "राष्ट्रीय साइबर अपराध आपातकालीन सहायता",
+        "emergency_sub": "गृह मंत्रालय (I4C) एवं आरबीआई के दिशा-निर्देशों पर आधारित कानूनी मार्गदर्शन",
+        "helpline_1930": "राष्ट्रीय हेल्पलाइन: 1930",
+        "portal_link": "राष्ट्रीय साइबर पोर्टल: cybercrime.gov.in",
+        "academic_title": "अकादमिक शोध एवं फैकल्टी मूल्यांकन कंसोल",
+        "academic_sub": "मेजर प्रोजेक्ट 2026–27 • डेटा साइंस एवं मशीन लर्निंग विभाग",
+        "nuv_badge": "नवरचना यूनिवर्सिटी, वडोदरा",
+        "core_rq_title": "मुख्य शोध प्रश्न (Core Research Question)",
+        "core_rq": "\"क्या अंग्रेजी, हिन्दी और गुजराती में संदेश टेक्स्ट और यूआरएल साक्ष्यों को मिलाने से स्कैम की पहचान में सुधार होता है?\"",
+        "guide_label": "मार्गदर्शक: प्रो. उज्ज्वला पतिगरा",
+        "team_label": "टीम: ईशा राजपूत, प्रिया भट्ट, परीशा परमार",
+        "ablation_title": "एब्लेशन स्टडी मैट्रिक्स (अनुभवजन्य प्रमाण)",
+        "live_test_title": "लाइव अनसीन डेटा परीक्षण सैंडबॉक्स",
+        "btn_load_samples": "फैकल्टी टेस्ट बैच लोड करें",
+        "btn_run_eval": "लाइव मूल्यांकन चलाएं"
+      },
+      gu: {
+        "app_title": "સંકેત",
+        "app_tagline": "AI સાયબર સુરક્ષા",
+        "app_subtext": "AI સંચાલિત નાગરિક સાયબર સુરક્ષા • નવરચના યુનિવર્સિટી",
+        "nav_home": "હોમ",
+        "nav_check": "જોખમ તપાસો",
+        "nav_ocr": "સ્ક્રીનશૉટ OCR",
+        "nav_incident": "ઇમરજન્સી 1930",
+        "nav_login": "નાગરિક લૉગિન",
+        "nav_academic": "સંશોધન અને વાઇવા કન્સોલ",
+        "device_mode_phone": "ફોન વ્યૂ",
+        "device_mode_laptop": "લેપટોપ વ્યૂ",
+        "home_greeting": "નમસ્તે, રમેશભાઈ",
+        "home_subgreeting": "ચાલો આજે તમારા ડિજિટલ વ્યવહારોને સુરક્ષિત રાખીએ.",
+        "shield_active": "લાઇવ સુરક્ષા સક્રિય",
+        "guard_title": "કોઈ સક્રિય જોખમ મળ્યું નથી",
+        "guard_sub": "ડિવાઇસ સુરક્ષિત છે • સેફ બ્રાઉઝિંગ સક્રિય",
+        "guard_last": "છેલ્લી આપમેળે તપાસ: 14 મિનિટ પહેલાં • વ્હોટ્સએપ અને SMS સુરક્ષા સક્રિય",
+        "guard_scan_btn": "હમણાં તપાસો",
+        "hero_tag": "AI સાયબર જોખમ ચકાસણી",
+        "hero_title": "કોઈપણ શંકાસ્પદ મેસેજ કે લિંક તપાસો",
+        "hero_desc": "શું તમને કોઈ શંકાસ્પદ SMS, અજાણી APK લિંક, વ્હોટ્સએપ ફોરવર્ડ, વીજળી બિલ કાપવાની ચેતવણી કે UPI પેમેન્ટ વિનંતી મળી છે?",
+        "hero_check_btn": "મેસેજ તપાસો",
+        "hero_ocr_btn": "સ્ક્રીનશૉટ ફોટો અપલોડ કરો",
+        "quick_samples_label": "1-ક્લિકમાં વાસ્તવિક ઉદાહરણો તપાસો:",
+        "sample_sbi_hi": "🔴 SBI KYC ફ્રોડ (હિન્દી)",
+        "sample_mgvcl_gu": "🔴 MGVCL વીજળી બિલ (ગુજરાતી)",
+        "sample_courier_en": "🔴 પોસ્ટ પાર્સલ ફ્રોડ (અંગ્રેજી)",
+        "sample_safe_sbi": "🟢 સત્તાવાર બેંક SMS",
+        "sample_safe_gu": "🟢 MGVCL સત્તાવાર બિલ (ગુજરાતી)",
+        "instant_scanners_title": "ત્વરિત સુરક્ષા સ્કેનર્સ",
+        "tap_to_inspect": "તપાસવા માટે ક્લિક કરો",
+        "scan_card_msg_title": "મેસેજ તપાસો",
+        "scan_card_msg_sub": "SMS અને વ્હોટ્સએપ લખાણ",
+        "scan_card_link_title": "લિંક તપાસો",
+        "scan_card_link_sub": "વેબસાઇટ અને URL તપાસ",
+        "scan_card_ocr_title": "સ્ક્રીનશૉટ OCR",
+        "scan_card_ocr_sub": "ફોટો કે બિલનું વિશ્લેષણ",
+        "scan_card_qr_title": "QR કોડ / UPI",
+        "scan_card_qr_sub": "ક્વિશિંગ અને પેમેન્ટ તપાસ",
+        "stat_protected": "સુરક્ષિત સંદેશાઓ",
+        "stat_threats": "અટકાવેલ ફ્રોડ",
+        "stat_languages": "3 પ્રાદેશિક ભાષાઓ",
+        "tips_title": "ગુજરાત અને ભારતમાં તાજેતરના સામાન્ય ડિજિટલ ફ્રોડ",
+        "tip_1_title": "વીજળી બિલ કનેક્શન કાપવાનો સ્કેમ",
+        "tip_1_desc": "બનાવટી SMS જેમાં દાવો કરાય છે કે રાત્રે 9:30 વાગ્યે વીજળી કાપી નાખવામાં આવશે. આપેલા મોબાઇલ નંબર પર કૉલ કરવા કે APK ઇન્સ્ટોલ કરવા જણાવવામાં આવે છે.",
+        "tip_2_title": "SBI / બેંક YONO એકાઉન્ટ બ્લોક સ્કેમ",
+        "tip_2_desc": "PAN કાર્ડ કે KYC અધૂરું હોવાનો ખોટો દાવો. સત્તાવાર બેંકો ક્યારેય .xyz, .top કે બિનસત્તાવાર લિંક્સ મોકલતી નથી.",
+        "tip_3_title": "બનાવટી લૉટરી અને પાર્ટ-ટાઇમ જોબ સ્કીમ",
+        "tip_3_desc": "યુટ્યુબ વિડીયો લાઈક કરવાથી મોટી કમાણીની લાલચ આપી વ્યક્તિગત UPI ખાતામાં પૈસા ભરાવવાનો ફ્રોડ.",
+        "check_title": "સાયબર જોખમ તપાસ કેન્દ્ર",
+        "check_sub": "મેસેજ પર શંકા છે? કોઈ પગલું ભરતાં પહેલાં અહીં તપાસો.",
+        "privacy_banner": "મફત, ત્વરિત અને ખાનગી AI તપાસ: શંકા હોય ત્યારે ક્લિક કરતાં, જવાબ આપતાં કે પૈસા ચૂકવતાં પહેલાં તપાસો. સંકેત તમારા ખાનગી મેસેજ કે બેંકિંગ પાસવર્ડ ક્યારેય સંગ્રહિત કરતું નથી.",
+        "tab_msg": "મેસેજ",
+        "tab_url": "લિંક / URL",
+        "tab_ocr": "સ્ક્રીનશૉટ",
+        "tab_payment": "UPI / પેમેન્ટ",
+        "msg_panel_title": "શંકાસ્પદ સંદેશનું વિશ્લેષણ કરો",
+        "msg_panel_sub": "તમને મળેલ SMS, વ્હોટ્સએપ મેસેજ, ટેલિગ્રામ પોસ્ટ કે ઇમેઇલ અહીં પેસ્ટ કરો.",
+        "btn_paste": "પેસ્ટ કરો",
+        "btn_samples": "ઉદાહરણ ચકાસો",
+        "input_msg_placeholder": "દા.ત. 'પ્રિય ગ્રાહક, તમારું SBI YONO એકાઉન્ટ KYC બાકી હોવાથી આજે રાત્રે બંધ થઈ જશે. આધાર વેરિફાઈ કરવા માટે http://bit.ly/sbi-kyc પર ક્લિક કરો...'",
+        "detected_script_label": "ભાષા: આપમેળે ઓળખ...",
+        "url_label": "મેસેજમાંથી મળેલ લિંક (વૈકલ્પિક)",
+        "url_label_sub": "લખાણમાંથી આપમેળે શોધાયેલ",
+        "url_input_placeholder": "https://example-scam-link.top/login",
+        "privacy_guarantee": "ગોપનીયતા ખાતરી: સંકેત સુરક્ષિત પ્રાઇવેટ સેન્ડબોક્સમાં તરત તપાસ કરે છે. ક્યારેય તમારો OTP, UPI MPIN કે બેંકિંગ પાસવર્ડ અહીં આપશો નહીં.",
+        "btn_analyze": "સંકેત AI વડે જોખમ તપાસો",
+        "link_panel_title": "શંકાસ્પદ વેબસાઇટ કે લિંક તપાસો",
+        "link_panel_sub": "બનાવટી બેંક સાઇટ, શંકાસ્પદ ડોમેન (.xyz, .top) અને ફિશિંગ લિંક્સની ઓળખ કરો.",
+        "btn_analyze_url": "લિંકની સુરક્ષા તપાસો",
+        "ocr_panel_title": "સ્ક્રીનશૉટ અને ઈમેજ OCR સ્કેનર",
+        "ocr_panel_sub": "વ્હોટ્સએપ, SMS કે નોટિસનો સ્ક્રીનશૉટ અપલોડ કરો, લખાણ અને લિંક્સ આપમેળે ઓળખી લેવાશે.",
+        "ocr_drop_text": "સ્ક્રીનશૉટ ફોટો અહીં ક્લિક કરો અથવા ખેંચીને મૂકો",
+        "ocr_drop_sub": "મોબાઇલ કે કમ્પ્યુટરથી PNG, JPG, WebP સમર્થિત",
+        "btn_test_ocr_mgvcl": "MGVCL ગુજરાતી બિલ ચકાસો",
+        "btn_test_ocr_sbi": "SBI KYC ફ્રોડ ચકાસો",
+        "btn_run_ocr": "લખાણ કાઢો અને AI વડે તપાસો",
+        "qr_panel_title": "QR કોડ અને UPI ક્વિશિંગ તપાસ",
+        "qr_panel_sub": "વીજળી બિલ કે વ્હોટ્સએપ પર મળેલા QR કોડ સ્કેન કરી છેતરપિંડી ઓળખો.",
+        "btn_test_qr": "શંકાસ્પદ UPI QR ટેસ્ટ કરો",
+        "inspecting_title": "વિશ્લેષણ અને ડેટા તપાસ ચાલુ છે...",
+        "inspecting_sub": "ભારતીય ભાષાકીય વિશેષતાઓ અને URL સંરચનાની ચકાસણી",
+        "step_1": "1. બહુભાષી સબવર્ડ અને લિપિ વિશ્લેષણ",
+        "step_2": "2. URL સંરચના અને લેક્સિકલ ફોરેન્સિક્સ",
+        "step_3": "3. મલ્ટિ-એવિડન્સ સ્ટેકિંગ લેટ ફ્યુઝન મૂલ્યાંકન",
+        "res_heading_phish": "ઉચ્ચ જોખમ: ગંભીર ફિશિંગ / સ્કેમ મળ્યું",
+        "res_heading_susp": "સાવચેતી: શંકાસ્પદ સામગ્રી જણાઈ",
+        "res_heading_safe": "ચકાસાયેલ સુરક્ષિત અને સત્તાવાર",
+        "res_sub_phish": "આ સામગ્રીમાં બેંકિંગ છેતરપિંડી અને બનાવટી ઓળખના અનેક પુરાવા મળ્યા છે.",
+        "res_sub_susp": "આ સામગ્રીમાં શંકાસ્પદ વિગતો છે. સાવચેતી રાખો અને અંગત માહિતી આપશો નહીં.",
+        "res_sub_safe": "કોઈ છેતરપિંડીના સંકેત, બનાવટી ડોમેન કે પાસવર્ડ ચોરીની વિગતો મળી નથી.",
+        "golden_rule_phish": "સુવર્ણ સુરક્ષા નિયમ: આ લિંક પર ક્યારેય તમારો બેંક પાસવર્ડ, OTP કે UPI MPIN આપશો નહીં. મેસેજમાં આપેલા નંબર પર ફોન કરશો નહીં.",
+        "golden_rule_safe": "આગળ વધવું સુરક્ષિત છે: સત્તાવાર સંસ્થાકીય ફોર્મેટ. હંમેશા બેંકની વિનંતી સત્તાવાર બેંકિંગ એપ પર ચકાસો.",
+        "threat_meter_title": "મલ્ટિ-એવિડન્સ જોખમ માપક (Threat Gauge)",
+        "why_flagged_title": "આને શા માટે જોખમી ગણવામાં આવ્યું?",
+        "red_flags_title": "જણાયેલ લાલ સંકેતો (Red Flags)",
+        "actions_title": "તમારે તરત શું કરવું જોઈએ?",
+        "btn_copy_alert": "વ્હોટ્સએપ ચેતવણી કૉપિ કરો",
+        "btn_listen_audio": "ઓડિયો ચેતવણી સાંભળો",
+        "btn_report_1930": "સાયબર હેલ્પલાઇન 1930 પર ફરિયાદ કરો",
+        "btn_check_another": "બીજો સંદેશ તપાસો",
+        "emergency_title": "રાષ્ટ્રીય સાયબર ક્રાઈમ ઇમરજન્સી સહાય",
+        "emergency_sub": "ગૃહ મંત્રાલય (I4C) અને RBI ની માર્ગદર્શિકા પર આધારિત કાનૂની માર્ગદર્શન",
+        "helpline_1930": "રાષ્ટ્રીય હેલ્પલાઇન: 1930",
+        "portal_link": "રાષ્ટ્રીય સાયબર પોર્ટલ: cybercrime.gov.in",
+        "academic_title": "અકાદમિક સંશોધન અને ફેકલ્ટી મૂલ્યાંકન કન્સોલ",
+        "academic_sub": "મેજર પ્રોજેક્ટ 2026–27 • ડેટા સાયન્સ અને મશીન લર્નિંગ વિભાગ",
+        "nuv_badge": "નવરચના યુનિવર્સિટી, વડોદરા",
+        "core_rq_title": "મુખ્ય સંશોધન પ્રશ્ન (Core Research Question)",
+        "core_rq": "\"શું અંગ્રેજી, હિન્દી અને ગુજરાતીમાં સંદેશ લખાણ અને URL પુરાવાઓને જોડવાથી સ્કેમ ઓળખવામાં સુધારો થાય છે?\"",
+        "guide_label": "માર્ગદર્શક: પ્રો. ઉજ્જવલા પતિગરા",
+        "team_label": "ટીમ: ઈશા રાજપૂત, પ્રિયા ભટ્ટ, પરીશા પરમાર",
+        "ablation_title": "એબલેશન સ્ટડી મેટ્રિક્સ (પ્રાયોગિક પુરાવા)",
+        "live_test_title": "લાઇવ અનસીન ડેટા પરીક્ષણ સેન્ડબોક્સ",
+        "btn_load_samples": "ફેકલ્ટી ટેસ્ટ બેચ લોડ કરો",
+        "btn_run_eval": "લાઇવ મૂલ્યાંકન ચલાવો"
+      }
+    };
+
+    // Global Language Toggle & Real-time Full-App DOM Translation
     function setAppLanguage(lang) {
+      if (!['en', 'hi', 'gu'].includes(lang)) lang = 'en';
       currentLanguage = lang;
+      localStorage.setItem('sanket_lang', lang);
+
+      // 1. Update Language Pill Active State
       ['en', 'hi', 'gu'].forEach(l => {
         const btn = document.getElementById(`lang-btn-${l}`);
         if (btn) {
@@ -2205,7 +2618,38 @@
         }
       });
 
-      // Update greetings & dynamic strings
+      // 2. Translate All DOM Elements having data-i18n
+      const dict = I18N[lang] || I18N.en;
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (dict[key]) {
+          el.innerHTML = dict[key];
+        }
+      });
+
+      // 3. Translate All Placeholders having data-i18n-placeholder
+      document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        const key = el.getAttribute('data-i18n-placeholder');
+        if (dict[key]) {
+          el.placeholder = dict[key];
+        }
+      });
+
+      // 4. Update Dynamic Titles / Tooltips
+      document.querySelectorAll('[data-i18n-title]').forEach(el => {
+        const key = el.getAttribute('data-i18n-title');
+        if (dict[key]) {
+          el.title = dict[key];
+        }
+      });
+
+      // 5. Update Device Mode Label
+      const devLabel = document.getElementById('device-mode-label');
+      if (devLabel) {
+        devLabel.innerText = isMobileView ? (dict.device_mode_laptop || "Laptop View") : (dict.device_mode_phone || "Phone View");
+      }
+
+      // 6. Update Greetings
       const greeting = document.getElementById('home-greeting');
       if (greeting) {
         if (lang === 'hi') greeting.innerText = "नमस्ते, रमेश जी";
@@ -2213,7 +2657,7 @@
         else greeting.innerText = "Good morning, Ramesh";
       }
 
-      // If we already have a prediction result, re-render its text
+      // 7. Re-render prediction results if currently showing
       if (latestPredictionResult) {
         renderPredictionResult(latestPredictionResult);
       }
