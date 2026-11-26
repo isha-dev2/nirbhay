@@ -1,9 +1,12 @@
-# Nirbhay (निर्भय • નિર્ભય) — AI-Powered Digital Safety & Response Platform
+# Sanket (સંકેત • संकेत) — AI Cyber Threat Indicator & Safety Platform
+*(Formerly Nirbhay • નિર્ભય)*
 
 > **Major Project (2026–27) | Department of Data Science & Machine Learning**  
 > **Institution:** Navrachana University, Vadodara, Gujarat  
 > **Guide:** Prof. Ujwala Patigara  
-> **Presented by:** Isha Rajput, Parisha Parmar, Priya Bhatt  
+> **Team:** Isha Rajput, Priya Bhatt, Parisha Parmar  
+
+AI digital safety assistant for non-technical citizens in India, providing multilingual (English / Hindi / Gujarati) scam, phishing, and UPI quishing threat detection, multi-evidence fusion, and plain-language emergency response.
 
 ---
 

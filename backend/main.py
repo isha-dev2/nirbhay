@@ -35,7 +35,7 @@ from backend.ml_engine.predictor import nirbhay_engine
 
 app = FastAPI(
     title="Sanket (संकेत • સંકેત) — AI Digital Safety & Threat Intelligence Platform",
-    description="End-semester Major Project DS-ML Demonstration API (Sanket / TRINETRA / Nirbhay)",
+    description="Multilingual Digital Safety & Cyber Threat Indicator Platform (English, Hindi, Gujarati)",
     version="2.0.0"
 )
 
@@ -272,6 +272,34 @@ def get_system_info():
     }
 
 # -------------------------------------------------------------
+# COMPATIBILITY ROUTES FOR TEAMMATE APIS (/check & /v2/*)
+# -------------------------------------------------------------
+class LegacyCheckRequest(BaseModel):
+    text: Optional[str] = ""
+    url: Optional[str] = ""
+    language: Optional[str] = "auto"
+
+@app.post("/check")
+def legacy_check_endpoint(payload: LegacyCheckRequest):
+    return nirbhay_engine.predict(text=payload.text, url=payload.url)
+
+@app.get("/v2/status")
+def legacy_status_endpoint():
+    return {
+        "status": "online",
+        "platform": "Sanket AI Safety Platform",
+        "models_ready": bool(nirbhay_engine.text_model and nirbhay_engine.url_model and nirbhay_engine.fusion_model)
+    }
+
+@app.post("/v2/check/message")
+def legacy_v2_message(payload: LegacyCheckRequest):
+    return nirbhay_engine.predict(text=payload.text, url=payload.url)
+
+@app.post("/v2/check/url")
+def legacy_v2_url(payload: LegacyCheckRequest):
+    return nirbhay_engine.predict(url=payload.url or payload.text)
+
+# -------------------------------------------------------------
 # STATIC FILES & WEB DASHBOARD UI
 # -------------------------------------------------------------
 static_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "static")
@@ -280,10 +308,15 @@ if os.path.exists(static_dir):
 
 @app.get("/")
 def serve_ui():
-    index_file = os.path.join(static_dir, "index.html")
-    if os.path.exists(index_file):
-        return FileResponse(index_file)
-    return {"message": "Sanket (TRINETRA) API is running. UI index.html not found in static folder."}
+    candidates = [
+        os.path.join(static_dir, "index.html"),
+        os.path.abspath(os.path.join(BASE_DIR, "frontend", "index.html")),
+        os.path.abspath(os.path.join(BASE_DIR, "public", "index.html")),
+    ]
+    for p in candidates:
+        if os.path.exists(p):
+            return FileResponse(p)
+    return {"message": "Sanket API is running. UI index.html not found."}
 
 if __name__ == "__main__":
     import uvicorn
