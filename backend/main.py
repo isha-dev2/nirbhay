@@ -31,14 +31,32 @@ class CheckResponse(BaseModel):
     risk_level: str
     explanation: str
 
-INDEX_HTML_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "frontend", "index.html"))
+# Search across multiple potential root paths (local run, Docker, Vercel lambda)
+POSSIBLE_HTML_PATHS = [
+    os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "frontend", "index.html")),
+    os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "public", "index.html")),
+    os.path.abspath(os.path.join(os.path.dirname(__file__), "static", "index.html")),
+    os.path.abspath("frontend/index.html"),
+    os.path.abspath("public/index.html"),
+]
+
+def get_index_html() -> str:
+    for p in POSSIBLE_HTML_PATHS:
+        if os.path.exists(p):
+            try:
+                with open(p, "r", encoding="utf-8") as f:
+                    return f.read()
+            except Exception:
+                pass
+    return "<h2>Sanket Platform is running. HTML dashboard file loading...</h2>"
 
 @app.get("/", response_class=HTMLResponse)
 def root():
     """Serves the interactive Sanket Web UI dashboard."""
-    if os.path.exists(INDEX_HTML_PATH):
-        return FileResponse(INDEX_HTML_PATH)
-    return HTMLResponse("<h2>Sanket API is running. UI file frontend/index.html not found.</h2>")
+    for p in POSSIBLE_HTML_PATHS:
+        if os.path.exists(p):
+            return FileResponse(p)
+    return HTMLResponse(get_index_html())
 
 @app.post("/check", response_model=CheckResponse)
 def check_message(request: CheckRequest):
